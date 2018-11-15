@@ -30,11 +30,12 @@ final class Forms
 	}
 
 	/**
+	 * @param mixed[] $parameters
 	 * @return mixed[]|null
 	 */
-	public function find(int $id)
+	public function find(int $id, array $parameters = [])
 	{
-		return $this->client->getResource($this->path, $id);
+		return $this->client->getResource($this->path, $id, $parameters);
 	}
 
 	/**
