@@ -7,33 +7,37 @@ use Fapi\HttpClient\HttpRequest;
 use Fapi\HttpClient\HttpResponse;
 use Fapi\HttpClient\MockHttpClient;
 
-class FapiClientStatisticsMockHttpClient extends MockHttpClient
+final class FapiClientStatisticsMockHttpClient extends MockHttpClient
 {
 
 	public function __construct()
 	{
 		$this->add(
 			new HttpRequest(
-				'http://api.fapi.cz.l/statistics/total?type=daily&start=2015-01-01&end=2015-12-31&including_vat=0&form=8806',
+				'https://api.fapi.cz/statistics/total?type=daily&start=2018-01-01&end=2018-12-31&including_vat=0',
 				'GET',
-				array(
-					'auth' => array('tester', 'asdf123jkl;'),
-					'headers' => array('Content-Type' => 'application/json', 'Accept' => 'application/json'),
-				)
+				[
+					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
+					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+				]
 			),
 			new HttpResponse(
 				200,
-				array(
-					'Date' => array('Fri, 29 Apr 2016 08:36:23 GMT'),
-					'Server' => array(
-						'Apache/2.2.29 (Unix) DAV/2 PHP/5.6.20 mod_ssl/2.2.29 OpenSSL/0.9.8zg',
-					),
-					'X-Powered-By' => array('Nette Framework'),
-					'Status' => array('200'),
-					'Content-Length' => array('455'),
-					'Content-Type' => array('application/json'),
-				),
-				'{"issued":{"2015-01-12":{"amounts":{"CZK":8610.56},"amounts_including_vat":{"CZK":10416},"count":1736}},"cancelled":[],"paid":[],"left_to_pay":{"2015-01-12":{"amounts":{"CZK":8610.56},"amounts_including_vat":{"CZK":10416},"count":1736}},"overdue":{"2015-01-12":{"amounts":{"CZK":8610.56},"amounts_including_vat":{"CZK":10416},"count":1736}},"invoiced":{"2015-01-12":{"amounts":{"CZK":8610.56},"amounts_including_vat":{"CZK":10416},"count":1736}},"dph":[]}'
+				[
+					'Date' => ['Thu, 15 Nov 2018 08:22:07 GMT'],
+					'Content-Type' => ['application/json'],
+					'Transfer-Encoding' => ['chunked'],
+					'Connection' => ['keep-alive'],
+					'Set-Cookie' => [
+						'AWSALB=OuxKSfim7K/cL88FRUjZ74ILpyPJbmVqMplx4QFJK4fAh6ydvcmo1gN/5iHajOjB8IIkj74pfT0os8vV0yifLZEwDoRNsIWUB2pArA3CgOo4MLCRC+aU8QGrcpJG; Expires=Thu, 22 Nov 2018 08:22:07 GMT; Path=/',
+					],
+					'Server' => ['nginx/1.14.0'],
+					'X-Powered-By' => ['Nette Framework'],
+					'X-Origin-Instance' => ['prd-fapi-web2'],
+					'X-Content-Type-Options' => ['nosniff'],
+					'X-Frame-Options' => ['sameorigin'],
+				],
+				'{"issued":{"2018-11-14":{"amounts":{"CZK":2730},"amounts_including_vat":{"CZK":2730},"count":3}},"cancelled":{"2018-11-14":{"amounts":{"CZK":2700},"amounts_including_vat":{"CZK":2700},"count":1}},"paid":{"2018-11-14":{"amounts":{"CZK":2700},"amounts_including_vat":{"CZK":2700},"count":1}},"left_to_pay":{"2018-11-14":{"amounts":{"CZK":30},"amounts_including_vat":{"CZK":30},"count":2}},"overdue":[],"invoiced":{"2018-11-14":{"amounts":{"CZK":5430},"amounts_including_vat":{"CZK":5430},"count":4}},"dph":[]}'
 			)
 		);
 	}

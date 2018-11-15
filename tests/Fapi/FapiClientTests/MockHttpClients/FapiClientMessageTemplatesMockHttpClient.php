@@ -7,17 +7,17 @@ use Fapi\HttpClient\HttpRequest;
 use Fapi\HttpClient\HttpResponse;
 use Fapi\HttpClient\MockHttpClient;
 
-class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
+final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 {
 
 	public function __construct()
 	{
 		$this->add(
 			new HttpRequest(
-				'api.fapi.cz/message-templates',
+				'http://api.fapi.log/message-templates',
 				'POST',
 				[
-					'auth' => ['tester', 'xxx'],
+					'auth' => ['tester@fapi.cz', 'XZRbVLPigTQpi4Kct4JAq8FZ9'],
 					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
 					'json' => [
 						'name' => 'test',
@@ -33,22 +33,22 @@ class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 			new HttpResponse(
 				201,
 				[
-					'Date' => ['Tue, 07 Nov 2017 21:12:56 GMT'],
-					'Server' => ['Apache/2.4.18 (Ubuntu)'],
-					'X-Powered-By' => ['Nette Framework'],
-					'Status' => ['201'],
-					'Content-Length' => ['177'],
+					'Server' => ['nginx/1.14.0 (Ubuntu)'],
+					'Date' => ['Thu, 15 Nov 2018 08:46:48 GMT'],
 					'Content-Type' => ['application/json'],
+					'Transfer-Encoding' => ['chunked'],
+					'Connection' => ['keep-alive'],
+					'X-Powered-By' => ['Nette Framework'],
 				],
-				'{"id":27,"name":"test","subject":"MySubject","body":"<p>Mu Body<\\/p>","type":null,"event":"custom","automatic_charge_event":null,"message_template_set":null,"user":3,"files":[]}'
+				'{"id":74,"name":"test","subject":"MySubject","body":"<p>Mu Body<\\/p>","type":null,"event":"custom","automatic_charge_event":null,"message_template_set":null,"files":[]}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'api.fapi.cz/message-templates/27',
+				'http://api.fapi.log/message-templates/74',
 				'PUT',
 				[
-					'auth' => ['tester', 'xxx'],
+					'auth' => ['tester@fapi.cz', 'XZRbVLPigTQpi4Kct4JAq8FZ9'],
 					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
 					'json' => [
 						'name' => 'test',
@@ -64,56 +64,56 @@ class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Tue, 07 Nov 2017 21:12:56 GMT'],
-					'Server' => ['Apache/2.4.18 (Ubuntu)'],
-					'X-Powered-By' => ['Nette Framework'],
-					'Status' => ['200'],
-					'Content-Length' => ['197'],
+					'Server' => ['nginx/1.14.0 (Ubuntu)'],
+					'Date' => ['Thu, 15 Nov 2018 08:46:48 GMT'],
 					'Content-Type' => ['application/json'],
+					'Transfer-Encoding' => ['chunked'],
+					'Connection' => ['keep-alive'],
+					'X-Powered-By' => ['Nette Framework'],
 				],
-				'{"id":27,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"user":3,"files":[]}'
+				'{"id":74,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'api.fapi.cz/message-templates/27',
+				'http://api.fapi.log/message-templates/74',
 				'GET',
 				[
-					'auth' => ['tester', 'xxx'],
+					'auth' => ['tester@fapi.cz', 'XZRbVLPigTQpi4Kct4JAq8FZ9'],
 					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Tue, 07 Nov 2017 21:12:56 GMT'],
-					'Server' => ['Apache/2.4.18 (Ubuntu)'],
-					'X-Powered-By' => ['Nette Framework'],
-					'Status' => ['200'],
-					'Content-Length' => ['197'],
+					'Server' => ['nginx/1.14.0 (Ubuntu)'],
+					'Date' => ['Thu, 15 Nov 2018 08:46:48 GMT'],
 					'Content-Type' => ['application/json'],
+					'Transfer-Encoding' => ['chunked'],
+					'Connection' => ['keep-alive'],
+					'X-Powered-By' => ['Nette Framework'],
 				],
-				'{"id":27,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"user":3,"files":[]}'
+				'{"id":74,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'api.fapi.cz/message-templates/27',
+				'http://api.fapi.log/message-templates/74',
 				'DELETE',
 				[
-					'auth' => ['tester', 'xxx'],
+					'auth' => ['tester@fapi.cz', 'XZRbVLPigTQpi4Kct4JAq8FZ9'],
 					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Tue, 07 Nov 2017 21:12:56 GMT'],
-					'Server' => ['Apache/2.4.18 (Ubuntu)'],
-					'X-Powered-By' => ['Nette Framework'],
-					'Status' => ['200'],
-					'Content-Length' => ['20'],
+					'Server' => ['nginx/1.14.0 (Ubuntu)'],
+					'Date' => ['Thu, 15 Nov 2018 08:46:48 GMT'],
 					'Content-Type' => ['application/json'],
+					'Transfer-Encoding' => ['chunked'],
+					'Connection' => ['keep-alive'],
+					'X-Powered-By' => ['Nette Framework'],
 				],
 				'{"status":"success"}'
 			)

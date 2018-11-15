@@ -64,9 +64,13 @@ class FapiClientUserTest extends TestCase
 
 	public function testGetCurrentUser()
 	{
-		$user = $this->fapiClient->getCurrentUser();
+		$user = $this->fapiClient->user->getCurrentUser();
 
 		Assert::type('array', $user);
+		Assert::type('int', $user['id']);
+		Assert::same('test1@slischka.cz', $user['username']);
+
+		Assert::same($user['username'], $this->fapiClient->getCurrentUsername());
 	}
 
 }
