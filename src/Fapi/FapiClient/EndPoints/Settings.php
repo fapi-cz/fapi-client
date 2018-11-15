@@ -6,12 +6,19 @@ namespace Fapi\FapiClient\EndPoints;
 use Fapi\FapiClient\Rest\FapiRestClient;
 use Fapi\FapiClient\Rest\FapiRestClientOptions;
 
-final class Settings extends EndPoint
+final class Settings
 {
+
+	/** @var FapiRestClient */
+	private $client;
+
+	/** @var string */
+	private $path;
 
 	public function __construct(FapiRestClient $client)
 	{
-		parent::__construct($client, '/settings');
+		$this->client = $client;
+		$this->path = '/settings';
 	}
 
 	/**

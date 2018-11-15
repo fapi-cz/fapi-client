@@ -3,31 +3,27 @@ declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
+use Fapi\FapiClient\EndPoints\Traits\Create;
+use Fapi\FapiClient\EndPoints\Traits\Delete;
+use Fapi\FapiClient\EndPoints\Traits\Find;
+use Fapi\FapiClient\EndPoints\Traits\FindAll;
+use Fapi\FapiClient\EndPoints\Traits\Update;
 use Fapi\FapiClient\Rest\FapiRestClient;
 
-final class Invoices extends EndPoint
+final class Invoices
 {
+
+	use FindAll;
+	use Find;
+	use Create;
+	use Update;
+	use Delete;
 
 	public function __construct(FapiRestClient $client)
 	{
-		parent::__construct($client, '/invoices');
-	}
-
-	/**
-	 * @param mixed[] $parameters
-	 * @return mixed[]
-	 */
-	public function findAll(array $parameters = []): array
-	{
-		return $this->client->getResources($this->path, 'invoices', $parameters);
-	}
-
-	/**
-	 * @return mixed[]|null
-	 */
-	public function find(int $id)
-	{
-		return $this->client->getResource($this->path, $id);
+		$this->client = $client;
+		$this->path = '/invoices';
+		$this->resources = 'invoices';
 	}
 
 	public function getPdf(int $id)
@@ -44,29 +40,6 @@ final class Invoices extends EndPoint
 		$response = $this->client->getSingularResource('/invoices/count', $parameters);
 
 		return (int) $response['count'];
-	}
-
-	/**
-	 * @param mixed[] $data
-	 * @return mixed[]
-	 */
-	public function create(array $data): array
-	{
-		return $this->client->createResource($this->path, $data);
-	}
-
-	/**
-	 * @param mixed[] $data
-	 * @return mixed[]
-	 */
-	public function update(int $id, array $data): array
-	{
-		return $this->client->updateResource($this->path, $id, $data);
-	}
-
-	public function delete(int $id)
-	{
-		$this->client->deleteResource($this->path, $id);
 	}
 
 	/**
