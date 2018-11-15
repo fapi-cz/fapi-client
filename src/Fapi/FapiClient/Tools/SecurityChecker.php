@@ -1,11 +1,14 @@
 <?php
 declare(strict_types = 1);
 
+namespace Fapi\FapiClient\Tools;
+
 final class SecurityChecker
 {
 
 	/**
 	 * @param mixed[] $invoice
+	 * @return bool
 	 */
 	public static function isValid(array $invoice, int $time, string $expectedSecurity): bool
 	{

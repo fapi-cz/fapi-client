@@ -11,9 +11,13 @@ final class Statistics
 	/** @var FapiRestClient */
 	private $restClient;
 
+	/** @var string */
+	private $path;
+
 	public function __construct(FapiRestClient $restClient)
 	{
 		$this->restClient = $restClient;
+		$this->path = '/statistics';
 	}
 
 	/**
@@ -22,7 +26,7 @@ final class Statistics
 	 */
 	public function getTotalStatistics(array $parameters): array
 	{
-		return $this->restClient->getTotalStatistics($parameters);
+		return $this->restClient->getSingularResource($this->path . '/total', $parameters);
 	}
 
 }

@@ -48,7 +48,7 @@ final class Invoices
 	 */
 	public function getCount(array $parameters = []): int
 	{
-		$response = $this->client->getInvoiceCount($parameters);
+		$response = $this->client->getSingularResource('/invoices/count', $parameters);
 
 		return (int) $response['count'];
 	}

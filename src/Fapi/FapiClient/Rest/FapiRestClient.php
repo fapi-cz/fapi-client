@@ -46,19 +46,7 @@ class FapiRestClient
 
 	public function checkConnection()
 	{
-		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, '/');
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
-			return;
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
+		$this->getSingularResource('/');
 	}
 
 	/**
@@ -246,46 +234,20 @@ class FapiRestClient
 	{
 		$httpResponse = $this->sendHttpRequest(HttpMethod::POST, '/invoices/send-email', $parameters);
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new ValidationException($message);
-		}
-
-		if ($httpResponse->getStatusCode() !== HttpStatusCode::S200_OK) {
-			throw new InvalidStatusCodeException();
-		}
-	}
-
-	/**
-	 * @param mixed[] $parameters
-	 * @return mixed[]
-	 */
-	public function getInvoiceCount(array $parameters): array
-	{
-		$url = '/invoices/count?' . $this->formatUrlParameters($parameters);
-		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, $url);
-
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
-			return $this->getResponseData($httpResponse);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new ValidationException($message);
+			return;
 		}
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
 			$message = $this->getErrorMessage($httpResponse);
 
 			throw new AuthorizationException($message);
+		}
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
+			$message = $this->getErrorMessage($httpResponse);
+
+			throw new ValidationException($message);
 		}
 
 		throw new InvalidStatusCodeException();
@@ -320,34 +282,11 @@ class FapiRestClient
 	}
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return mixed[]
-	 */
-	public function getTotalStatistics(array $parameters): array
-	{
-		$url = '/statistics/total?' . $this->formatUrlParameters($parameters);
-		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, $url);
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
-			return $this->getResponseData($httpResponse);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
-	}
-
-	/**
 	 * @param int $id
 	 * @return string|null
 	 */
 	public function getInvoicePdf(int $id)
 	{
-		$this->validateId($id, 0);
 		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, '/invoices/' . $id . '.pdf');
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
@@ -440,7 +379,7 @@ class FapiRestClient
 		$responseData = $this->getResponseData($httpResponse);
 
 		if (!\is_array($responseData)) {
-			throw new InvalidResponseBodyException('Response data is not an mixed[] .');
+			throw new InvalidResponseBodyException('Response data is not an array.');
 		}
 
 		if (!isset($responseData[$resourcesKey])) {
@@ -450,7 +389,7 @@ class FapiRestClient
 		$resources = $responseData[$resourcesKey];
 
 		if (!\is_array($resources)) {
-			throw new InvalidResponseBodyException('Resources must be an mixed[] .');
+			throw new InvalidResponseBodyException('Resources must be an array.');
 		}
 
 		foreach ($resources as $resource) {
@@ -494,11 +433,7 @@ class FapiRestClient
 		}
 	}
 
-	/**
-	 * @param HttpResponse $httpResponse
-	 * @return string
-	 */
-	private function getErrorMessage(HttpResponse $httpResponse)
+	private function getErrorMessage(HttpResponse $httpResponse): string
 	{
 		$responseData = $this->getResponseData($httpResponse);
 
