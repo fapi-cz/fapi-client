@@ -235,6 +235,12 @@ class FapiRestClient
 			throw new AuthorizationException($message);
 		}
 
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
+			$message = $this->getErrorMessage($httpResponse);
+
+			throw new ValidationException($message);
+		}
+
 		if ($httpResponse->getStatusCode() !== HttpStatusCode::S200_OK) {
 			throw new InvalidStatusCodeException();
 		}
@@ -248,6 +254,34 @@ class FapiRestClient
 	{
 		$url = '/invoices/count?' . $this->formatUrlParameters($parameters);
 		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, $url);
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
+			return $this->getResponseData($httpResponse);
+		}
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
+			$message = $this->getErrorMessage($httpResponse);
+
+			throw new ValidationException($message);
+		}
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
+			$message = $this->getErrorMessage($httpResponse);
+
+			throw new AuthorizationException($message);
+		}
+
+		throw new InvalidStatusCodeException();
+	}
+
+	/**
+	 * @param mixed[] $parameters
+	 * @return mixed[]
+	 */
+	public function generateQrCode(array $parameters): array
+	{
+		$url = '/invoices/generate-qr-code';
+		$httpResponse = $this->sendHttpRequest(HttpMethod::POST, $url, $parameters);
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
 			return $this->getResponseData($httpResponse);
@@ -291,60 +325,6 @@ class FapiRestClient
 	}
 
 	/**
-	 * @param string $email
-	 * @return mixed[]
-	 */
-	public function checkUserEmailAvailability(string $email): array
-	{
-		$url = '/users/check-availability?' . $this->formatUrlParameters(['email' => $email]);
-
-		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, $url);
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
-			return $this->getResponseData($httpResponse);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
-	}
-
-	/**
-	 * @param int $billingUserId
-	 * @param mixed[] $data
-	 * @param int $options
-	 * @return mixed[] |mixed|string
-	 */
-	public function renameUser(int $billingUserId, array $data, int $options = 0)
-	{
-		$url = '/users/rename?' . $this->formatUrlParameters(['billing_user_id' => $billingUserId]);
-
-		$httpResponse = $this->sendHttpRequest(HttpMethod::POST, $url, $data);
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
-			return $this->getResourceResponseData($httpResponse, $options);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S404_NOT_FOUND) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new NotFoundException($message);
-		}
-
-		throw new InvalidStatusCodeException();
-	}
-
-	/**
 	 * @param int $id
 	 * @return string|null
 	 */
@@ -359,27 +339,6 @@ class FapiRestClient
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S404_NOT_FOUND) {
 			return null;
-		}
-
-		throw new InvalidStatusCodeException();
-	}
-
-	/**
-	 * @param mixed[] $data
-	 * @return mixed[]
-	 */
-	public function rewriteAllBillingFlashes(array $data): array
-	{
-		$httpResponse = $this->sendHttpRequest(HttpMethod::POST, '/billingFlashes/rewriteAll', $data);
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
-			return $this->getResourcesResponseData($httpResponse, 'billing_flashes', 0);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
 		}
 
 		throw new InvalidStatusCodeException();

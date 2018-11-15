@@ -78,6 +78,17 @@ final class Invoices
 
 	/**
 	 * @param mixed[] $parameters
+	 * @return string|null
+	 */
+	public function generateQrCode(array $parameters)
+	{
+		$data = $this->client->generateQrCode($parameters);
+
+		return $data['qrCode'] ?? null;
+	}
+
+	/**
+	 * @param mixed[] $parameters
 	 */
 	public function sendEmailWithInvoice(array $parameters)
 	{

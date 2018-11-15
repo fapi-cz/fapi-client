@@ -11,6 +11,7 @@ namespace Fapi\FapiClientTests;
 
 use Fapi\FapiClient\AuthorizationException;
 use Fapi\FapiClient\FapiClient;
+use Fapi\FapiClient\ValidationException;
 use Fapi\FapiClientTests\MockHttpClients\FapiClientInvoicesMockHttpClient;
 use Fapi\HttpClient\CapturingHttpClient;
 use Fapi\HttpClient\GuzzleHttpClient;
@@ -74,6 +75,8 @@ class FapiClientInvoicesTest extends TestCase
 					'price' => 10,
 				],
 			],
+			'iban' => 'CZXX0800000000XXXXXXXXXX',
+			'swift' => 'GIBACZPX',
 		]);
 
 		Assert::type('array', $createdInvoice);
@@ -105,11 +108,6 @@ class FapiClientInvoicesTest extends TestCase
 		Assert::same($invoice['id'], $updatedInvoice['id']);
 		Assert::same('Sample footer note', $updatedInvoice['notes']);
 
-		$this->fapiClient->invoices->delete($invoice['id']);
-
-		Assert::null($this->fapiClient->invoices->find($invoice['id']));
-		Assert::null($this->fapiClient->invoices->getPdf($invoice['id']));
-
 		$fapiClient = $this->fapiClient;
 		Assert::exception(static function () use ($fapiClient) {
 			$fapiClient->invoices->find(1);
@@ -122,6 +120,33 @@ class FapiClientInvoicesTest extends TestCase
 			'created_on_to' => '2017-07-01 23:59:59',
 		]);
 		Assert::same(0, $count);
+
+		$this->fapiClient->invoices->sendEmailWithInvoice([
+			'invoice' => $invoice['id'],
+			'message_template' => 'E-mail pro vystavení objednávky',
+		]);
+
+		Assert::exception(function () {
+			$this->fapiClient->invoices->sendEmailWithInvoice([
+				'invoice' => -1,
+			]);
+		}, ValidationException::class);
+
+		Assert::exception(function () {
+			$this->fapiClient->invoices->sendEmailWithInvoice([
+				'invoice' => 1,
+			]);
+		}, AuthorizationException::class);
+
+		$qrCode = $this->fapiClient->invoices->generateQrCode([
+			'invoice' => $invoice['id'],
+		]);
+		Assert::type('string', $qrCode);
+
+		$this->fapiClient->invoices->delete($invoice['id']);
+
+		Assert::null($this->fapiClient->invoices->find($invoice['id']));
+		Assert::null($this->fapiClient->invoices->getPdf($invoice['id']));
 	}
 
 }
