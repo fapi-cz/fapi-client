@@ -272,7 +272,6 @@ class FapiRestClient
 
 		try {
 			$httpRequest = new HttpRequest($url, $method, $options);
-
 			$httpResponse = $this->httpClient->sendHttpRequest($httpRequest);
 
 			return RedirectHelper::followRedirects($this->httpClient, $httpResponse, 3, $options, $method);
