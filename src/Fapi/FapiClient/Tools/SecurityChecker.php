@@ -4,6 +4,9 @@ declare(strict_types = 1);
 final class SecurityChecker
 {
 
+	/**
+	 * @param mixed[] $invoice
+	 */
 	public static function isValid(array $invoice, int $time, string $expectedSecurity): bool
 	{
 		$id = $invoice['id'] ?? null;
