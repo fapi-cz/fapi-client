@@ -6,6 +6,12 @@ namespace Fapi\FapiClient;
 interface IFapiClient
 {
 
+	/**
+	 * @throws AuthorizationException
+	 * @return void
+	 */
+	public function checkConnection();
+
 	public function getCurrentUsername(): string;
 
 }

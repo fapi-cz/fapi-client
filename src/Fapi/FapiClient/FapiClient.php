@@ -82,6 +82,11 @@ class FapiClient implements IFapiClient
 		$this->statistics = new Statistics($this->restClient);
 	}
 
+	public function checkConnection()
+	{
+		$this->restClient->checkConnection();
+	}
+
 	public function getCurrentUsername(): string
 	{
 		return $this->restClient->getCurrentUsername();

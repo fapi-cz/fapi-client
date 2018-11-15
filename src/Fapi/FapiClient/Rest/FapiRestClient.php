@@ -44,6 +44,23 @@ class FapiRestClient
 		return $this->username;
 	}
 
+	public function checkConnection()
+	{
+		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, '/');
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
+			return;
+		}
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
+			$message = $this->getErrorMessage($httpResponse);
+
+			throw new AuthorizationException($message);
+		}
+
+		throw new InvalidStatusCodeException();
+	}
+
 	/**
 	 * @param string $path
 	 * @param string $resourcesKey
