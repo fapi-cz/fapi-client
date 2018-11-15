@@ -68,7 +68,7 @@ class FapiClientCountriesTest extends TestCase
 
 	public function testGetAndUpdateCountries()
 	{
-		$countries = $this->fapiClient->countries->getCountries();
+		$countries = $this->fapiClient->countries->findAll();
 
 		Assert::type('array', $countries);
 		Assert::same('Česká republika', $countries['CZ']);

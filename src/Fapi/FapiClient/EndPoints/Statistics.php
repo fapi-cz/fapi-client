@@ -5,12 +5,19 @@ namespace Fapi\FapiClient\EndPoints;
 
 use Fapi\FapiClient\Rest\FapiRestClient;
 
-final class Statistics extends EndPoint
+final class Statistics
 {
+
+	/** @var FapiRestClient */
+	private $client;
+
+	/** @var string */
+	private $path;
 
 	public function __construct(FapiRestClient $client)
 	{
-		parent::__construct($client, '/statistics');
+		$this->client = $client;
+		$this->path = '/statistics';
 	}
 
 	/**

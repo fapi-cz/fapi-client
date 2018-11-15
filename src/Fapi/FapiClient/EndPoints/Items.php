@@ -3,37 +3,22 @@ declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
+use Fapi\FapiClient\EndPoints\Traits\Create;
+use Fapi\FapiClient\EndPoints\Traits\Delete;
+use Fapi\FapiClient\EndPoints\Traits\Update;
 use Fapi\FapiClient\Rest\FapiRestClient;
 
-final class Items extends EndPoint
+final class Items
 {
+
+	use Create;
+	use Update;
+	use Delete;
 
 	public function __construct(FapiRestClient $client)
 	{
-		parent::__construct($client, '/items');
-	}
-
-	/**
-	 * @param mixed[] $data
-	 * @return mixed[]
-	 */
-	public function create(array $data): array
-	{
-		return $this->client->createResource($this->path, $data);
-	}
-
-	/**
-	 * @param mixed[] $data
-	 * @return mixed[]
-	 */
-	public function update(int $id, array $data): array
-	{
-		return $this->client->updateResource($this->path, $id, $data);
-	}
-
-	public function delete(int $id)
-	{
-		$this->client->deleteResource($this->path, $id);
+		$this->client = $client;
+		$this->path = '/items';
 	}
 
 }
