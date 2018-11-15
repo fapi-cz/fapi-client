@@ -45,9 +45,9 @@ class FapiClientCountriesTest extends TestCase
 		}
 
 		$this->fapiClient = new FapiClient(
-			'tester',
-			'xxx',
-			'http://api.fapi.cz.l/',
+			'test1@slischka.cz',
+			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'https://api.fapi.cz/',
 			$this->httpClient
 		);
 	}

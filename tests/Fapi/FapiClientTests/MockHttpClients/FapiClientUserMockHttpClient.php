@@ -24,12 +24,12 @@ final class FapiClientUserMockHttpClient extends MockHttpClient
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Wed, 14 Nov 2018 16:45:08 GMT'],
+					'Date' => ['Thu, 15 Nov 2018 08:21:01 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=6fKebZ9Ujs3Eza8PEwKQJN1xAbO4uQKFv9CuhplcqQrjvWK2yGMvn95dpjP21uI+KOwyU9LKrvIlYcwBp3wJ+9ZJpEt81mFS3HCCM3nezHgHCKr4s5siexrAT1QF; Expires=Wed, 21 Nov 2018 16:45:08 GMT; Path=/',
+						'AWSALB=zSE1bS1dtnQylY/NKQI1UxmhHq69enOTSY5usw97amfolk6yIw91EUawtHkOeLZIroc4kchVCLR3ID/sau3VF+ZDpLE1cQrRc10S2aKsM3g3foCj/680cx+UnRd3; Expires=Thu, 22 Nov 2018 08:21:01 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],

@@ -45,9 +45,9 @@ class FapiClientStatisticsTest extends TestCase
 		}
 
 		$this->fapiClient = new FapiClient(
-			'tester',
-			'asdf123jkl;',
-			'http://api.fapi.cz.l/',
+			'test1@slischka.cz',
+			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'https://api.fapi.cz/',
 			$this->httpClient
 		);
 	}
@@ -68,12 +68,11 @@ class FapiClientStatisticsTest extends TestCase
 
 	public function testGetTotalStatistics()
 	{
-		$statistics = $this->fapiClient->getTotalStatistics(array(
+		$statistics = $this->fapiClient->statistics->getTotalStatistics(array(
 			'type' => 'daily',
-			'start' => '2015-01-01',
-			'end' => '2015-12-31',
+			'start' => '2018-01-01',
+			'end' => '2018-12-31',
 			'including_vat' => false,
-			'form' => 8806,
 		));
 
 		Assert::type('array', $statistics);
