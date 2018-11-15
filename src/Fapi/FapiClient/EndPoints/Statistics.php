@@ -5,19 +5,12 @@ namespace Fapi\FapiClient\EndPoints;
 
 use Fapi\FapiClient\Rest\FapiRestClient;
 
-final class Statistics
+final class Statistics extends EndPoint
 {
 
-	/** @var FapiRestClient */
-	private $restClient;
-
-	/** @var string */
-	private $path;
-
-	public function __construct(FapiRestClient $restClient)
+	public function __construct(FapiRestClient $client)
 	{
-		$this->restClient = $restClient;
-		$this->path = '/statistics';
+		parent::__construct($client, '/statistics');
 	}
 
 	/**
@@ -26,7 +19,7 @@ final class Statistics
 	 */
 	public function getTotalStatistics(array $parameters): array
 	{
-		return $this->restClient->getSingularResource($this->path . '/total', $parameters);
+		return $this->client->getSingularResource($this->path . '/total', $parameters);
 	}
 
 }

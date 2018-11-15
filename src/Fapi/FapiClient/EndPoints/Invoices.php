@@ -5,19 +5,12 @@ namespace Fapi\FapiClient\EndPoints;
 
 use Fapi\FapiClient\Rest\FapiRestClient;
 
-final class Invoices
+final class Invoices extends EndPoint
 {
-
-	/** @var FapiRestClient */
-	private $client;
-
-	/** @var string */
-	private $path;
 
 	public function __construct(FapiRestClient $client)
 	{
-		$this->client = $client;
-		$this->path = '/invoices';
+		parent::__construct($client, '/invoices');
 	}
 
 	/**

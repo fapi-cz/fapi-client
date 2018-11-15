@@ -5,19 +5,12 @@ namespace Fapi\FapiClient\EndPoints;
 
 use Fapi\FapiClient\Rest\FapiRestClient;
 
-final class MessageTemplates
+final class MessageTemplates extends EndPoint
 {
-
-	/** @var FapiRestClient */
-	private $client;
-
-	/** @var string */
-	private $path;
 
 	public function __construct(FapiRestClient $client)
 	{
-		$this->client = $client;
-		$this->path = '/message-templates';
+		parent::__construct($client, '/message-templates');
 	}
 
 	/**

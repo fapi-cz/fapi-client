@@ -5,19 +5,12 @@ namespace Fapi\FapiClient\EndPoints;
 
 use Fapi\FapiClient\Rest\FapiRestClient;
 
-final class DiscountCodes
+final class DiscountCodes extends EndPoint
 {
-
-	/** @var FapiRestClient */
-	private $client;
-
-	/** @var string */
-	private $path;
 
 	public function __construct(FapiRestClient $client)
 	{
-		$this->client = $client;
-		$this->path = '/discount-codes';
+		parent::__construct($client, '/discount-codes');
 	}
 
 	/**
