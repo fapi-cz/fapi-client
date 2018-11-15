@@ -68,13 +68,9 @@ class FapiRestClient
 			return $this->getResourcesResponseData($httpResponse, $resourcesKey, $options);
 		}
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
 
-			throw new AuthorizationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -100,17 +96,13 @@ class FapiRestClient
 			return $this->getResourceResponseData($httpResponse, $options);
 		}
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S404_NOT_FOUND) {
 			return null;
 		}
 
-		throw new InvalidStatusCodeException();
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
+
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -131,13 +123,9 @@ class FapiRestClient
 			return $this->getResourceResponseData($httpResponse, $options);
 		}
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
 
-			throw new AuthorizationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -154,17 +142,9 @@ class FapiRestClient
 			return $this->getResourceResponseData($httpResponse, $options);
 		}
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
-			throw new ValidationException($this->getErrorMessage($httpResponse));
-		}
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -184,19 +164,9 @@ class FapiRestClient
 			return $this->getResourceResponseData($httpResponse, $options);
 		}
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S404_NOT_FOUND) {
-			$message = $this->getErrorMessage($httpResponse);
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
 
-			throw new NotFoundException($message);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -211,19 +181,17 @@ class FapiRestClient
 
 		$httpResponse = $this->sendHttpRequest(HttpMethod::DELETE, $path . '/' . $id);
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
+			return;
 		}
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S404_NOT_FOUND) {
 			return;
 		}
 
-		if ($httpResponse->getStatusCode() !== HttpStatusCode::S200_OK) {
-			throw new InvalidStatusCodeException();
-		}
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
+
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -238,19 +206,9 @@ class FapiRestClient
 			return;
 		}
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
 
-			throw new AuthorizationException($message);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new ValidationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -266,19 +224,9 @@ class FapiRestClient
 			return $this->getResponseData($httpResponse);
 		}
 
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
-			$message = $this->getErrorMessage($httpResponse);
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
 
-			throw new ValidationException($message);
-		}
-
-		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
-			$message = $this->getErrorMessage($httpResponse);
-
-			throw new AuthorizationException($message);
-		}
-
-		throw new InvalidStatusCodeException();
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -297,7 +245,9 @@ class FapiRestClient
 			return null;
 		}
 
-		throw new InvalidStatusCodeException();
+		$this->processErrorStatusCodeIfNeeded($httpResponse);
+
+		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
 	/**
@@ -450,6 +400,23 @@ class FapiRestClient
 			return Json::decode($httpResponse->getBody(), Json::FORCE_ARRAY);
 		} catch (\Throwable $e) {
 			throw new InvalidResponseBodyException('Response body is not a valid JSON.', 0, $e);
+		}
+	}
+
+	private function processErrorStatusCodeIfNeeded(HttpResponse $httpResponse)
+	{
+		$message = $this->getErrorMessage($httpResponse);
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S400_BAD_REQUEST) {
+			throw new ValidationException($message);
+		}
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S401_UNAUTHORIZED) {
+			throw new AuthorizationException($message);
+		}
+
+		if ($httpResponse->getStatusCode() === HttpStatusCode::S404_NOT_FOUND) {
+			throw new NotFoundException($message);
 		}
 	}
 
