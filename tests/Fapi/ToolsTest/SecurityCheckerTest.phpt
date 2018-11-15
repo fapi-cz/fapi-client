@@ -22,6 +22,15 @@ final class SecurityCheckerTest extends TestCase
 	}
 
 	/**
+	 * @dataProvider getInvalidData
+	 * @param mixed[] $invoice
+	 */
+	public function testInvalid(array $invoice, int $time, string $expectedSecurity)
+	{
+		Assert::false(SecurityChecker::isValid($invoice, $time, $expectedSecurity));
+	}
+
+	/**
 	 * @return mixed[]
 	 */
 	public function getIsValidData(): array
@@ -42,6 +51,34 @@ final class SecurityCheckerTest extends TestCase
 						],
 					],
 				],
+				'time' => 1542298656,
+				'expectedSecurity' => '35221e0d0168d282edc3768ed4b4e878dec3c921',
+			],
+		];
+	}
+
+	/**
+	 * @return mixed[]
+	 */
+	public function getInvalidData(): array
+	{
+		return [
+			[
+				'invoice' => [
+					'id' => 183488476,
+				],
+				'time' => 1542298656,
+				'expectedSecurity' => '35221e0d0168d282edc3768ed4b4e878dec3c921',
+			],
+			[
+				'invoice' => [
+					'number' => 183488476,
+				],
+				'time' => 1542298656,
+				'expectedSecurity' => '35221e0d0168d282edc3768ed4b4e878dec3c921',
+			],
+			[
+				'invoice' => [],
 				'time' => 1542298656,
 				'expectedSecurity' => '35221e0d0168d282edc3768ed4b4e878dec3c921',
 			],

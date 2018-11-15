@@ -34,18 +34,18 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 				201,
 				[
 					'Server' => ['nginx/1.14.0 (Ubuntu)'],
-					'Date' => ['Thu, 15 Nov 2018 08:46:48 GMT'],
+					'Date' => ['Thu, 15 Nov 2018 20:21:27 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'X-Powered-By' => ['Nette Framework'],
 				],
-				'{"id":74,"name":"test","subject":"MySubject","body":"<p>Mu Body<\\/p>","type":null,"event":"custom","automatic_charge_event":null,"message_template_set":null,"files":[]}'
+				'{"id":73,"name":"test","subject":"MySubject","body":"<p>Mu Body<\\/p>","type":null,"event":"custom","automatic_charge_event":null,"message_template_set":null,"files":[]}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'http://api.fapi.log/message-templates/74',
+				'http://api.fapi.log/message-templates/73',
 				'PUT',
 				[
 					'auth' => ['tester@fapi.cz', 'XZRbVLPigTQpi4Kct4JAq8FZ9'],
@@ -65,18 +65,18 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 				200,
 				[
 					'Server' => ['nginx/1.14.0 (Ubuntu)'],
-					'Date' => ['Thu, 15 Nov 2018 08:46:48 GMT'],
+					'Date' => ['Thu, 15 Nov 2018 20:21:27 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'X-Powered-By' => ['Nette Framework'],
 				],
-				'{"id":74,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}'
+				'{"id":73,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'http://api.fapi.log/message-templates/74',
+				'http://api.fapi.log/message-templates/73',
 				'GET',
 				[
 					'auth' => ['tester@fapi.cz', 'XZRbVLPigTQpi4Kct4JAq8FZ9'],
@@ -87,18 +87,18 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 				200,
 				[
 					'Server' => ['nginx/1.14.0 (Ubuntu)'],
-					'Date' => ['Thu, 15 Nov 2018 08:46:48 GMT'],
+					'Date' => ['Thu, 15 Nov 2018 20:21:27 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'X-Powered-By' => ['Nette Framework'],
 				],
-				'{"id":74,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}'
+				'{"id":73,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'http://api.fapi.log/message-templates/74',
+				'http://api.fapi.log/message-templates/73',
 				'DELETE',
 				[
 					'auth' => ['tester@fapi.cz', 'XZRbVLPigTQpi4Kct4JAq8FZ9'],
@@ -109,13 +109,35 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 				200,
 				[
 					'Server' => ['nginx/1.14.0 (Ubuntu)'],
-					'Date' => ['Thu, 15 Nov 2018 08:46:48 GMT'],
+					'Date' => ['Thu, 15 Nov 2018 20:21:27 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'X-Powered-By' => ['Nette Framework'],
 				],
 				'{"status":"success"}'
+			)
+		);
+		$this->add(
+			new HttpRequest(
+				'http://api.fapi.log/message-templates/73',
+				'DELETE',
+				[
+					'auth' => ['tester@fapi.cz', 'XZRbVLPigTQpi4Kct4JAq8FZ9'],
+					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+				]
+			),
+			new HttpResponse(
+				404,
+				[
+					'Server' => ['nginx/1.14.0 (Ubuntu)'],
+					'Date' => ['Thu, 15 Nov 2018 20:21:27 GMT'],
+					'Content-Type' => ['application/json'],
+					'Transfer-Encoding' => ['chunked'],
+					'Connection' => ['keep-alive'],
+					'X-Powered-By' => ['Nette Framework'],
+				],
+				'{"message":"Specified resource does not exist.","type":"RequestException"}'
 			)
 		);
 	}

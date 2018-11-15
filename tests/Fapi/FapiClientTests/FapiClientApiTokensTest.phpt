@@ -12,6 +12,7 @@ namespace Fapi\FapiClientTests;
 use Fapi\FapiClient\AuthorizationException;
 use Fapi\FapiClient\FapiClient;
 use Fapi\FapiClient\NotFoundException;
+use Fapi\FapiClient\ValidationException;
 use Fapi\FapiClientTests\MockHttpClients\FapiClientApiTokensMockHttpClient;
 use Fapi\HttpClient\CapturingHttpClient;
 use Fapi\HttpClient\GuzzleHttpClient;
@@ -66,6 +67,10 @@ class FapiClientApiTokensTest extends TestCase
 
 	public function testCreateGetUpdateAndDeleteApiTokens()
 	{
+		Assert::exception(function () {
+			$this->fapiClient->apiTokens->create([]);
+		}, ValidationException::class);
+
 		$apiToken = $this->fapiClient->apiTokens->create([
 			'purpose' => 'Sample Token',
 		]);

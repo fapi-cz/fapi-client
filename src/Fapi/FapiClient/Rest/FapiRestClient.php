@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace Fapi\FapiClient\Rest;
 
 use Fapi\FapiClient\AuthorizationException;
-use Fapi\FapiClient\InvalidArgumentException;
 use Fapi\FapiClient\NotFoundException;
 use Fapi\FapiClient\ValidationException;
 use Fapi\HttpClient\HttpClientException;
@@ -82,8 +81,6 @@ class FapiRestClient
 	 */
 	public function getResource(string $path, $id, array $parameters = [], $options = 0)
 	{
-		$this->validateId($id, $options);
-
 		$path .= '/' . $id;
 
 		if ($parameters) {
@@ -156,8 +153,6 @@ class FapiRestClient
 	 */
 	public function updateResource(string $path, $id, array $data, int $options = 0): array
 	{
-		$this->validateId($id, $options);
-
 		$httpResponse = $this->sendHttpRequest(HttpMethod::PUT, $path . '/' . $id, $data);
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
@@ -175,10 +170,8 @@ class FapiRestClient
 	 * @param int $options
 	 * @return void
 	 */
-	public function deleteResource(string $path, $id, int $options = 0)
+	public function deleteResource(string $path, $id)
 	{
-		$this->validateId($id, $options);
-
 		$httpResponse = $this->sendHttpRequest(HttpMethod::DELETE, $path . '/' . $id);
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
@@ -248,26 +241,6 @@ class FapiRestClient
 		$this->processErrorStatusCodeIfNeeded($httpResponse);
 
 		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
-	}
-
-	/**
-	 * @param string|int $id
-	 * @param int $options
-	 * @return void
-	 */
-	private function validateId($id, $options)
-	{
-		if ($options & FapiRestClientOptions::STRING_KEY) {
-			if (!\is_string($id)) {
-				throw new InvalidArgumentException('Parameter id must be a string.');
-			}
-
-			return;
-		}
-
-		if (!\is_int($id)) {
-			throw new InvalidArgumentException('Parameter id must be an integer.');
-		}
 	}
 
 	/**
@@ -379,7 +352,7 @@ class FapiRestClient
 		}
 
 		if (!\is_array($resource)) {
-			throw new InvalidResponseBodyException('Resource must be an mixed[] .');
+			throw new InvalidResponseBodyException('Resource must be an array.');
 		}
 	}
 
