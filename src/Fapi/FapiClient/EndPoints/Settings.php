@@ -57,7 +57,7 @@ final class Settings
 
 	public function delete(string $key)
 	{
-		$this->client->deleteResource($this->path, $key, FapiRestClientOptions::STRING_KEY);
+		$this->client->deleteResource($this->path, $key);
 
 	}
 

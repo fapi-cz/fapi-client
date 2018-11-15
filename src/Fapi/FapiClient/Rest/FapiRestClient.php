@@ -167,7 +167,6 @@ class FapiRestClient
 	/**
 	 * @param string $path
 	 * @param int|string $id
-	 * @param int $options
 	 * @return void
 	 */
 	public function deleteResource(string $path, $id)
