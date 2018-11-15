@@ -75,6 +75,8 @@ class FapiClientFormsTest extends TestCase
 			'reverse_charge' => 'disabled',
 			'thanks_content' => '',
 			'error_content' => '',
+			'allow_wire' => true,
+			'allow_cash' => true,
 		]);
 
 		Assert::type('array', $form);
@@ -89,6 +91,12 @@ class FapiClientFormsTest extends TestCase
 		Assert::type('int', $forms[0]['id']);
 
 		Assert::same($form, $this->fapiClient->forms->find($form['id']));
+
+		$form = $this->fapiClient->forms->find($form['id'], [
+			'with_payment_methods' => true,
+		]);
+		Assert::type('array', $form['payment_methods']);
+		Assert::count(2, $form['payment_methods']);
 
 		$updatedForm = $this->fapiClient->forms->update($form['id'], [
 			'name' => 'Updated Form',
