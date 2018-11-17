@@ -9,11 +9,11 @@ use Fapi\FapiClient\ValidationException;
 use Fapi\HttpClient\HttpClientException;
 use Fapi\HttpClient\HttpMethod;
 use Fapi\HttpClient\HttpRequest;
-use Fapi\HttpClient\HttpResponse;
 use Fapi\HttpClient\HttpStatusCode;
 use Fapi\HttpClient\IHttpClient;
 use Fapi\HttpClient\RedirectHelper;
 use Fapi\HttpClient\Utils\Json;
+use Psr\Http\Message\ResponseInterface;
 
 class FapiRestClient
 {
@@ -230,7 +230,7 @@ class FapiRestClient
 		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, '/invoices/' . $id . '.pdf');
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
-			return $httpResponse->getBody();
+			return (string) $httpResponse->getBody();
 		}
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S404_NOT_FOUND) {
@@ -247,7 +247,7 @@ class FapiRestClient
 	 * @param string $path
 	 * @param mixed[]|null $data
 	 * @param mixed[] $headers
-	 * @return HttpResponse
+	 * @return ResponseInterface
 	 */
 	private function sendHttpRequest(string $method, string $path, array $data = null, array $headers = [])
 	{
@@ -271,10 +271,10 @@ class FapiRestClient
 		}
 
 		try {
-			$httpRequest = new HttpRequest($url, $method, $options);
-			$httpResponse = $this->httpClient->sendHttpRequest($httpRequest);
+			$httpRequest = HttpRequest::from($url, $method, $options);
+			$httpResponse = $this->httpClient->sendRequest($httpRequest);
 
-			return RedirectHelper::followRedirects($this->httpClient, $httpResponse, 3, $options, $method);
+			return RedirectHelper::followRedirects($this->httpClient, $httpResponse, $httpRequest, 3);
 		} catch (HttpClientException $e) {
 			throw new RestClientException('Failed to send an HTTP request.', 0, $e);
 		}
@@ -290,12 +290,12 @@ class FapiRestClient
 	}
 
 	/**
-	 * @param HttpResponse $httpResponse
+	 * @param ResponseInterface $httpResponse
 	 * @param string $resourcesKey
 	 * @param int $options
 	 * @return mixed[]
 	 */
-	private function getResourcesResponseData(HttpResponse $httpResponse, string $resourcesKey, int $options): array
+	private function getResourcesResponseData(ResponseInterface $httpResponse, string $resourcesKey, int $options): array
 	{
 		$responseData = $this->getResponseData($httpResponse);
 
@@ -321,11 +321,11 @@ class FapiRestClient
 	}
 
 	/**
-	 * @param HttpResponse $httpResponse
+	 * @param ResponseInterface $httpResponse
 	 * @param int $options
 	 * @return mixed[]
 	 */
-	private function getResourceResponseData(HttpResponse $httpResponse, int $options): array
+	private function getResourceResponseData(ResponseInterface $httpResponse, int $options): array
 	{
 		$resource = $this->getResponseData($httpResponse);
 
@@ -354,7 +354,7 @@ class FapiRestClient
 		}
 	}
 
-	private function getErrorMessage(HttpResponse $httpResponse): string
+	private function getErrorMessage(ResponseInterface $httpResponse): string
 	{
 		$responseData = $this->getResponseData($httpResponse);
 
@@ -362,19 +362,19 @@ class FapiRestClient
 	}
 
 	/**
-	 * @param HttpResponse $httpResponse
+	 * @param ResponseInterface $httpResponse
 	 * @return mixed
 	 */
-	private function getResponseData(HttpResponse $httpResponse)
+	private function getResponseData(ResponseInterface $httpResponse)
 	{
 		try {
-			return Json::decode($httpResponse->getBody(), Json::FORCE_ARRAY);
+			return Json::decode((string) $httpResponse->getBody(), Json::FORCE_ARRAY);
 		} catch (\Throwable $e) {
 			throw new InvalidResponseBodyException('Response body is not a valid JSON.', 0, $e);
 		}
 	}
 
-	private function processErrorStatusCodeIfNeeded(HttpResponse $httpResponse)
+	private function processErrorStatusCodeIfNeeded(ResponseInterface $httpResponse)
 	{
 		$message = $this->getErrorMessage($httpResponse);
 

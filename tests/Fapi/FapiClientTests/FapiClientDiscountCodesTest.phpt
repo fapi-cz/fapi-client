@@ -4,7 +4,6 @@ declare(strict_types = 1);
 namespace Fapi\FapiClientTests;
 
 use Fapi\FapiClient\FapiClient;
-use Fapi\FapiClientTests\MockHttpClients\FapiClientDiscountCodesMockHttpClient;
 use Fapi\HttpClient\CapturingHttpClient;
 use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
@@ -12,15 +11,11 @@ use Tester\Environment;
 use Tester\TestCase;
 
 require __DIR__ . '/../../bootstrap.php';
-require __DIR__ . '/MockHttpClients/FapiClientDiscountCodesMockHttpClient.php';
 
 class FapiClientDiscountCodesTest extends TestCase
 {
 
-	/** @var bool */
-	private $generateMockHttpClient = false;
-
-	/** @var CapturingHttpClient|FapiClientDiscountCodesMockHttpClient */
+	/** @var CapturingHttpClient */
 	private $httpClient;
 
 	/** @var FapiClient */
@@ -30,11 +25,11 @@ class FapiClientDiscountCodesTest extends TestCase
 	{
 		Environment::lock('FapiClient', \LOCKS_DIR);
 
-		if ($this->generateMockHttpClient) {
-			$this->httpClient = new CapturingHttpClient(new GuzzleHttpClient());
-		} else {
-			$this->httpClient = new FapiClientDiscountCodesMockHttpClient();
-		}
+		$this->httpClient = new CapturingHttpClient(
+			new GuzzleHttpClient(),
+			__DIR__ . '/MockHttpClients/FapiClientDiscountCodesMockHttpClient.php',
+			'Fapi\FapiClientTests\MockHttpClients\FapiClientDiscountCodesMockHttpClient'
+		);
 
 		$this->fapiClient = new FapiClient(
 			'test1@slischka.cz',
@@ -46,14 +41,7 @@ class FapiClientDiscountCodesTest extends TestCase
 
 	protected function tearDown()
 	{
-		if (!$this->generateMockHttpClient) {
-			return;
-		}
-
-		$this->httpClient->writeToPhpFile(
-			__DIR__ . '/MockHttpClients/FapiClientDiscountCodesMockHttpClient.php',
-			'Fapi\FapiClientTests\MockHttpClients\FapiClientDiscountCodesMockHttpClient'
-		);
+		$this->httpClient->close();
 	}
 
 	public function testCreateGetUpdateAndDeleteDiscountCode()

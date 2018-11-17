@@ -14,23 +14,24 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 	{
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/clients',
 				'POST',
+				'https://api.fapi.cz/clients',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-					'json' => ['email' => 'test-Fapi@fabik.org'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				201,
 				[
-					'Date' => ['Wed, 14 Nov 2018 12:07:23 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 10:13:35 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=VoLfU98w+EKzdr6QWMPSA+xuBe9EEuU5pdFSmMD0lXt38Iyw4i3fjtE2I7s1B7veuecDRLCYijGUBVoSOgNLaof1XX5FcMj9sJbkpl2PPhIBftJHzeIRTnYq0lR6; Expires=Wed, 21 Nov 2018 12:07:23 GMT; Path=/',
+						'AWSALB=uPFWkgtY0BN4/2ocvcBXthelkRquvWeuXfQxUb6bnMda8GwVHh1s5L7YjPKSHnhh/IHtO6O0xZNY74KsHuwYwACm6aeENVUP/Ns5WOL15mXBouDdct3kssj8joeO; Expires=Sat, 24 Nov 2018 10:13:35 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
@@ -38,27 +39,29 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'X-Content-Type-Options' => ['nosniff'],
 					'X-Frame-Options' => ['sameorigin'],
 				],
-				'{"id":1104855,"email":"test-Fapi@fabik.org","tax_payer":false}'
+				'{"id":1109390,"email":"test-Fapi@fabik.org","tax_payer":false}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
+				'GET',
 				'https://api.fapi.cz/clients?email=test-Fapi%40fabik.org&limit=1',
-				'GET',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Wed, 14 Nov 2018 12:07:23 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 10:13:35 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=Ba6wSMyKgLxqx1vaZdemhQ3ih9zyI9dbGlvq6iklcaVNQkgkxzF8PnYvaezSgWS7QwSWpAelE68ANUzpNqRsG8PsSxX2ByxQQsXCXtaEq9uoz5ZcjyH1+zvcrOVz; Expires=Wed, 21 Nov 2018 12:07:23 GMT; Path=/',
+						'AWSALB=dyc7miTYVH++3e8fNB6Zd8XB4CpAehEeDDi7oz6LJYVeIa42l9m4s1Hgn+yw4NMj50U9viiBGsN6r3ZgqdJEAfKCmTSGyAyE2AhM21y87hVlF+/+MBxIzAmp0mcu; Expires=Sat, 24 Nov 2018 10:13:35 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
@@ -66,27 +69,29 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'X-Content-Type-Options' => ['nosniff'],
 					'X-Frame-Options' => ['sameorigin'],
 				],
-				'{"clients":[{"id":1104855,"email":"test-Fapi@fabik.org","tax_payer":false}]}'
+				'{"clients":[{"id":1109390,"email":"test-Fapi@fabik.org","tax_payer":false}]}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/clients/1104855',
 				'GET',
+				'https://api.fapi.cz/clients/1109390',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Wed, 14 Nov 2018 12:07:23 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 10:13:35 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=1Gx7mV2PUgfkEtTDUvMXcWPlXXsOaYc+1thTzp7DGYE2tg7bb+GBz9/exwjGaSqQFSRCEf/A1FubnpJrjvofjsJcpPJnL81U5CfdtT/i0dPmwtg1iec/KI9Npps+; Expires=Wed, 21 Nov 2018 12:07:23 GMT; Path=/',
+						'AWSALB=W2UM3uGxuxzfsGahyQiBDBUqdz4QMcxySQeSHeLsRLAywUId1WLNMMSLgtEQ0/Ka8pSMrQqUP2uLd0JBUTCtlfltvWrRqDN3N/n0VyVXUqP4obgcDXnFVcQusiEJ; Expires=Sat, 24 Nov 2018 10:13:35 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
@@ -94,28 +99,29 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'X-Content-Type-Options' => ['nosniff'],
 					'X-Frame-Options' => ['sameorigin'],
 				],
-				'{"id":1104855,"email":"test-Fapi@fabik.org","tax_payer":false}'
+				'{"id":1109390,"email":"test-Fapi@fabik.org","tax_payer":false}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/clients/1104855',
 				'PUT',
+				'https://api.fapi.cz/clients/1109390',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
-					'json' => ['email' => 'test-Fapi-2@fabik.org'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Wed, 14 Nov 2018 12:07:23 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 10:13:35 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=tJnr38jfr9S/Aik4OrWRgOaYnVqMSYGVv79SBNpP3nRs3tqIlYPW49wSZnZM8O3s3hmh43cxLbhcRayF3zPed1c3lKfSqNmFU75kZcMj8iVylwI81ri0GRx4/iIe; Expires=Wed, 21 Nov 2018 12:07:23 GMT; Path=/',
+						'AWSALB=aSTEReTIpn0eGwu7hJDEiXTFmUQp/Dx/tcbt7ocUFo4bbz2a8GMK5gB4Uc5KqLW5CLnHzTyQ6eHqYvHHBRNbkjzFbv18RFuQgdPK/9legZvttq01lDWT0L1Oib42; Expires=Sat, 24 Nov 2018 10:13:35 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
@@ -123,27 +129,29 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'X-Content-Type-Options' => ['nosniff'],
 					'X-Frame-Options' => ['sameorigin'],
 				],
-				'{"id":1104855,"email":"test-Fapi-2@fabik.org","tax_payer":false}'
+				'{"id":1109390,"email":"test-Fapi-2@fabik.org","tax_payer":false}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/clients/1104855',
 				'DELETE',
+				'https://api.fapi.cz/clients/1109390',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Wed, 14 Nov 2018 12:07:24 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 10:13:35 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=eWsFVOPY4erFsYz85oyr/GY8pPf6tpYmdeUgMJXk+1vwaKXc7CFlO0NG65J46irQrZ8ulE8a/+WOxRYH4TTOS/F8C1ScrJCu17sjh7iWOtcIG8niTmAEbwUoUSnJ; Expires=Wed, 21 Nov 2018 12:07:24 GMT; Path=/',
+						'AWSALB=kzJOZevPD1bvdXc5zQOtde+U/D4Oj+8mzvN2h6APNN/CNdhW3yWHDTVaX0r91Fy2Mh5xA1VLoGXY2MPtArZJaOaPVfGMr/5AYrBbhjp4e7nY7Rjkmuv5OPkCMPeu; Expires=Sat, 24 Nov 2018 10:13:35 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
@@ -156,22 +164,24 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 		);
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/clients/1104855',
 				'GET',
+				'https://api.fapi.cz/clients/1109390',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				404,
 				[
-					'Date' => ['Wed, 14 Nov 2018 12:07:24 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 10:13:35 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=kgibd+sblRNJLtXIlr0F8yD46xcELqI2tlrO86O+abCfyxZZ46xp6M1VR7gZ4eBWoaL/gLxDwjq5Ut5peOxv9R2iFqo87GT/w1NMIhlNhqpNozWwDaSzjqG7sQBx; Expires=Wed, 21 Nov 2018 12:07:24 GMT; Path=/',
+						'AWSALB=OTnNw8WAFbsNWTk9CU/2cYPeEZklicre/PjiCiB6i7oYd2QTIKyWUQ1pClnoLcI5Rij1mXiVW/Gof6F/X7iRUpiTRSUKHTHeZpwSzcvIdBpOnQXtwfeFInfcjT4u; Expires=Sat, 24 Nov 2018 10:13:35 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
@@ -181,22 +191,24 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 		);
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/clients/1',
 				'GET',
+				'https://api.fapi.cz/clients/1',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				401,
 				[
-					'Date' => ['Wed, 14 Nov 2018 12:07:24 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 10:13:35 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=7mvxoYESNezAtScrh04v2W59qFQW8S4Zyb0canLomqhcAb0mTQvnT+hlXUBtETO30cKDJ32mABAr2/0wf0ZxJSg41dCi+JYx1NIFv36+vLmgAiIiSaTjzRH03M4P; Expires=Wed, 21 Nov 2018 12:07:24 GMT; Path=/',
+						'AWSALB=YMoI23VArmNiVLg8Ij3zlqsxNDhOZPwAlbCPKm0Xybj0LIJCZwR1ywuBQmg7ajEwikLgRfPCaqHonKNrlQRRzMh5bmrx/LVQyJnv0hdTRYoKMAnIif+ywl2BSJWF; Expires=Sat, 24 Nov 2018 10:13:35 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
