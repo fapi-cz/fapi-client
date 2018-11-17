@@ -14,26 +14,28 @@ final class FapiClientCountriesMockHttpClient extends MockHttpClient
 	{
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/countries',
 				'GET',
+				'https://api.fapi.cz/countries',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Thu, 15 Nov 2018 08:48:15 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 10:12:23 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=1Y8CzCN2Q+j+lJH0Cp676egxiI8qdOHPNQtKT+40BaVlKQ254qpSBwbBPhBRVs/WVSJqXOe6JBE0wZEkO9bHRYE2/wOq8wGEVdEV5vmazPr6RKp1WWu7UYY8NhMa; Expires=Thu, 22 Nov 2018 08:48:15 GMT; Path=/',
+						'AWSALB=B7xsZcV2DziHClzpZuAEtb3TPF1eVdAvODwNXfUq9Mb2oJrwz4bvWqJutr++GDO6Q9DfjdUKCKPn5Z7c2IHLXJefouIHeVvnoF0kOkHnqaRCBKsZmrrSgVLFcWMO; Expires=Sat, 24 Nov 2018 10:12:23 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web5'],
+					'X-Origin-Instance' => ['prd-fapi-web2'],
 					'X-Content-Type-Options' => ['nosniff'],
 					'X-Frame-Options' => ['sameorigin'],
 				],

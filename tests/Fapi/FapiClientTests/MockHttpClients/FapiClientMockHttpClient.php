@@ -14,26 +14,28 @@ final class FapiClientMockHttpClient extends MockHttpClient
 	{
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/',
 				'GET',
+				'https://api.fapi.cz/',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Thu, 15 Nov 2018 20:38:52 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 09:55:55 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=ot+2SA+As6CrBqt75y/rKP4NOUQb9V9dHbLELhylrY6S1WVNVhZtdBql1IZ10THgsoFvB9Y+CViiY7yDPW5IvfiC5jeWd9wPHI54sLa0//P1lV45e01AszL5ZnZ1; Expires=Thu, 22 Nov 2018 20:38:52 GMT; Path=/',
+						'AWSALB=CwiSgExR0D/EEt8o5NLyFb5F5CanSedCfJOmtd/ZuO/1sDyADGl/WpJCfn8cGSeXwhnwg6KrjGd+s14T6wK3TQxiBPcPgIsAnuTtWC9GgV5ySBVTY3OK5WY+ZV6l; Expires=Sat, 24 Nov 2018 09:55:55 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web2'],
+					'X-Origin-Instance' => ['prd-fapi-web5'],
 					'X-Content-Type-Options' => ['nosniff'],
 					'X-Frame-Options' => ['sameorigin'],
 				],
@@ -42,22 +44,24 @@ final class FapiClientMockHttpClient extends MockHttpClient
 		);
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/',
 				'GET',
+				'https://api.fapi.cz/',
 				[
-					'auth' => ['test1@slischka.cz', 'xxx'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6eHh4'],
 				]
 			),
 			new HttpResponse(
 				401,
 				[
-					'Date' => ['Thu, 15 Nov 2018 20:38:53 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 09:55:56 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=D8KWgS40RThp+E/Wea83x4p/j6NZTjCEetywYGQIiYVQ1T39KFPD9UIPYicrMFQKeB/Z3XXYlq0Uq42AQFkBl9vgUfSltBF5J4xDrrC6QvUWB2yrqQCs9DflP5rG; Expires=Thu, 22 Nov 2018 20:38:52 GMT; Path=/',
+						'AWSALB=fIOCpFWuSclGuDjubrh/OlSut2nXAuaVeyJYNkqoKL1VVgfbY8sXSRkubJ9h1VEzdPcQ+LurQK5mHp5MMQgi1e8UPqXpRi4nEVO58mHDZW1x+NWkyvlY8CrpvTln; Expires=Sat, 24 Nov 2018 09:55:56 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],
@@ -67,22 +71,24 @@ final class FapiClientMockHttpClient extends MockHttpClient
 		);
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/',
 				'GET',
+				'https://api.fapi.cz/',
 				[
-					'auth' => ['-@-.cz', 'xxx'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic LUAtLmN6Onh4eA=='],
 				]
 			),
 			new HttpResponse(
 				401,
 				[
-					'Date' => ['Thu, 15 Nov 2018 20:38:53 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 09:55:56 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=0l0mmHzW40lhgs+oJOByPnpTJkhzamA1WplKh6NC/rXz5QsQ3QA8cVSZXi04V9HlXnm8s8vOqeTfm/zFcJ9zVvawU0wpWtbHJRHuz2dWlC9uroxbyx5NIOafNdOi; Expires=Thu, 22 Nov 2018 20:38:53 GMT; Path=/',
+						'AWSALB=BLPGUh5agU9Ezp/LjBEVdYoUAXLR2Gxzt4nUrkwH2CPBk+3fSrugZaupRSBbP7Y+mjhHHrM4fU4Mjn6qOmfXnlNaRu6mvbluUbq4RfZXwoy4BcLLFDtcTmNE4OJW; Expires=Sat, 24 Nov 2018 09:55:56 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],

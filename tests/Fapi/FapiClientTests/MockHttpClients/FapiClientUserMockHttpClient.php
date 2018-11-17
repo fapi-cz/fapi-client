@@ -14,22 +14,24 @@ final class FapiClientUserMockHttpClient extends MockHttpClient
 	{
 		$this->add(
 			new HttpRequest(
-				'https://api.fapi.cz/user',
 				'GET',
+				'https://api.fapi.cz/user',
 				[
-					'auth' => ['test1@slischka.cz', 'pi120wrOyzNlb7p4iQwTO1vcK'],
-					'headers' => ['Content-Type' => 'application/json', 'Accept' => 'application/json'],
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Thu, 15 Nov 2018 08:21:01 GMT'],
+					'Date' => ['Sat, 17 Nov 2018 09:59:46 GMT'],
 					'Content-Type' => ['application/json'],
 					'Transfer-Encoding' => ['chunked'],
 					'Connection' => ['keep-alive'],
 					'Set-Cookie' => [
-						'AWSALB=zSE1bS1dtnQylY/NKQI1UxmhHq69enOTSY5usw97amfolk6yIw91EUawtHkOeLZIroc4kchVCLR3ID/sau3VF+ZDpLE1cQrRc10S2aKsM3g3foCj/680cx+UnRd3; Expires=Thu, 22 Nov 2018 08:21:01 GMT; Path=/',
+						'AWSALB=a74g8Zm36tsiKxUCzv/MABqu3wVeX/wsR6K5dxUali+MwDq6SD10xTPJljvBNrj1D3UoGvP5muOGxczIHPsO7H5xutElZ2+/sLol3BUhBUSLwV2sFektL/aOQfXG; Expires=Sat, 24 Nov 2018 09:59:45 GMT; Path=/',
 					],
 					'Server' => ['nginx/1.14.0'],
 					'X-Powered-By' => ['Nette Framework'],

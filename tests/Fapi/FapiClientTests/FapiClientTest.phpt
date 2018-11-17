@@ -5,7 +5,6 @@ namespace Fapi\FapiClientTests;
 
 use Fapi\FapiClient\AuthorizationException;
 use Fapi\FapiClient\FapiClient;
-use Fapi\FapiClientTests\MockHttpClients\FapiClientMockHttpClient;
 use Fapi\HttpClient\CapturingHttpClient;
 use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
@@ -13,15 +12,11 @@ use Tester\Environment;
 use Tester\TestCase;
 
 require __DIR__ . '/../../bootstrap.php';
-require __DIR__ . '/MockHttpClients/FapiClientMockHttpClient.php';
 
 class FapiClientTest extends TestCase
 {
 
-	/** @var bool */
-	private $generateMockHttpClient = false;
-
-	/** @var CapturingHttpClient|FapiClientMockHttpClient */
+	/** @var CapturingHttpClient */
 	private $httpClient;
 
 	/** @var FapiClient */
@@ -31,11 +26,11 @@ class FapiClientTest extends TestCase
 	{
 		Environment::lock('FapiClient', \LOCKS_DIR);
 
-		if ($this->generateMockHttpClient) {
-			$this->httpClient = new CapturingHttpClient(new GuzzleHttpClient());
-		} else {
-			$this->httpClient = new FapiClientMockHttpClient();
-		}
+		$this->httpClient = new CapturingHttpClient(
+			new GuzzleHttpClient(),
+			__DIR__ . '/MockHttpClients/FapiClientMockHttpClient.php',
+			'Fapi\FapiClientTests\MockHttpClients\FapiClientMockHttpClient'
+		);
 
 		$this->fapiClient = new FapiClient(
 			'test1@slischka.cz',
@@ -47,14 +42,7 @@ class FapiClientTest extends TestCase
 
 	protected function tearDown()
 	{
-		if (!$this->generateMockHttpClient) {
-			return;
-		}
-
-		$this->httpClient->writeToPhpFile(
-			__DIR__ . '/MockHttpClients/FapiClientMockHttpClient.php',
-			'Fapi\FapiClientTests\MockHttpClients\FapiClientMockHttpClient'
-		);
+		$this->httpClient->close();
 	}
 
 	public function testGetCurrentUser()

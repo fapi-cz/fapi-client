@@ -1,19 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-/**
- * Test: Fapi\FapiClient\FapiClient creating, getting, updating and deleting API tokens.
- *
- * @testCase Fapi\FapiClientTests\FapiClientApiTokensTest
- */
-
 namespace Fapi\FapiClientTests;
 
 use Fapi\FapiClient\AuthorizationException;
 use Fapi\FapiClient\FapiClient;
 use Fapi\FapiClient\NotFoundException;
 use Fapi\FapiClient\ValidationException;
-use Fapi\FapiClientTests\MockHttpClients\FapiClientApiTokensMockHttpClient;
 use Fapi\HttpClient\CapturingHttpClient;
 use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
@@ -21,15 +14,11 @@ use Tester\Environment;
 use Tester\TestCase;
 
 require __DIR__ . '/../../bootstrap.php';
-require __DIR__ . '/MockHttpClients/FapiClientApiTokensMockHttpClient.php';
 
 class FapiClientApiTokensTest extends TestCase
 {
 
-	/** @var bool */
-	private $generateMockHttpClient = false;
-
-	/** @var CapturingHttpClient|FapiClientApiTokensMockHttpClient */
+	/** @var CapturingHttpClient */
 	private $httpClient;
 
 	/** @var FapiClient */
@@ -39,11 +28,11 @@ class FapiClientApiTokensTest extends TestCase
 	{
 		Environment::lock('FapiClient', \LOCKS_DIR);
 
-		if ($this->generateMockHttpClient) {
-			$this->httpClient = new CapturingHttpClient(new GuzzleHttpClient());
-		} else {
-			$this->httpClient = new FapiClientApiTokensMockHttpClient();
-		}
+		$this->httpClient = new CapturingHttpClient(
+			new GuzzleHttpClient(),
+			__DIR__ . '/MockHttpClients/FapiClientApiTokensMockHttpClient.php',
+			'Fapi\FapiClientTests\MockHttpClients\FapiClientApiTokensMockHttpClient'
+		);
 
 		$this->fapiClient = new FapiClient(
 			'test1@slischka.cz',
@@ -55,14 +44,7 @@ class FapiClientApiTokensTest extends TestCase
 
 	protected function tearDown()
 	{
-		if (!$this->generateMockHttpClient) {
-			return;
-		}
-
-		$this->httpClient->writeToPhpFile(
-			__DIR__ . '/MockHttpClients/FapiClientApiTokensMockHttpClient.php',
-			FapiClientApiTokensMockHttpClient::class
-		);
+		$this->httpClient->close();
 	}
 
 	public function testCreateGetUpdateAndDeleteApiTokens()
