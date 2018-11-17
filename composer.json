@@ -15,7 +15,7 @@
   ],
   "require": {
 	"php": "^7.0",
-	"fapi-cz/http-client": "dev-master"
+	"fapi-cz/http-client": "^0.1"
   },
   "require-dev": {
 	"nette/tester": "^2.1",
