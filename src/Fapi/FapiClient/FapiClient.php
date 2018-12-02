@@ -13,6 +13,7 @@ use Fapi\FapiClient\EndPoints\Items;
 use Fapi\FapiClient\EndPoints\ItemTemplates;
 use Fapi\FapiClient\EndPoints\MessageTemplates;
 use Fapi\FapiClient\EndPoints\Orders;
+use Fapi\FapiClient\EndPoints\PeriodInvoices;
 use Fapi\FapiClient\EndPoints\Settings;
 use Fapi\FapiClient\EndPoints\Statistics;
 use Fapi\FapiClient\EndPoints\User;
@@ -64,6 +65,12 @@ class FapiClient implements IFapiClient
 	/** @var Statistics */
 	public $statistics;
 
+	/**
+	 * @var PeriodInvoices
+	 * @internal
+	 */
+	public $periodicInvoices;
+
 	public function __construct(string $username, string $password, string $apiUrl, IHttpClient $httpClient)
 	{
 		$this->restClient = new FapiRestClient($username, $password, $apiUrl, $httpClient);
@@ -80,6 +87,7 @@ class FapiClient implements IFapiClient
 		$this->messageTemplates = new MessageTemplates($this->restClient);
 		$this->discountCodes = new DiscountCodes($this->restClient);
 		$this->statistics = new Statistics($this->restClient);
+		$this->periodicInvoices = new PeriodInvoices($this->restClient);
 	}
 
 	public function checkConnection()
