@@ -25,4 +25,4 @@ $clientFactory = new \Fapi\FapiClientFapiClientFactory('https://api.fapi.cz', ne
 $fapiClient = $clientFactory->create('Username', 'password');
 ```
 
-You can also use `\Fapi\HttpClient\GuzzleHttpClient` instead of `\Fapi\HttpClient\GuzzleHttpClient`.
+You can also use `\Fapi\HttpClient\GuzzleHttpClient` instead of `\Fapi\HttpClient\CurlHttpClient`.
