@@ -21,8 +21,8 @@ Run command `composer require fapi-cz/fapi-client`.
 
 ##How to create client
 ```
-$curlHttpClient = new \Fapi\HttpClient\CurlHttpClient();
-$guzzleHttpClient = new \Fapi\HttpClient\GuzzleHttpClient();
-
-$fapi = new \Fapi\FapiClient\FapiClient('username', 'password', 'https://api.fapi.cz', $guzzleHttpClient); // or you can use $curlHttpClient
+$clientFactory = new \Fapi\FapiClientFapiClientFactory('https://api.fapi.cz', new \Fapi\HttpClient\GuzzleHttpClient());
+$fapiClient = $clientFactory->create('Username', 'password');
 ```
+
+You can also use `\Fapi\HttpClient\GuzzleHttpClient` instead of `\Fapi\HttpClient\GuzzleHttpClient`.
