@@ -18,3 +18,11 @@ Run command `composer require fapi-cz/fapi-client`.
 1. Create file `tests/php.ini` (you can use file `php-unix.ini` or `php-win.ini` as a template).
 
 2. Run command `vendor/bin/tester -c tests/php.ini tests`.
+
+##How to create client
+```
+$curlHttpClient = new \Fapi\HttpClient\CurlHttpClient();
+$guzzleHttpClient = new \Fapi\HttpClient\GuzzleHttpClient();
+
+$fapi = new \Fapi\FapiClient\FapiClient('username', 'password', 'https://api.fapi.cz', $guzzleHttpClient); // or you can use $curlHttpClient
+```
