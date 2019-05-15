@@ -1,0 +1,9 @@
+extensions:
+	fapiClient: Fapi\FapiClient\DI\FapiClientExtension
+
+fapiClient:
+	username: fapi
+	password: fapi
+
+services:
+	- Fapi\HttpClient\GuzzleHttpClient

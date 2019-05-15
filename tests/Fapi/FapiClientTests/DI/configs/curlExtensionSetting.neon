@@ -1,0 +1,7 @@
+extensions:
+	fapiClient: Fapi\FapiClient\DI\FapiClientExtension
+
+fapiClient:
+	username: fapi
+	password: fapi
+	httpClient: curl

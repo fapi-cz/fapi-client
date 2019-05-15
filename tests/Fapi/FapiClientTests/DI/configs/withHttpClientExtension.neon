@@ -1,0 +1,12 @@
+extensions:
+	fapiClient: Fapi\FapiClient\DI\FapiClientExtension
+	httpClient: Fapi\HttpClient\Bidges\NetteDI\HttpClientExtension
+
+fapiClient:
+	username: fapi
+	password: fapi
+
+httpClient:
+	type: 'guzzle'
+	logging: true
+	bar: true
