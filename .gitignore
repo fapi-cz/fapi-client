@@ -4,3 +4,4 @@
 /vendor/*
 .idea
 /tests/**/output/*
+/tests/Fapi/FapiClientTests/DI/tmp/

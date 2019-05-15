@@ -1,0 +1,6 @@
+extensions:
+	fapiClient: Fapi\FapiClient\DI\FapiClientExtension
+
+fapiClient:
+
+services:

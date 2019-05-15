@@ -1,0 +1,20 @@
+extensions:
+	fapiClient: Fapi\FapiClient\DI\FapiClientExtension
+
+fapiClient:
+	username: fapi
+	password: fapi
+
+services:
+	logger: Psr\Log\NullLogger
+
+	httpClient:
+		factory: Fapi\HttpClient\CurlHttpClient
+		autowired: off
+
+	loggingHttpClient:
+		factory: Fapi\HttpClient\LoggingHttpClient(@httpClient)
+		autowired: off
+
+	barHttpClient:
+		factory: Fapi\HttpClient\Bridges\Tracy\BarHttpClient(@loggingHttpClient)

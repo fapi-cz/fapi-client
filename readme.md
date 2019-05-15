@@ -26,3 +26,19 @@ $fapiClient = $clientFactory->create('Username', 'password');
 ```
 
 You can also use `\Fapi\HttpClient\GuzzleHttpClient` instead of `\Fapi\HttpClient\CurlHttpClient`.
+
+## Nette DI
+```yaml
+extensions:
+	httpClient: Fapi\HttpClient\Bidges\NetteDI\HttpClientExtension
+	fapiClient: Fapi\FapiClient\DI\FapiClientExtension
+	
+httpClient:
+	type: 'guzzle' #default curl
+	logging: true #default false
+	bar: true #default false
+
+fapiClient:
+	username: fapi
+	password: fapi
+```
