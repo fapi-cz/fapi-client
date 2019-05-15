@@ -7,6 +7,7 @@ use Fapi\FapiClient\EndPoints\ApiTokens;
 use Fapi\FapiClient\EndPoints\Clients;
 use Fapi\FapiClient\EndPoints\Countries;
 use Fapi\FapiClient\EndPoints\DiscountCodes;
+use Fapi\FapiClient\EndPoints\ExchangeRates;
 use Fapi\FapiClient\EndPoints\Forms;
 use Fapi\FapiClient\EndPoints\Invoices;
 use Fapi\FapiClient\EndPoints\Items;
@@ -71,6 +72,9 @@ class FapiClient implements IFapiClient
 	 */
 	public $periodicInvoices;
 
+	/** @var ExchangeRates */
+	public $exchangeRates;
+
 	public function __construct(string $username, string $password, string $apiUrl, IHttpClient $httpClient)
 	{
 		$this->restClient = new FapiRestClient($username, $password, $apiUrl, $httpClient);
@@ -88,6 +92,7 @@ class FapiClient implements IFapiClient
 		$this->discountCodes = new DiscountCodes($this->restClient);
 		$this->statistics = new Statistics($this->restClient);
 		$this->periodicInvoices = new PeriodInvoices($this->restClient);
+		$this->exchangeRates = new ExchangeRates($this->restClient);
 	}
 
 	public function checkConnection()
