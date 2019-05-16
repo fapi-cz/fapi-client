@@ -18,6 +18,7 @@ use Fapi\FapiClient\EndPoints\PeriodInvoices;
 use Fapi\FapiClient\EndPoints\Settings;
 use Fapi\FapiClient\EndPoints\Statistics;
 use Fapi\FapiClient\EndPoints\User;
+use Fapi\FapiClient\EndPoints\UserSettings;
 use Fapi\FapiClient\Rest\FapiRestClient;
 use Fapi\HttpClient\IHttpClient;
 
@@ -75,6 +76,9 @@ class FapiClient implements IFapiClient
 	/** @var ExchangeRates */
 	public $exchangeRates;
 
+	/** @var UserSettings */
+	public $userSetting;
+
 	public function __construct(string $username, string $password, string $apiUrl, IHttpClient $httpClient)
 	{
 		$this->restClient = new FapiRestClient($username, $password, $apiUrl, $httpClient);
@@ -93,6 +97,7 @@ class FapiClient implements IFapiClient
 		$this->statistics = new Statistics($this->restClient);
 		$this->periodicInvoices = new PeriodInvoices($this->restClient);
 		$this->exchangeRates = new ExchangeRates($this->restClient);
+		$this->userSetting = new UserSettings($this->restClient);
 	}
 
 	public function checkConnection()
