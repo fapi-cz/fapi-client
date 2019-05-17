@@ -418,6 +418,30 @@ final class FapiClientInvoicesMockHttpClient extends MockHttpClient
 				'{"message":"Specified resource does not exist.","type":"RequestException"}'
 			)
 		);
+		$this->add(
+			new HttpRequest(
+				'GET',
+				'https://api.fapi.cz/invoices/get-invoices-sequence/183494288',
+				[
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
+				]
+			),
+			new HttpResponse(
+				200,
+				[
+					'Server' => ['nginx/1.14.0 (Ubuntu)'],
+					'Date' => ['Fri, 17 May 2019 10:50:07 GMT'],
+					'Content-Type' => ['application/json'],
+					'Transfer-Encoding' => ['chunked'],
+					'Connection' => ['keep-alive'],
+					'X-Powered-By' => ['Nette Framework'],
+				],
+				'{"invoices":[{"id":2999,"type":"proforma"},{"id":3000,"type":"invoice"}]}'
+			)
+		);
 	}
 
 }
