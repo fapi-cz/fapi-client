@@ -61,4 +61,12 @@ final class Invoices
 		$this->client->sendEmailWithInvoice($parameters);
 	}
 
+	/**
+	 * @return mixed[]
+	 */
+	public function getInvoicesSequence(int $invoiceId): array
+	{
+		return $this->client->getResources($this->path . '/get-invoices-sequence/' . $invoiceId, $this->resources);
+	}
+
 }
