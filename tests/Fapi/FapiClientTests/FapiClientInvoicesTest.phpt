@@ -130,6 +130,13 @@ class FapiClientInvoicesTest extends TestCase
 
 		Assert::null($this->fapiClient->invoices->find($invoice['id']));
 		Assert::null($this->fapiClient->invoices->getPdf($invoice['id']));
+
+		$invoicesSequence = $this->fapiClient->invoices->getInvoicesSequence((int) $invoice['id']);
+		Assert::type('array', $invoicesSequence);
+		Assert::equal([
+			['id' => 2999, 'type' => 'proforma'],
+			['id' => 3000, 'type' => 'invoice'],
+		], $invoicesSequence);
 	}
 
 }
