@@ -67,10 +67,7 @@ class FapiClient implements IFapiClient
 	/** @var Statistics */
 	public $statistics;
 
-	/**
-	 * @var PeriodInvoices
-	 * @internal
-	 */
+	/** @var PeriodInvoices */
 	public $periodicInvoices;
 
 	/** @var ExchangeRates */
