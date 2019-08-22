@@ -20,7 +20,7 @@ Run command `composer require fapi-cz/fapi-client`.
 2. Run command `vendor/bin/tester -c tests/php.ini tests`.
 
 ## How to create client
-```
+```php
 $clientFactory = new \Fapi\FapiClientFapiClientFactory('https://api.fapi.cz', new \Fapi\HttpClient\GuzzleHttpClient());
 $fapiClient = $clientFactory->create('Username', 'password');
 ```
