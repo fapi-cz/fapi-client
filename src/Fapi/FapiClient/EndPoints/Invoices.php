@@ -53,6 +53,10 @@ final class Invoices
 			throw new ValidationException('Missing key "invoice" with invoice id.');
 		}
 
+		if (!\is_int($parameters['invoice'])) {
+			throw new ValidationException('Parameter "invoice" must be integer.');
+		}
+
 		$id = $parameters['invoice'];
 		$data = $this->client->generateQrCode($id);
 
