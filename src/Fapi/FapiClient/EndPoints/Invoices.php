@@ -9,6 +9,7 @@ use Fapi\FapiClient\EndPoints\Traits\Find;
 use Fapi\FapiClient\EndPoints\Traits\FindAll;
 use Fapi\FapiClient\EndPoints\Traits\Update;
 use Fapi\FapiClient\Rest\FapiRestClient;
+use Fapi\FapiClient\ValidationException;
 
 final class Invoices
 {
@@ -48,7 +49,12 @@ final class Invoices
 	 */
 	public function generateQrCode(array $parameters)
 	{
-		$data = $this->client->generateQrCode($parameters);
+		if (!isset($parameters['invoice'])) {
+			throw new ValidationException('Missing key "invoice" with invoice id.');
+		}
+
+		$id = $parameters['invoice'];
+		$data = $this->client->generateQrCode($id);
 
 		return $data['qrCode'] ?? null;
 	}

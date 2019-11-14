@@ -306,8 +306,8 @@ final class FapiClientInvoicesMockHttpClient extends MockHttpClient
 		);
 		$this->add(
 			new HttpRequest(
-				'POST',
-				'https://api.fapi.cz/invoices/generate-qr-code',
+				'GET',
+				'https://api.fapi.cz/invoices/generate-qr-code/183494288',
 				[
 					'Host' => ['api.fapi.cz'],
 					'Content-Type' => ['application/json'],

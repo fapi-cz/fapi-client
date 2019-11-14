@@ -204,13 +204,13 @@ class FapiRestClient
 	}
 
 	/**
-	 * @param mixed[] $parameters
+	 * @param int $id
 	 * @return mixed[]
 	 */
-	public function generateQrCode(array $parameters): array
+	public function generateQrCode(int $id): array
 	{
-		$url = '/invoices/generate-qr-code';
-		$httpResponse = $this->sendHttpRequest(HttpMethod::POST, $url, $parameters);
+		$url = '/invoices/generate-qr-code/' . $id;
+		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, $url);
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
 			return $this->getResponseData($httpResponse);
