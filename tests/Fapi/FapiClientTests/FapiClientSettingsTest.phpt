@@ -52,7 +52,7 @@ class FapiClientSettingsTest extends TestCase
 
 	public function testGetAndUpdateSettings()
 	{
-		$setting = $this->fapiClient->settings->create([
+		$setting = $this->fapiClient->getSettings()->create([
 			'key' => 'sample_setting',
 			'value' => 'foo',
 		]);
@@ -60,23 +60,23 @@ class FapiClientSettingsTest extends TestCase
 		Assert::type('array', $setting);
 		Assert::same('foo', $setting['value']);
 
-		$settings = $this->fapiClient->settings->findAll();
+		$settings = $this->fapiClient->getSettings()->findAll();
 
 		Assert::type('array', $settings);
 		Assert::same('foo', $settings['sample_setting']);
 
-		Assert::same($setting, $this->fapiClient->settings->find('sample_setting'));
+		Assert::same($setting, $this->fapiClient->getSettings()->find('sample_setting'));
 
-		$updatedSetting = $this->fapiClient->settings->update('sample_setting', [
+		$updatedSetting = $this->fapiClient->getSettings()->update('sample_setting', [
 			'value' => 'bar',
 		]);
 
 		Assert::type('array', $updatedSetting);
 		Assert::same('bar', $updatedSetting['value']);
 
-		$this->fapiClient->settings->delete('sample_setting');
+		$this->fapiClient->getSettings()->delete('sample_setting');
 
-		Assert::null($this->fapiClient->settings->find('sample_setting'));
+		Assert::null($this->fapiClient->getSettings()->find('sample_setting'));
 	}
 
 }

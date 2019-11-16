@@ -47,7 +47,7 @@ class FapiClientItemsTest extends TestCase
 
 	public function testCreateGetUpdateAndDeleteItemTemplates()
 	{
-		$item = $this->fapiClient->items->create([
+		$item = $this->fapiClient->getItems()->create([
 			'invoice' => 183480795,
 			'name' => 'Sample Item Template',
 			'price' => 10.0,
@@ -58,7 +58,7 @@ class FapiClientItemsTest extends TestCase
 		Assert::type('int', $item['id']);
 		Assert::same('Sample Item Template', $item['name']);
 
-		$item = $this->fapiClient->items->update($item['id'], [
+		$item = $this->fapiClient->getItems()->update($item['id'], [
 			'count' => 2,
 		]);
 
@@ -66,11 +66,11 @@ class FapiClientItemsTest extends TestCase
 		Assert::type('array', $item);
 		Assert::equal(2, $item['count']);
 
-		$this->fapiClient->items->delete($item['id']);
+		$this->fapiClient->getItems()->delete($item['id']);
 
 		$fapiClient = $this->fapiClient;
 		Assert::exception(static function () use ($fapiClient, $item) {
-			$fapiClient->items->update($item['id'], []);
+			$fapiClient->getItems()->update($item['id'], []);
 		}, NotFoundException::class, 'Specified resource does not exist.');
 	}
 

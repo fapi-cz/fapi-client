@@ -3,7 +3,12 @@ declare(strict_types = 1);
 
 namespace Fapi\FapiClient;
 
-class ValidationException extends \RuntimeException
+class RuntimeException extends \RuntimeException
+{
+
+}
+
+class ValidationException extends RuntimeException
 {
 
 }
@@ -21,7 +26,7 @@ class ArgumentOutOfRangeException extends \InvalidArgumentException
  * The exception that is thrown when a method call is invalid for the object's
  * current state, method has been invoked at an illegal or inappropriate time.
  */
-class InvalidStateException extends \RuntimeException
+class InvalidStateException extends RuntimeException
 {
 
 }
@@ -86,7 +91,7 @@ class StaticClassException extends \LogicException
 /**
  * The exception that is thrown when the user is not authorized for the performed action.
  */
-class AuthorizationException extends \RuntimeException
+class AuthorizationException extends RuntimeException
 {
 
 }
@@ -94,7 +99,7 @@ class AuthorizationException extends \RuntimeException
 /**
  * The exception that is thrown when the resource is not found.
  */
-class NotFoundException extends \RuntimeException
+class NotFoundException extends RuntimeException
 {
 
 }

@@ -47,7 +47,7 @@ class FapiClientClientsTest extends TestCase
 
 	public function testCreateGetUpdateAndDeleteClients()
 	{
-		$client = $this->fapiClient->clients->create([
+		$client = $this->fapiClient->getClients()->create([
 			'email' => 'test-Fapi@fabik.org',
 		]);
 
@@ -55,7 +55,7 @@ class FapiClientClientsTest extends TestCase
 		Assert::type('int', $client['id']);
 		Assert::same('test-Fapi@fabik.org', $client['email']);
 
-		$clients = $this->fapiClient->clients->findAll([
+		$clients = $this->fapiClient->getClients()->findAll([
 			'email' => 'test-Fapi@fabik.org',
 			'limit' => 1,
 		]);
@@ -64,9 +64,9 @@ class FapiClientClientsTest extends TestCase
 		Assert::count(1, $clients);
 		Assert::same($client, $clients[0]);
 
-		Assert::same($client, $this->fapiClient->clients->find($client['id']));
+		Assert::same($client, $this->fapiClient->getClients()->find($client['id']));
 
-		$updatedClient = $this->fapiClient->clients->update($client['id'], [
+		$updatedClient = $this->fapiClient->getClients()->update($client['id'], [
 			'email' => 'test-Fapi-2@fabik.org',
 		]);
 
@@ -74,13 +74,13 @@ class FapiClientClientsTest extends TestCase
 		Assert::same($client['id'], $updatedClient['id']);
 		Assert::same('test-Fapi-2@fabik.org', $updatedClient['email']);
 
-		$this->fapiClient->clients->delete($client['id']);
+		$this->fapiClient->getClients()->delete($client['id']);
 
-		Assert::null($this->fapiClient->clients->find($client['id']));
+		Assert::null($this->fapiClient->getClients()->find($client['id']));
 
 		$fapiClient = $this->fapiClient;
 		Assert::exception(static function () use ($fapiClient) {
-			$fapiClient->clients->find(1);
+			$fapiClient->getClients()->find(1);
 		}, AuthorizationException::class, 'You are not authorized for this action.');
 	}
 

@@ -65,7 +65,7 @@ class FapiClientMessageTemplatesTest extends TestCase
 			'message_template_set' => null,
 		];
 		//create
-		$messageTemplate = $this->fapiClient->messageTemplates->create($createData);
+		$messageTemplate = $this->fapiClient->getMessageTemplates()->create($createData);
 		Assert::type('array', $messageTemplate);
 		Assert::type('int', $messageTemplate['id']);
 		Assert::equal($createData['body'], $messageTemplate['body']);
@@ -74,7 +74,7 @@ class FapiClientMessageTemplatesTest extends TestCase
 		Assert::equal($createData['event'], $messageTemplate['event']);
 
 		//update
-		$messageTemplate = $this->fapiClient->messageTemplates->update($messageTemplate['id'], $updateData);
+		$messageTemplate = $this->fapiClient->getMessageTemplates()->update($messageTemplate['id'], $updateData);
 		Assert::type('int', $messageTemplate['id']);
 		Assert::equal($updateData['body'], $messageTemplate['body']);
 		Assert::equal($updateData['name'], $messageTemplate['name']);
@@ -82,12 +82,12 @@ class FapiClientMessageTemplatesTest extends TestCase
 		Assert::equal($updateData['event'], $messageTemplate['event']);
 
 		//show
-		$messageTemplate = $this->fapiClient->messageTemplates->find($messageTemplate['id']);
+		$messageTemplate = $this->fapiClient->getMessageTemplates()->find($messageTemplate['id']);
 		Assert::type('int', $messageTemplate['id']);
 		Assert::type('array', $messageTemplate);
 
 		//delete
-		$this->fapiClient->messageTemplates->delete($messageTemplate['id']);
+		$this->fapiClient->getMessageTemplates()->delete($messageTemplate['id']);
 	}
 
 }

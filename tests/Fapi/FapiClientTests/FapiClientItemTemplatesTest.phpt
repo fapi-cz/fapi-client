@@ -46,7 +46,7 @@ class FapiClientItemTemplatesTest extends TestCase
 
 	public function testCreateGetUpdateAndDeleteItemTemplates()
 	{
-		$itemTemplate = $this->fapiClient->itemTemplates->create([
+		$itemTemplate = $this->fapiClient->getItemTemplates()->create([
 			'name' => 'Sample Item Template',
 			'count' => 1,
 			'prices' => [
@@ -64,15 +64,15 @@ class FapiClientItemTemplatesTest extends TestCase
 		Assert::count(1, $itemTemplate['prices']);
 		Assert::same('Sample Item Template', $itemTemplate['name']);
 
-		$itemTemplates = $this->fapiClient->itemTemplates->findAll();
+		$itemTemplates = $this->fapiClient->getItemTemplates()->findAll();
 
 		Assert::type('array', $itemTemplates);
 		Assert::type('array', $itemTemplates[0]);
 		Assert::type('int', $itemTemplates[0]['id']);
 
-		Assert::same($itemTemplate, $this->fapiClient->itemTemplates->find($itemTemplate['id']));
+		Assert::same($itemTemplate, $this->fapiClient->getItemTemplates()->find($itemTemplate['id']));
 
-		$updatedItemTemplate = $this->fapiClient->itemTemplates->update($itemTemplate['id'], [
+		$updatedItemTemplate = $this->fapiClient->getItemTemplates()->update($itemTemplate['id'], [
 			'name' => 'Updated Item Template',
 		]);
 
@@ -80,13 +80,13 @@ class FapiClientItemTemplatesTest extends TestCase
 		Assert::same($itemTemplate['id'], $updatedItemTemplate['id']);
 		Assert::same('Updated Item Template', $updatedItemTemplate['name']);
 
-		$this->fapiClient->itemTemplates->delete($itemTemplate['id']);
+		$this->fapiClient->getItemTemplates()->delete($itemTemplate['id']);
 
-		Assert::null($this->fapiClient->itemTemplates->find($itemTemplate['id']));
+		Assert::null($this->fapiClient->getItemTemplates()->find($itemTemplate['id']));
 
 		$fapiClient = $this->fapiClient;
 		Assert::exception(static function () use ($fapiClient) {
-			$fapiClient->itemTemplates->find(4);
+			$fapiClient->getItemTemplates()->find(4);
 		}, 'Fapi\FapiClient\AuthorizationException', 'You are not authorized for this action.');
 	}
 

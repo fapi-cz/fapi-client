@@ -61,7 +61,7 @@ class FapiClientDiscountCodesTest extends TestCase
 			'begin_date' => '2017-01-01',
 		];
 		//create
-		$discountCode = $this->fapiClient->discountCodes->create($createData);
+		$discountCode = $this->fapiClient->getDiscountCodes()->create($createData);
 		Assert::type('array', $discountCode);
 		Assert::type('int', $discountCode['id']);
 		Assert::equal($createData['code'], $discountCode['code']);
@@ -70,7 +70,7 @@ class FapiClientDiscountCodesTest extends TestCase
 		Assert::equal($createData['percent_discount'], $discountCode['percent_discount']);
 
 		//update
-		$discountCode = $this->fapiClient->discountCodes->update($discountCode['id'], $updateData);
+		$discountCode = $this->fapiClient->getDiscountCodes()->update($discountCode['id'], $updateData);
 		Assert::type('int', $discountCode['id']);
 		Assert::equal($updateData['code'], $discountCode['code']);
 		Assert::equal($updateData['name'], $discountCode['name']);
@@ -78,17 +78,17 @@ class FapiClientDiscountCodesTest extends TestCase
 		Assert::equal($updateData['begin_date'], $discountCode['begin_date']);
 
 		//show
-		$discountCode = $this->fapiClient->discountCodes->find($discountCode['id']);
+		$discountCode = $this->fapiClient->getDiscountCodes()->find($discountCode['id']);
 		Assert::type('int', $discountCode['id']);
 		Assert::type('array', $discountCode);
 
 		//list
-		$discountCodes = $this->fapiClient->discountCodes->findAll();
+		$discountCodes = $this->fapiClient->getDiscountCodes()->findAll();
 		Assert::type('int', $discountCodes[0]['id']);
 		Assert::type('array', $discountCodes);
 
 		//delete
-		$this->fapiClient->discountCodes->delete($discountCode['id']);
+		$this->fapiClient->getDiscountCodes()->delete($discountCode['id']);
 	}
 
 }

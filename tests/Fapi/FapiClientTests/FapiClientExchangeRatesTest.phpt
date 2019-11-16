@@ -48,18 +48,18 @@ class FapiClientExchangeRatesTest extends TestCase
 	public function testList()
 	{
 		Assert::exception(function () {
-			$this->fapiClient->exchangeRates->list();
+			$this->fapiClient->getExchangeRates()->list();
 		}, ValidationException::class, 'Parameter source is not valid.');
 
 		Assert::exception(function () {
-			$this->fapiClient->exchangeRates->list(['source' => 'EUR']);
+			$this->fapiClient->getExchangeRates()->list(['source' => 'EUR']);
 		}, ValidationException::class, 'Parameter target is not valid.');
 
 		Assert::exception(function () {
-			$this->fapiClient->exchangeRates->list(['source' => 'EUR', 'target' => 'CZK']);
+			$this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK']);
 		}, ValidationException::class, 'Parameter date_from and date_to can not be null together with parameter date.');
 
-		$exchangeRates = $this->fapiClient->exchangeRates->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2019-01-01']);
+		$exchangeRates = $this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2019-01-01']);
 
 		Assert::equal([
 			[
@@ -70,7 +70,7 @@ class FapiClientExchangeRatesTest extends TestCase
 			],
 		], $exchangeRates);
 
-		$exchangeRate = $this->fapiClient->exchangeRates->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2019-01-01', 'single' => true]);
+		$exchangeRate = $this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2019-01-01', 'single' => true]);
 
 		Assert::equal(
 			[

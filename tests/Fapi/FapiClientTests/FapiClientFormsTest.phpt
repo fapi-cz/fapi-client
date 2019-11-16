@@ -47,7 +47,7 @@ class FapiClientFormsTest extends TestCase
 
 	public function testCreateGetUpdateAndDeleteForms()
 	{
-		$form = $this->fapiClient->forms->create([
+		$form = $this->fapiClient->getForms()->create([
 			'name' => 'Sample Form',
 			'project' => 23371,
 			'series' => 21979,
@@ -66,21 +66,21 @@ class FapiClientFormsTest extends TestCase
 		Assert::same('Sample Form', $form['name']);
 		Assert::false($form['deleted']);
 
-		$forms = $this->fapiClient->forms->findAll();
+		$forms = $this->fapiClient->getForms()->findAll();
 
 		Assert::type('array', $forms);
 		Assert::type('array', $forms[0]);
 		Assert::type('int', $forms[0]['id']);
 
-		Assert::same($form, $this->fapiClient->forms->find($form['id']));
+		Assert::same($form, $this->fapiClient->getForms()->find($form['id']));
 
-		$form = $this->fapiClient->forms->find($form['id'], [
+		$form = $this->fapiClient->getForms()->find($form['id'], [
 			'with_payment_methods' => true,
 		]);
 		Assert::type('array', $form['payment_methods']);
 		Assert::count(2, $form['payment_methods']);
 
-		$updatedForm = $this->fapiClient->forms->update($form['id'], [
+		$updatedForm = $this->fapiClient->getForms()->update($form['id'], [
 			'name' => 'Updated Form',
 			'deleted' => true,
 		]);
@@ -90,11 +90,11 @@ class FapiClientFormsTest extends TestCase
 		Assert::same('Updated Form', $updatedForm['name']);
 		Assert::true($updatedForm['deleted']);
 
-		Assert::null($this->fapiClient->forms->find(899261310));
+		Assert::null($this->fapiClient->getForms()->find(899261310));
 
 		$fapiClient = $this->fapiClient;
 		Assert::exception(static function () use ($fapiClient) {
-			$fapiClient->forms->find(2);
+			$fapiClient->getForms()->find(2);
 		}, AuthorizationException::class, 'You are not authorized for this action.');
 	}
 

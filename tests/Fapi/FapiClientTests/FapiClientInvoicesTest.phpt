@@ -50,7 +50,7 @@ class FapiClientInvoicesTest extends TestCase
 
 	public function testCreateGetUpdateAndDeleteInvoices()
 	{
-		$createdInvoice = $this->fapiClient->invoices->create([
+		$createdInvoice = $this->fapiClient->getInvoices()->create([
 			'client' => 1104658,
 			'items' => [
 				[
@@ -67,7 +67,7 @@ class FapiClientInvoicesTest extends TestCase
 		Assert::type('string', $createdInvoice['number']);
 		Assert::same('Sample Item', $createdInvoice['items'][0]['name']);
 
-		$invoices = $this->fapiClient->invoices->findAll([
+		$invoices = $this->fapiClient->getInvoices()->findAll([
 			'limit' => 1,
 		]);
 
@@ -75,15 +75,15 @@ class FapiClientInvoicesTest extends TestCase
 		Assert::type('array', $invoices[0]);
 		Assert::type('int', $invoices[0]['id']);
 
-		$invoice = $this->fapiClient->invoices->find($createdInvoice['id']);
+		$invoice = $this->fapiClient->getInvoices()->find($createdInvoice['id']);
 		Assert::same($createdInvoice['id'], $invoice['id']);
 		Assert::same($createdInvoice['number'], $invoice['number']);
 
-		$invoicePdf = $this->fapiClient->invoices->getPdf($invoice['id']);
+		$invoicePdf = $this->fapiClient->getInvoices()->getPdf($invoice['id']);
 		Assert::type('string', $invoicePdf);
 		Assert::true(Strings::startsWith($invoicePdf, '%PDF-1.4'));
 
-		$updatedInvoice = $this->fapiClient->invoices->update($invoice['id'], [
+		$updatedInvoice = $this->fapiClient->getInvoices()->update($invoice['id'], [
 			'notes' => 'Sample footer note',
 		]);
 
@@ -93,10 +93,10 @@ class FapiClientInvoicesTest extends TestCase
 
 		$fapiClient = $this->fapiClient;
 		Assert::exception(static function () use ($fapiClient) {
-			$fapiClient->invoices->find(1);
+			$fapiClient->getInvoices()->find(1);
 		}, AuthorizationException::class, 'You are not authorized for this action.');
 
-		$count = $this->fapiClient->invoices->getCount([
+		$count = $this->fapiClient->getInvoices()->getCount([
 			'user' => 3,
 			'status' => 'issued',
 			'created_on_from' => '2017-06-01 00:00:00',
@@ -104,34 +104,34 @@ class FapiClientInvoicesTest extends TestCase
 		]);
 		Assert::same(0, $count);
 
-		$this->fapiClient->invoices->sendEmailWithInvoice([
+		$this->fapiClient->getInvoices()->sendEmailWithInvoice([
 			'invoice' => $invoice['id'],
 			'message_template' => 'E-mail pro vystavení objednávky',
 		]);
 
 		Assert::exception(function () {
-			$this->fapiClient->invoices->sendEmailWithInvoice([
+			$this->fapiClient->getInvoices()->sendEmailWithInvoice([
 				'invoice' => -1,
 			]);
 		}, ValidationException::class);
 
 		Assert::exception(function () {
-			$this->fapiClient->invoices->sendEmailWithInvoice([
+			$this->fapiClient->getInvoices()->sendEmailWithInvoice([
 				'invoice' => 1,
 			]);
 		}, AuthorizationException::class);
 
-		$qrCode = $this->fapiClient->invoices->generateQrCode([
+		$qrCode = $this->fapiClient->getInvoices()->generateQrCode([
 			'invoice' => $invoice['id'],
 		]);
 		Assert::type('string', $qrCode);
 
-		$this->fapiClient->invoices->delete($invoice['id']);
+		$this->fapiClient->getInvoices()->delete($invoice['id']);
 
-		Assert::null($this->fapiClient->invoices->find($invoice['id']));
-		Assert::null($this->fapiClient->invoices->getPdf($invoice['id']));
+		Assert::null($this->fapiClient->getInvoices()->find($invoice['id']));
+		Assert::null($this->fapiClient->getInvoices()->getPdf($invoice['id']));
 
-		$invoicesSequence = $this->fapiClient->invoices->getInvoicesSequence((int) $invoice['id']);
+		$invoicesSequence = $this->fapiClient->getInvoices()->getInvoicesSequence((int) $invoice['id']);
 		Assert::type('array', $invoicesSequence);
 		Assert::equal([
 			['id' => 2999, 'type' => 'proforma'],

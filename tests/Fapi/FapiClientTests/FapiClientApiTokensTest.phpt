@@ -50,10 +50,10 @@ class FapiClientApiTokensTest extends TestCase
 	public function testCreateGetUpdateAndDeleteApiTokens()
 	{
 		Assert::exception(function () {
-			$this->fapiClient->apiTokens->create([]);
+			$this->fapiClient->getApiTokens()->create([]);
 		}, ValidationException::class);
 
-		$apiToken = $this->fapiClient->apiTokens->create([
+		$apiToken = $this->fapiClient->getApiTokens()->create([
 			'purpose' => 'Sample Token',
 		]);
 
@@ -62,7 +62,7 @@ class FapiClientApiTokensTest extends TestCase
 		Assert::same('Sample Token', $apiToken['purpose']);
 		Assert::type('string', $apiToken['token']);
 
-		$apiTokens = $this->fapiClient->apiTokens->findAll([
+		$apiTokens = $this->fapiClient->getApiTokens()->findAll([
 			'purpose' => 'Sample Token',
 		]);
 
@@ -70,16 +70,16 @@ class FapiClientApiTokensTest extends TestCase
 		Assert::count(1, $apiTokens);
 		Assert::same($apiToken, $apiTokens[0]);
 
-		$apiTokens = $this->fapiClient->apiTokens->findAll([
+		$apiTokens = $this->fapiClient->getApiTokens()->findAll([
 			'purpose' => 'xxx',
 		]);
 
 		Assert::type('array', $apiTokens);
 		Assert::count(0, $apiTokens);
 
-		Assert::same($apiToken, $this->fapiClient->apiTokens->find($apiToken['id']));
+		Assert::same($apiToken, $this->fapiClient->getApiTokens()->find($apiToken['id']));
 
-		$updatedApiToken = $this->fapiClient->apiTokens->update($apiToken['id'], [
+		$updatedApiToken = $this->fapiClient->getApiTokens()->update($apiToken['id'], [
 			'purpose' => 'Updated Token',
 		]);
 
@@ -88,19 +88,19 @@ class FapiClientApiTokensTest extends TestCase
 		Assert::same('Updated Token', $updatedApiToken['purpose']);
 
 		Assert::exception(function () {
-			$this->fapiClient->apiTokens->update(-1, [
+			$this->fapiClient->getApiTokens()->update(-1, [
 				'purpose' => 'Updated Token',
 			]);
 		}, NotFoundException::class);
 
-		$this->fapiClient->apiTokens->delete($apiToken['id']);
-		$this->fapiClient->apiTokens->delete(-1);
+		$this->fapiClient->getApiTokens()->delete($apiToken['id']);
+		$this->fapiClient->getApiTokens()->delete(-1);
 
-		Assert::null($this->fapiClient->apiTokens->find($apiToken['id']));
+		Assert::null($this->fapiClient->getApiTokens()->find($apiToken['id']));
 
 		$fapiClient = $this->fapiClient;
 		Assert::exception(static function () use ($fapiClient) {
-			$fapiClient->apiTokens->find(1);
+			$fapiClient->getApiTokens()->find(1);
 		}, AuthorizationException::class, 'You are not authorized for this action.');
 	}
 

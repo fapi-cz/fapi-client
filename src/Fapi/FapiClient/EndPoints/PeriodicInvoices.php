@@ -10,7 +10,7 @@ use Fapi\FapiClient\EndPoints\Traits\FindAll;
 use Fapi\FapiClient\EndPoints\Traits\Update;
 use Fapi\FapiClient\Rest\FapiRestClient;
 
-final class PeriodInvoices
+final class PeriodicInvoices
 {
 
 	use FindAll;

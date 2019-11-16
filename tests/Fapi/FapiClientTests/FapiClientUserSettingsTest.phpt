@@ -46,7 +46,7 @@ class FapiClientUserSettingsTest extends TestCase
 
 	public function testGetCurrentUser()
 	{
-		$countryCurrencySetting = $this->fapiClient->userSetting->countryCurrencySetting();
+		$countryCurrencySetting = $this->fapiClient->getUserSetting()->countryCurrencySetting();
 
 		Assert::type('array', $countryCurrencySetting);
 		Assert::equal([

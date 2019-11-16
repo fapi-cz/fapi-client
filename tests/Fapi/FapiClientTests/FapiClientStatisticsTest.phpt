@@ -46,7 +46,7 @@ class FapiClientStatisticsTest extends TestCase
 
 	public function testGetTotalStatistics()
 	{
-		$statistics = $this->fapiClient->statistics->getTotalStatistics([
+		$statistics = $this->fapiClient->getStatistics()->getTotalStatistics([
 			'type' => 'daily',
 			'start' => '2018-01-01',
 			'end' => '2018-12-31',
