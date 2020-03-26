@@ -32,8 +32,8 @@ class FapiClientDiscountCodesTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
-			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'slischkaj-2019-11-26@gmail.com',
+			'nWHypJS0XJZB6e3dWlPOULmQ4',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);
@@ -81,6 +81,11 @@ class FapiClientDiscountCodesTest extends TestCase
 		$discountCode = $this->fapiClient->getDiscountCodes()->find($discountCode['id']);
 		Assert::type('int', $discountCode['id']);
 		Assert::type('array', $discountCode);
+
+		//is valid - invalid form path
+		$isValid = $this->fapiClient->getDiscountCodes()->isValid($discountCode['code'], 'form-path');
+		Assert::false($isValid['applicable']);
+		Assert::type('array', $isValid);
 
 		//list
 		$discountCodes = $this->fapiClient->getDiscountCodes()->findAll();
