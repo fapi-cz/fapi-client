@@ -1,7 +1,7 @@
 
 [![CircleCI](https://circleci.com/gh/fapi-cz/fapi-client.svg?style=shield)](https://circleci.com/gh/fapi-cz/fapi-client)
 [![codecov](https://codecov.io/gh/fapi-cz/fapi-client/branch/master/graph/badge.svg)](https://codecov.io/gh/fapi-cz/fapi-client)
-[![CodeClime](https://codeclimate.com/github/fapi-cz/php-client.png)](https://codeclimate.com/github/fapi-cz/php-client)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f364fbba86383aaab443/maintainability)](https://codeclimate.com/github/fapi-cz/php-client/maintainability)
 
 # fapi-cz/fapi-client
 Library for accessing FAPI API.
