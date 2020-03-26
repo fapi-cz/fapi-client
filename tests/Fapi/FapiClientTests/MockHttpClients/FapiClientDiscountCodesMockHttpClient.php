@@ -20,86 +20,160 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 					'Host' => ['api.fapi.cz'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
-					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
+					'Authorization' => [
+						'Basic c2xpc2Noa2FqLTIwMTktMTEtMjZAZ21haWwuY29tOm5XSHlwSlMwWEpaQjZlM2RXbFBPVUxtUTQ=',
+					],
 				]
 			),
 			new HttpResponse(
 				201,
 				[
-					'Date' => ['Sat, 17 Nov 2018 10:11:28 GMT'],
+					'Date' => ['Thu, 26 Mar 2020 07:16:39 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['197'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=2YX+Xph4FlRTWPhRAVa8tT9yZqtfOpnq11tNoayafy3mGCwgkTc6An8e1D1z54Zrx8iMkZm1vqC7j2VLra9qr8fymwMbfyGPrLBmAQlJN0E8tSP5NldEh817gbTY; Expires=Sat, 24 Nov 2018 10:11:28 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
+					'Server' => ['nginx/1.16.1'],
 					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web5'],
-					'X-Content-Type-Options' => ['nosniff'],
-					'X-Frame-Options' => ['sameorigin'],
+					'X-NewRelic-App-Data' => [
+						'PxQOV1BaCxACVldQAQEBREgTYVYAMhEDXhFZAUxRW1xvSngCRQhcDDgZVhEPPxdFAThOBl5CVAkRX0IeAQkHB0NAFFIWCAQCA1UVUR9RAFJcAxtQX1QUEQhcUVUHVA4DVQMCUAMEUAYSTl4DVEtRbw==',
+					],
+					'Strict-Transport-Security' => [
+						'max-age=63072000; includeSubDomains; preload',
+						'max-age=63072000; includeSubDomains; preload',
+					],
+					'X-Content-Type-Options' => ['nosniff', 'nosniff'],
+					'X-Frame-Options' => ['sameorigin', 'sameorigin'],
+					'X-Origin-Instance' => ['web3.prod.fapi.cloud', 'web1.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*', '*'],
+					'Access-Control-Allow-Headers' => [
+						'Origin, X-Requested-With, Content-Type, Accept',
+						'Origin, X-Requested-With, Content-Type, Accept',
+					],
 				],
-				'{"id":2645,"name":"test","code":"unique","type":"percent","validity_type":"always","percent_discount":5}'
+				'{"id":7148,"user_id":11812,"name":"test","code":"unique","type":"percent","validity_type":"always","begin_date":null,"end_date":null,"percent_discount":5,"maximum_use":null,"discount_amounts":null}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
 				'PUT',
-				'https://api.fapi.cz/discount-codes/2645',
+				'https://api.fapi.cz/discount-codes/7148',
 				[
 					'Host' => ['api.fapi.cz'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
-					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
+					'Authorization' => [
+						'Basic c2xpc2Noa2FqLTIwMTktMTEtMjZAZ21haWwuY29tOm5XSHlwSlMwWEpaQjZlM2RXbFBPVUxtUTQ=',
+					],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Sat, 17 Nov 2018 10:11:28 GMT'],
+					'Date' => ['Thu, 26 Mar 2020 07:16:39 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['214'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=6kg8TDcIycHJ1hHEXQ9tAhWAz0+Dz8arff0qmK0YBsylQSL+K41Gyja1JZsr3H5AItuqhh/CW6L5GmpudayFrZauobzJNoxDpJZ63Qz13R3SFJSfVB6XhefBRgGV; Expires=Sat, 24 Nov 2018 10:11:28 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
+					'Server' => ['nginx/1.16.1'],
 					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web2'],
-					'X-Content-Type-Options' => ['nosniff'],
-					'X-Frame-Options' => ['sameorigin'],
+					'X-NewRelic-App-Data' => [
+						'PxQOV1BaCxACVldQAQEBREgTYVYAMhEDXhFZAUxRW1xvSngCRQhcDDgZVhEPPxdFAThOBl5CVAkRX0IeAQkHB0M+FxlRXA5pAkgAPGpRHls5HEpDSlMWAwBUUVIbARlWVwQOAE5UUlYcQApXAAAGAARXC1kEWFFWBQ4VTQACVEBVOQ==',
+					],
+					'Strict-Transport-Security' => [
+						'max-age=63072000; includeSubDomains; preload',
+						'max-age=63072000; includeSubDomains; preload',
+					],
+					'X-Content-Type-Options' => ['nosniff', 'nosniff'],
+					'X-Frame-Options' => ['sameorigin', 'sameorigin'],
+					'X-Origin-Instance' => ['web3.prod.fapi.cloud', 'web1.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*', '*'],
+					'Access-Control-Allow-Headers' => [
+						'Origin, X-Requested-With, Content-Type, Accept',
+						'Origin, X-Requested-With, Content-Type, Accept',
+					],
 				],
-				'{"id":2645,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","percent_discount":10,"begin_date":"2017-01-01","end_date":null}'
+				'{"id":7148,"user_id":11812,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
 				'GET',
-				'https://api.fapi.cz/discount-codes/2645',
+				'https://api.fapi.cz/discount-codes/7148',
 				[
 					'Host' => ['api.fapi.cz'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
-					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
+					'Authorization' => [
+						'Basic c2xpc2Noa2FqLTIwMTktMTEtMjZAZ21haWwuY29tOm5XSHlwSlMwWEpaQjZlM2RXbFBPVUxtUTQ=',
+					],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Sat, 17 Nov 2018 10:11:28 GMT'],
+					'Date' => ['Thu, 26 Mar 2020 07:16:39 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['214'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=tgo0A1BdaWYC1gtdZqIjKxsOk+dqNJGLRfLdzO8/R2R1xuYkSDnEEUmZ0VY1It7pY7vNxPwuimo83tVGmqJTVl4FQzhfG5wkkSFhxBJb0f+OaYOy/SI4WIGxp+O/; Expires=Sat, 24 Nov 2018 10:11:28 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
+					'Server' => ['nginx/1.16.1'],
 					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web5'],
-					'X-Content-Type-Options' => ['nosniff'],
-					'X-Frame-Options' => ['sameorigin'],
+					'X-NewRelic-App-Data' => [
+						'PxQOV1BaCxACVldQAQEBREgTYVYAMhEDXhFZAUxRW1xvSngCRQhcDDgZVhEPPxdFAThOBl5CVAkRX0IeAQkHB0M+FxlRXA5pAkgAPGpRHls5HEpDSlMWAwBUUVIbARlWVgYABk5UUlYcQFxSXQECBwVSC1kHWQMAUwAVTQACVEBVOQ==',
+					],
+					'Strict-Transport-Security' => [
+						'max-age=63072000; includeSubDomains; preload',
+						'max-age=63072000; includeSubDomains; preload',
+					],
+					'X-Content-Type-Options' => ['nosniff', 'nosniff'],
+					'X-Frame-Options' => ['sameorigin', 'sameorigin'],
+					'X-Origin-Instance' => ['web3.prod.fapi.cloud', 'web1.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*', '*'],
+					'Access-Control-Allow-Headers' => [
+						'Origin, X-Requested-With, Content-Type, Accept',
+						'Origin, X-Requested-With, Content-Type, Accept',
+					],
 				],
-				'{"id":2645,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","percent_discount":10,"begin_date":"2017-01-01","end_date":null,"used_count":0}'
+				'{"id":7148,"user_id":11812,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}'
+			)
+		);
+		$this->add(
+			new HttpRequest(
+				'GET',
+				'https://api.fapi.cz/discount-codes/is-valid?code=newUniqCode&form=form-path',
+				[
+					'Host' => ['api.fapi.cz'],
+					'Content-Type' => ['application/json'],
+					'Accept' => ['application/json'],
+					'Authorization' => [
+						'Basic c2xpc2Noa2FqLTIwMTktMTEtMjZAZ21haWwuY29tOm5XSHlwSlMwWEpaQjZlM2RXbFBPVUxtUTQ=',
+					],
+				]
+			),
+			new HttpResponse(
+				200,
+				[
+					'Date' => ['Thu, 26 Mar 2020 07:16:39 GMT'],
+					'Content-Type' => ['application/json'],
+					'Content-Length' => ['20'],
+					'Connection' => ['keep-alive'],
+					'Server' => ['nginx/1.16.1'],
+					'X-Powered-By' => ['Nette Framework'],
+					'X-NewRelic-App-Data' => [
+						'PxQOV1BaCxACVldQAQEBREgTYVYAMhEDXhFZAUxRW1xvSngCRQhcDDgZVhEPPxdFAThOBl5CVAkRX0IeAQkHB0M+FwtLFUJTXwxdQx1RHVJUBgdRSlMWAwJSVVMbAwdKRgUGAVFXW1MAB1tRWgANAVBHFQdQDUAHOQ==',
+					],
+					'Strict-Transport-Security' => [
+						'max-age=63072000; includeSubDomains; preload',
+						'max-age=63072000; includeSubDomains; preload',
+					],
+					'X-Content-Type-Options' => ['nosniff', 'nosniff'],
+					'X-Frame-Options' => ['sameorigin', 'sameorigin'],
+					'X-Origin-Instance' => ['web3.prod.fapi.cloud', 'web1.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*', '*'],
+					'Access-Control-Allow-Headers' => [
+						'Origin, X-Requested-With, Content-Type, Accept',
+						'Origin, X-Requested-With, Content-Type, Accept',
+					],
+				],
+				'{"applicable":false}'
 			)
 		);
 		$this->add(
@@ -110,54 +184,76 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 					'Host' => ['api.fapi.cz'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
-					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
+					'Authorization' => [
+						'Basic c2xpc2Noa2FqLTIwMTktMTEtMjZAZ21haWwuY29tOm5XSHlwSlMwWEpaQjZlM2RXbFBPVUxtUTQ=',
+					],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Sat, 17 Nov 2018 10:11:28 GMT'],
+					'Date' => ['Thu, 26 Mar 2020 07:16:39 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['235'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=ndqyNPdrEx3ZswrIIIUDqKJKMH0OMV5CRHRw+yd9sPSaAvXgKkocFyBSfv7zxdNiDFtTzZ42Xb/mMTquCd2fowEisD7NM8WuRnuV9cHfjmt4KGBy8JEr+TioVTHx; Expires=Sat, 24 Nov 2018 10:11:28 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
+					'Server' => ['nginx/1.16.1'],
 					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web2'],
-					'X-Content-Type-Options' => ['nosniff'],
-					'X-Frame-Options' => ['sameorigin'],
+					'X-NewRelic-App-Data' => [
+						'PxQOV1BaCxACVldQAQEBREgTYVYAMhEDXhFZAUxRW1xvSngCRQhcDDgZVhEPPxdFAThOBl5CVAkRX0IeAQkHB0NAFFIWCAQCA1UVUR9RAVFTAxtTVVYUEQEGV1YCVA4FXVJUAVQFAVYSTl4DVEtRbw==',
+					],
+					'Strict-Transport-Security' => [
+						'max-age=63072000; includeSubDomains; preload',
+						'max-age=63072000; includeSubDomains; preload',
+					],
+					'X-Content-Type-Options' => ['nosniff', 'nosniff'],
+					'X-Frame-Options' => ['sameorigin', 'sameorigin'],
+					'X-Origin-Instance' => ['web1.prod.fapi.cloud', 'web1.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*', '*'],
+					'Access-Control-Allow-Headers' => [
+						'Origin, X-Requested-With, Content-Type, Accept',
+						'Origin, X-Requested-With, Content-Type, Accept',
+					],
 				],
-				'{"discount_codes":[{"id":2645,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","percent_discount":10,"begin_date":"2017-01-01","end_date":null,"used_count":0}]}'
+				'{"discount_codes":[{"id":7148,"user_id":11812,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}]}'
 			)
 		);
 		$this->add(
 			new HttpRequest(
 				'DELETE',
-				'https://api.fapi.cz/discount-codes/2645',
+				'https://api.fapi.cz/discount-codes/7148',
 				[
 					'Host' => ['api.fapi.cz'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
-					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
+					'Authorization' => [
+						'Basic c2xpc2Noa2FqLTIwMTktMTEtMjZAZ21haWwuY29tOm5XSHlwSlMwWEpaQjZlM2RXbFBPVUxtUTQ=',
+					],
 				]
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Sat, 17 Nov 2018 10:11:28 GMT'],
+					'Date' => ['Thu, 26 Mar 2020 07:16:39 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['20'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=cpu7kpe3tQIqRN4cpMyv6YrSJoVGwdKAO9v+hbMPjBPKF0D+HSDKp1apdbW0I8H36NgoFWLwMjnz8ZuGyG+bID8xy5SsardKNuk0XfsgBMj3OCdP8aHEVBMrE82K; Expires=Sat, 24 Nov 2018 10:11:28 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
+					'Server' => ['nginx/1.16.1'],
 					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web5'],
-					'X-Content-Type-Options' => ['nosniff'],
-					'X-Frame-Options' => ['sameorigin'],
+					'X-NewRelic-App-Data' => [
+						'PxQOV1BaCxACVldQAQEBREgTYVYAMhEDXhFZAUxRW1xvSngCRQhcDDgZVhEPPxdFAThOBl5CVAkRX0IeAQkHB0M+FxlRXA5pAkgAPGpRHls5HEpDSlMWAwBUUVIbARlWVwIGBE5UU04SVFsHXAsCUQFVClIDUApQBRQbBwcPS1Zt',
+					],
+					'Strict-Transport-Security' => [
+						'max-age=63072000; includeSubDomains; preload',
+						'max-age=63072000; includeSubDomains; preload',
+					],
+					'X-Content-Type-Options' => ['nosniff', 'nosniff'],
+					'X-Frame-Options' => ['sameorigin', 'sameorigin'],
+					'X-Origin-Instance' => ['web1.prod.fapi.cloud', 'web3.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*', '*'],
+					'Access-Control-Allow-Headers' => [
+						'Origin, X-Requested-With, Content-Type, Accept',
+						'Origin, X-Requested-With, Content-Type, Accept',
+					],
 				],
 				'{"status":"success"}'
 			)

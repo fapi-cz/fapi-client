@@ -26,4 +26,14 @@ final class DiscountCodes
 		$this->resources = 'discount_codes';
 	}
 
+	/**
+	 * @param string $code
+	 * @param string $path
+	 * @return mixed[]
+	 */
+	public function isValid(string $code, string $path): array
+	{
+		return $this->client->getSingularResource($this->path . '/is-valid', ['code' => $code, 'form' => $path]);
+	}
+
 }
