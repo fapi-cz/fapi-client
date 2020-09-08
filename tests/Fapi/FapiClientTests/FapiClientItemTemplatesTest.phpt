@@ -9,7 +9,6 @@ use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
 use Tester\Environment;
 use Tester\TestCase;
-use function print_r;
 
 require __DIR__ . '/../../bootstrap.php';
 
