@@ -33,8 +33,8 @@ class FapiClientFormsTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
-			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);
@@ -49,10 +49,10 @@ class FapiClientFormsTest extends TestCase
 	{
 		$form = $this->fapiClient->getForms()->create([
 			'name' => 'Sample Form',
-			'project' => 23371,
-			'series' => 21979,
-			'message_template_set' => 15905,
-			'reminder_set' => 12291,
+			'project' => 31862,
+			'series' => 38504,
+			'message_template_set' => 22232,
+			'reminder_set' => 16508,
 			'currency' => 'by-country',
 			'reverse_charge' => 'disabled',
 			'thanks_content' => '',

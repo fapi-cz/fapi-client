@@ -32,8 +32,8 @@ class FapiClientUserSettingsTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
-			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);
@@ -49,12 +49,7 @@ class FapiClientUserSettingsTest extends TestCase
 		$countryCurrencySetting = $this->fapiClient->getUserSetting()->countryCurrencySetting();
 
 		Assert::type('array', $countryCurrencySetting);
-		Assert::equal([
-			'*' => 'EUR',
-			'CZ' => 'CZK',
-			'PL' => 'PLN',
-			'RU' => 'RUB',
-		], $countryCurrencySetting);
+		Assert::equal(['*' => 'EUR', 'CZ' => 'CZK'], $countryCurrencySetting);
 	}
 
 }

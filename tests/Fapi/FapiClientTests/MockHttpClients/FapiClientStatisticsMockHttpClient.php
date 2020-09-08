@@ -18,28 +18,32 @@ final class FapiClientStatisticsMockHttpClient extends MockHttpClient
 				'https://api.fapi.cz/statistics/total?type=daily&start=2018-01-01&end=2018-12-31&including_vat=0',
 				[
 					'Host' => ['api.fapi.cz'],
+					'verify' => ['1'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
-					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
-				]
+					'Authorization' => [
+						'Basic c2xpc2Noa2FAdGVzdC1mYXBpLmN6OmpJQkFXbEt6ekI2clFWazVZM1QwVnhUZ24=',
+					],
+				],
+				'',
+				'1.1'
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Sat, 17 Nov 2018 10:03:52 GMT'],
+					'Date' => ['Tue, 08 Sep 2020 13:56:02 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['91'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=w+/kGczySsTCS/Nv2JePu87VsINRGRUr1oGtNKKipzbtD2M7nkCaxF1NHL7cFYWsZKIafcl9zqvXL163AiwRn8ZCSlnhNNjOfEzlyBFBsmFaG/U09Ui4+EWpNLZA; Expires=Sat, 24 Nov 2018 10:03:52 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
-					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web5'],
+					'Server' => ['nginx'],
+					'Strict-Transport-Security' => ['max-age=63072000; includeSubDomains; preload'],
 					'X-Content-Type-Options' => ['nosniff'],
 					'X-Frame-Options' => ['sameorigin'],
+					'X-Origin-Instance' => ['web3.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*'],
+					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"issued":{"2018-11-14":{"amounts":{"CZK":2730},"amounts_including_vat":{"CZK":2730},"count":3},"2018-11-15":{"amounts":{"CZK":30},"amounts_including_vat":{"CZK":30},"count":3},"2018-11-17":{"amounts":{"CZK":2700},"amounts_including_vat":{"CZK":2700},"count":1}},"cancelled":{"2018-11-14":{"amounts":{"CZK":2700},"amounts_including_vat":{"CZK":2700},"count":1}},"paid":{"2018-11-14":{"amounts":{"CZK":2700},"amounts_including_vat":{"CZK":2700},"count":1}},"left_to_pay":{"2018-11-14":{"amounts":{"CZK":30},"amounts_including_vat":{"CZK":30},"count":2},"2018-11-15":{"amounts":{"CZK":30},"amounts_including_vat":{"CZK":30},"count":3},"2018-11-17":{"amounts":{"CZK":2700},"amounts_including_vat":{"CZK":2700},"count":1}},"overdue":[],"invoiced":{"2018-11-14":{"amounts":{"CZK":5430},"amounts_including_vat":{"CZK":5430},"count":4},"2018-11-15":{"amounts":{"CZK":30},"amounts_including_vat":{"CZK":30},"count":3},"2018-11-17":{"amounts":{"CZK":2700},"amounts_including_vat":{"CZK":2700},"count":1}},"dph":[]}'
+				'{"issued":[],"cancelled":[],"paid":[],"left_to_pay":[],"overdue":[],"invoiced":[],"dph":[]}'
 			)
 		);
 	}

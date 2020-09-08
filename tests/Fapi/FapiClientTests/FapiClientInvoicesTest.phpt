@@ -36,8 +36,8 @@ class FapiClientInvoicesTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
-			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);
@@ -51,15 +51,15 @@ class FapiClientInvoicesTest extends TestCase
 	public function testCreateGetUpdateAndDeleteInvoices()
 	{
 		$createdInvoice = $this->fapiClient->getInvoices()->create([
-			'client' => 1104658,
+			'client' => 1808089,
 			'items' => [
 				[
 					'name' => 'Sample Item',
 					'price' => 10,
 				],
 			],
-			'iban' => 'CZXX0800000000XXXXXXXXXX',
-			'swift' => 'GIBACZPX',
+			'iban' => 'CZ3820100000002901621321',
+			'swift' => 'FIOBCZPPXXX',
 		]);
 
 		Assert::type('array', $createdInvoice);
@@ -91,9 +91,8 @@ class FapiClientInvoicesTest extends TestCase
 		Assert::same($invoice['id'], $updatedInvoice['id']);
 		Assert::same('Sample footer note', $updatedInvoice['notes']);
 
-		$fapiClient = $this->fapiClient;
-		Assert::exception(static function () use ($fapiClient) {
-			$fapiClient->getInvoices()->find(1);
+		Assert::exception(function () {
+			$this->fapiClient->getInvoices()->find(1);
 		}, AuthorizationException::class, 'You are not authorized for this action.');
 
 		$count = $this->fapiClient->getInvoices()->getCount([
@@ -126,17 +125,14 @@ class FapiClientInvoicesTest extends TestCase
 		]);
 		Assert::type('string', $qrCode);
 
+		$invoicesSequence = $this->fapiClient->getInvoices()->getInvoicesSequence((int) $invoice['id']);
+		Assert::type('array', $invoicesSequence);
+		Assert::equal([['id' => 185993812, 'type' => 'proforma']], $invoicesSequence);
+
 		$this->fapiClient->getInvoices()->delete($invoice['id']);
 
 		Assert::null($this->fapiClient->getInvoices()->find($invoice['id']));
 		Assert::null($this->fapiClient->getInvoices()->getPdf($invoice['id']));
-
-		$invoicesSequence = $this->fapiClient->getInvoices()->getInvoicesSequence((int) $invoice['id']);
-		Assert::type('array', $invoicesSequence);
-		Assert::equal([
-			['id' => 2999, 'type' => 'proforma'],
-			['id' => 3000, 'type' => 'invoice'],
-		], $invoicesSequence);
 	}
 
 }

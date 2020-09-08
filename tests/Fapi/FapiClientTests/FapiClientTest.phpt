@@ -33,8 +33,8 @@ class FapiClientTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
-			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);
@@ -59,13 +59,13 @@ class FapiClientTest extends TestCase
 
 		Assert::exception(function () {
 			$this->fapiClient->checkConnection();
-		}, AuthorizationException::class, 'Invalid username.');
+		}, AuthorizationException::class, 'Invalid password.');
 	}
 
 	private function setInvalidPassword()
 	{
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
+			'slischka@test-fapi.cz',
 			'xxx',
 			'https://api.fapi.cz/',
 			$this->httpClient

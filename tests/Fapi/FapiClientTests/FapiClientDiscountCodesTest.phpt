@@ -32,8 +32,8 @@ class FapiClientDiscountCodesTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'slischkaj-2019-11-26@gmail.com',
-			'nWHypJS0XJZB6e3dWlPOULmQ4',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);

@@ -32,8 +32,8 @@ class FapiClientUserTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
-			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);
@@ -50,7 +50,7 @@ class FapiClientUserTest extends TestCase
 
 		Assert::type('array', $user);
 		Assert::type('int', $user['id']);
-		Assert::same('test1@slischka.cz', $user['username']);
+		Assert::same('slischka@test-fapi.cz', $user['username']);
 
 		Assert::same($user['username'], $this->fapiClient->getCurrentUsername());
 	}

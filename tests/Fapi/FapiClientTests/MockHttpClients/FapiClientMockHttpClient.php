@@ -18,26 +18,30 @@ final class FapiClientMockHttpClient extends MockHttpClient
 				'https://api.fapi.cz/',
 				[
 					'Host' => ['api.fapi.cz'],
+					'verify' => ['1'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
-					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6cGkxMjB3ck95ek5sYjdwNGlRd1RPMXZjSw=='],
-				]
+					'Authorization' => [
+						'Basic c2xpc2Noa2FAdGVzdC1mYXBpLmN6OmpJQkFXbEt6ekI2clFWazVZM1QwVnhUZ24=',
+					],
+				],
+				'',
+				'1.1'
 			),
 			new HttpResponse(
 				200,
 				[
-					'Date' => ['Sat, 17 Nov 2018 09:55:55 GMT'],
+					'Date' => ['Tue, 08 Sep 2020 13:56:10 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['2'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=CwiSgExR0D/EEt8o5NLyFb5F5CanSedCfJOmtd/ZuO/1sDyADGl/WpJCfn8cGSeXwhnwg6KrjGd+s14T6wK3TQxiBPcPgIsAnuTtWC9GgV5ySBVTY3OK5WY+ZV6l; Expires=Sat, 24 Nov 2018 09:55:55 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
-					'X-Powered-By' => ['Nette Framework'],
-					'X-Origin-Instance' => ['prd-fapi-web5'],
+					'Server' => ['nginx'],
+					'Strict-Transport-Security' => ['max-age=63072000; includeSubDomains; preload'],
 					'X-Content-Type-Options' => ['nosniff'],
 					'X-Frame-Options' => ['sameorigin'],
+					'X-Origin-Instance' => ['web3.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*'],
+					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
 				'{}'
 			)
@@ -48,23 +52,28 @@ final class FapiClientMockHttpClient extends MockHttpClient
 				'https://api.fapi.cz/',
 				[
 					'Host' => ['api.fapi.cz'],
+					'verify' => ['1'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
-					'Authorization' => ['Basic dGVzdDFAc2xpc2Noa2EuY3o6eHh4'],
-				]
+					'Authorization' => ['Basic c2xpc2Noa2FAdGVzdC1mYXBpLmN6Onh4eA=='],
+				],
+				'',
+				'1.1'
 			),
 			new HttpResponse(
 				401,
 				[
-					'Date' => ['Sat, 17 Nov 2018 09:55:56 GMT'],
+					'Date' => ['Tue, 08 Sep 2020 13:56:10 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['64'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=fIOCpFWuSclGuDjubrh/OlSut2nXAuaVeyJYNkqoKL1VVgfbY8sXSRkubJ9h1VEzdPcQ+LurQK5mHp5MMQgi1e8UPqXpRi4nEVO58mHDZW1x+NWkyvlY8CrpvTln; Expires=Sat, 24 Nov 2018 09:55:56 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
-					'X-Powered-By' => ['Nette Framework'],
+					'Server' => ['nginx'],
+					'Strict-Transport-Security' => ['max-age=63072000; includeSubDomains; preload'],
+					'X-Content-Type-Options' => ['nosniff'],
+					'X-Frame-Options' => ['sameorigin'],
+					'X-Origin-Instance' => ['web2.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*'],
+					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
 				'{"message":"Invalid password.","type":"AuthenticationException"}'
 			)
@@ -75,25 +84,30 @@ final class FapiClientMockHttpClient extends MockHttpClient
 				'https://api.fapi.cz/',
 				[
 					'Host' => ['api.fapi.cz'],
+					'verify' => ['1'],
 					'Content-Type' => ['application/json'],
 					'Accept' => ['application/json'],
 					'Authorization' => ['Basic LUAtLmN6Onh4eA=='],
-				]
+				],
+				'',
+				'1.1'
 			),
 			new HttpResponse(
 				401,
 				[
-					'Date' => ['Sat, 17 Nov 2018 09:55:56 GMT'],
+					'Date' => ['Tue, 08 Sep 2020 13:56:10 GMT'],
 					'Content-Type' => ['application/json'],
-					'Transfer-Encoding' => ['chunked'],
+					'Content-Length' => ['64'],
 					'Connection' => ['keep-alive'],
-					'Set-Cookie' => [
-						'AWSALB=BLPGUh5agU9Ezp/LjBEVdYoUAXLR2Gxzt4nUrkwH2CPBk+3fSrugZaupRSBbP7Y+mjhHHrM4fU4Mjn6qOmfXnlNaRu6mvbluUbq4RfZXwoy4BcLLFDtcTmNE4OJW; Expires=Sat, 24 Nov 2018 09:55:56 GMT; Path=/',
-					],
-					'Server' => ['nginx/1.14.0'],
-					'X-Powered-By' => ['Nette Framework'],
+					'Server' => ['nginx'],
+					'Strict-Transport-Security' => ['max-age=63072000; includeSubDomains; preload'],
+					'X-Content-Type-Options' => ['nosniff'],
+					'X-Frame-Options' => ['sameorigin'],
+					'X-Origin-Instance' => ['web1.prod.fapi.cloud'],
+					'Access-Control-Allow-Origin' => ['*'],
+					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Invalid username.","type":"AuthenticationException"}'
+				'{"message":"Invalid password.","type":"AuthenticationException"}'
 			)
 		);
 	}

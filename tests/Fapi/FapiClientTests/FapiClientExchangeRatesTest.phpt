@@ -33,8 +33,8 @@ class FapiClientExchangeRatesTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
-			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);
@@ -49,35 +49,35 @@ class FapiClientExchangeRatesTest extends TestCase
 	{
 		Assert::exception(function () {
 			$this->fapiClient->getExchangeRates()->list();
-		}, ValidationException::class, 'Parameter source is not valid.');
+		}, ValidationException::class, 'Missing key: source');
 
 		Assert::exception(function () {
 			$this->fapiClient->getExchangeRates()->list(['source' => 'EUR']);
-		}, ValidationException::class, 'Parameter target is not valid.');
+		}, ValidationException::class, 'Missing key: target');
 
 		Assert::exception(function () {
 			$this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK']);
 		}, ValidationException::class, 'Parameter date_from and date_to can not be null together with parameter date.');
 
-		$exchangeRates = $this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2019-01-01']);
+		$exchangeRates = $this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08']);
 
 		Assert::equal([
 			[
-				'date' => '2019-01-01',
+				'date' => '2020-09-08',
 				'source_currency' => 'EUR',
 				'target_currency' => 'CZK',
-				'exchange_rate' => 25.725,
+				'exchange_rate' => 26.47,
 			],
 		], $exchangeRates);
 
-		$exchangeRate = $this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2019-01-01', 'single' => true]);
+		$exchangeRate = $this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08', 'single' => true]);
 
 		Assert::equal(
 			[
-				'date' => '2019-01-01',
+				'date' => '2020-09-08',
 				'source_currency' => 'EUR',
 				'target_currency' => 'CZK',
-				'exchange_rate' => 25.725,
+				'exchange_rate' => 26.47,
 			]
 			, $exchangeRate);
 

@@ -9,6 +9,7 @@ use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
 use Tester\Environment;
 use Tester\TestCase;
+use function print_r;
 
 require __DIR__ . '/../../bootstrap.php';
 
@@ -32,8 +33,8 @@ class FapiClientItemTemplatesTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'test1@slischka.cz',
-			'pi120wrOyzNlb7p4iQwTO1vcK',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
 			$this->httpClient
 		);
@@ -83,11 +84,7 @@ class FapiClientItemTemplatesTest extends TestCase
 		$this->fapiClient->getItemTemplates()->delete($itemTemplate['id']);
 
 		Assert::null($this->fapiClient->getItemTemplates()->find($itemTemplate['id']));
-
-		$fapiClient = $this->fapiClient;
-		Assert::exception(static function () use ($fapiClient) {
-			$fapiClient->getItemTemplates()->find(4);
-		}, 'Fapi\FapiClient\AuthorizationException', 'You are not authorized for this action.');
+		Assert::null($this->fapiClient->getItemTemplates()->find(4));
 	}
 
 }

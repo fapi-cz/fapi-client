@@ -32,9 +32,9 @@ class FapiClientMessageTemplatesTest extends TestCase
 		);
 
 		$this->fapiClient = new FapiClient(
-			'tester@fapi.cz',
-			'XZRbVLPigTQpi4Kct4JAq8FZ9',
-			'http://api.fapi.log/',
+			'slischka@test-fapi.cz',
+			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
+			'https://api.fapi.cz/',
 			$this->httpClient
 		);
 	}
