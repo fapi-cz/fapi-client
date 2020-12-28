@@ -223,11 +223,18 @@ class FapiRestClient
 
 	/**
 	 * @param int $id
+	 * @param mixed[] $parameters
 	 * @return string|null
 	 */
-	public function getInvoicePdf(int $id)
+	public function getInvoicePdf(int $id, array $parameters = [])
 	{
-		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, '/invoices/' . $id . '.pdf');
+		$path = '/invoices/' . $id . '.pdf';
+
+		if ($parameters) {
+			$path .= '?' . $this->formatUrlParameters($parameters);
+		}
+
+		$httpResponse = $this->sendHttpRequest(HttpMethod::GET, $path);
 
 		if ($httpResponse->getStatusCode() === HttpStatusCode::S200_OK) {
 			return (string) $httpResponse->getBody();
