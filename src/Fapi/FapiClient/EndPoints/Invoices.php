@@ -27,9 +27,14 @@ final class Invoices
 		$this->resources = 'invoices';
 	}
 
-	public function getPdf(int $id)
+	/**
+	 * @param int $id
+	 * @param mixed[] $parameters
+	 * @return string|null
+	 */
+	public function getPdf(int $id, array $parameters = [])
 	{
-		return $this->client->getInvoicePdf($id);
+		return $this->client->getInvoicePdf($id, $parameters);
 	}
 
 	/**
