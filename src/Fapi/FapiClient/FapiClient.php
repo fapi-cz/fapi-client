@@ -19,6 +19,7 @@ use Fapi\FapiClient\EndPoints\Settings;
 use Fapi\FapiClient\EndPoints\Statistics;
 use Fapi\FapiClient\EndPoints\User;
 use Fapi\FapiClient\EndPoints\UserSettings;
+use Fapi\FapiClient\EndPoints\Vouchers;
 use Fapi\FapiClient\Rest\FapiRestClient;
 use Fapi\HttpClient\IHttpClient;
 
@@ -124,6 +125,9 @@ class FapiClient implements IFapiClient
 	 */
 	public $userSetting;
 
+	/** @var Vouchers  */
+	private $vouchers;
+
 	public function __construct(string $username, string $password, string $apiUrl, IHttpClient $httpClient)
 	{
 		$this->restClient = new FapiRestClient($username, $password, $apiUrl, $httpClient);
@@ -143,6 +147,7 @@ class FapiClient implements IFapiClient
 		$this->periodicInvoices = new PeriodicInvoices($this->restClient);
 		$this->exchangeRates = new ExchangeRates($this->restClient);
 		$this->userSetting = new UserSettings($this->restClient);
+		$this->vouchers = new Vouchers($this->restClient);
 	}
 
 	/**
@@ -236,6 +241,11 @@ class FapiClient implements IFapiClient
 	public function getUserSetting(): UserSettings
 	{
 		return $this->userSetting;
+	}
+
+	public function getVouchers(): Vouchers
+	{
+		return $this->vouchers;
 	}
 
 }
