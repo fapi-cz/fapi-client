@@ -19,6 +19,7 @@ use Fapi\FapiClient\EndPoints\Settings;
 use Fapi\FapiClient\EndPoints\Statistics;
 use Fapi\FapiClient\EndPoints\User;
 use Fapi\FapiClient\EndPoints\UserSettings;
+use Fapi\FapiClient\EndPoints\Vouchers;
 
 interface IFapiClient
 {
@@ -62,5 +63,7 @@ interface IFapiClient
 	public function getItemTemplates(): ItemTemplates;
 
 	public function getDiscountCodes(): DiscountCodes;
+
+	public function getVouchers(): Vouchers;
 
 }
