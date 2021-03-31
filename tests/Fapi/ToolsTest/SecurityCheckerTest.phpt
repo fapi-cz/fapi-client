@@ -13,27 +13,51 @@ final class SecurityCheckerTest extends TestCase
 {
 
 	/**
-	 * @dataProvider getIsValidData
+	 * @dataProvider getIsInvoiceSecurityValid
 	 * @param mixed[] $invoice
 	 */
-	public function testIsValid(array $invoice, int $time, string $expectedSecurity)
+	public function testIsInvoiceSecurityValid(array $invoice, int $time, string $expectedSecurity)
 	{
 		Assert::true(SecurityChecker::isValid($invoice, $time, $expectedSecurity));
 	}
 
 	/**
-	 * @dataProvider getInvalidData
+	 * @dataProvider getIsInvoiceSecurityInvalid
 	 * @param mixed[] $invoice
 	 */
-	public function testInvalid(array $invoice, int $time, string $expectedSecurity)
+	public function testIsInvoiceSecurityInvalid(array $invoice, int $time, string $expectedSecurity)
 	{
 		Assert::false(SecurityChecker::isValid($invoice, $time, $expectedSecurity));
 	}
 
 	/**
+	 * @dataProvider getIsVoucherSecurityValid
+	 * @param mixed[] $voucher
+	 * @param mixed[] $itemTemplate
+	 */
+	public function testIsVoucherSecurityValid(array $voucher, array $itemTemplate, int $time, string $expectedSecurity)
+	{
+		Assert::true(SecurityChecker::isVoucherSecurityValid($voucher, $itemTemplate, $time, $expectedSecurity));
+	}
+
+	/**
+	 * @dataProvider getIsVoucherSecurityInvalid
+	 * @param mixed[] $voucher
+	 * @param mixed[] $itemTemplate
+	 */
+	public function testIsVoucherSecurityInvalid(
+		array $voucher,
+		array $itemTemplate,
+		int $time,
+		string $expectedSecurity
+	) {
+		Assert::false(SecurityChecker::isVoucherSecurityValid($voucher, $itemTemplate, $time, $expectedSecurity));
+	}
+
+	/**
 	 * @return mixed[]
 	 */
-	public function getIsValidData(): array
+	public function getIsInvoiceSecurityValid(): array
 	{
 		return [
 			[
@@ -60,7 +84,7 @@ final class SecurityCheckerTest extends TestCase
 	/**
 	 * @return mixed[]
 	 */
-	public function getInvalidData(): array
+	public function getIsInvoiceSecurityInvalid(): array
 	{
 		return [
 			[
@@ -79,6 +103,54 @@ final class SecurityCheckerTest extends TestCase
 			],
 			[
 				'invoice' => [],
+				'time' => 1542298656,
+				'expectedSecurity' => '35221e0d0168d282edc3768ed4b4e878dec3c921',
+			],
+		];
+	}
+
+	/**
+	 * @return mixed[]
+	 */
+	public function getIsVoucherSecurityValid(): array
+	{
+		return [
+			[
+				'voucher' => [
+					'id' => 102,
+					'code' => 'ZQSDP3',
+				],
+				'itemTemplate' => [
+					'id' => 1,
+					'code' => 'STARTY',
+				],
+				'time' => 1617179013,
+				'expectedSecurity' => 'cf7550d28d2015944992225ae3a42752608060b7',
+			],
+		];
+	}
+
+	/**
+	 * @return mixed[]
+	 */
+	public function getIsVoucherSecurityInvalid(): array
+	{
+		return [
+			[
+				'voucher' => [
+					'id' => 1,
+					'code' => "ABCD",
+				],
+				'itemTemplate' => [
+					'id' => 1,
+					'code' => 'test',
+				],
+				'time' => 1542298656,
+				'expectedSecurity' => '35221e0d0168d282edc3768ed4b4e878dec3c921',
+			],
+			[
+				'voucher' => [],
+				'itemTemplate' => [],
 				'time' => 1542298656,
 				'expectedSecurity' => '35221e0d0168d282edc3768ed4b4e878dec3c921',
 			],

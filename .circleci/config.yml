@@ -22,7 +22,7 @@ jobs:
 
     - run: bin/cs
     - run: bin/stan
-    - run: vendor/bin/tester tests -c tests/php-ci.ini --coverage coverage.xml --coverage-src src
+    - run: vendor/bin/tester tests -C --coverage coverage.xml --coverage-src src
     - run: bash <(curl -s https://codecov.io/bash) -t df85f2a9-bd16-49f2-bfb3-64f092dcca7a
 
     - store_artifacts:
