@@ -1,5 +1,5 @@
 
-[![CircleCI](https://circleci.com/gh/fapi-cz/fapi-client.svg?style=shield)](https://circleci.com/gh/fapi-cz/fapi-client)
+[![build](https://github.com/fapi-cz/fapi-client/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/fapi-cz/fapi-client/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/fapi-cz/fapi-client/branch/master/graph/badge.svg)](https://codecov.io/gh/fapi-cz/fapi-client)
 [![Maintainability](https://api.codeclimate.com/v1/badges/f364fbba86383aaab443/maintainability)](https://codeclimate.com/github/fapi-cz/php-client/maintainability)
 
