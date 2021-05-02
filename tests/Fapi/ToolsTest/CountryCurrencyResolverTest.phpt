@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\ToolsTest;
 
@@ -12,7 +11,7 @@ require_once __DIR__ . '/../../bootstrap.php';
 final class CountryCurrencyResolverTest extends TestCase
 {
 
-	public function testGetCurrencyCode()
+	public function testGetCurrencyCode(): void
 	{
 		$countryCurrencyResolver = new CountryCurrencyResolver(['*' => 'EUR', 'CZ' => 'CZK', 'PL' => 'PLN']);
 

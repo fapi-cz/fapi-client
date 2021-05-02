@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\DI;
 
@@ -15,7 +14,7 @@ use Nette\Utils\Validators;
 final class FapiClientExtension extends CompilerExtension
 {
 
-	/** @var mixed[] */
+	/** @var array<mixed> */
 	public $defaults = [
 		'username' => '',
 		'password' => '',
@@ -23,7 +22,7 @@ final class FapiClientExtension extends CompilerExtension
 		'httpClient' => null,
 	];
 
-	public function loadConfiguration()
+	public function loadConfiguration(): void
 	{
 		$container = $this->getContainerBuilder();
 		$config = $this->validateConfig($this->defaults);

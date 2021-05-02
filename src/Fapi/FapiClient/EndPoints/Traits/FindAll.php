@@ -1,12 +1,13 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints\Traits;
+
+use Fapi\FapiClient\Rest\FapiRestClient;
 
 trait FindAll
 {
 
-	/** @var \Fapi\FapiClient\Rest\FapiRestClient */
+	/** @var FapiRestClient */
 	private $client;
 
 	/** @var string */
@@ -16,8 +17,8 @@ trait FindAll
 	private $resources;
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return mixed[]
+	 * @param array<mixed> $parameters
+	 * @return array<mixed>
 	 */
 	public function findAll(array $parameters = []): array
 	{

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient;
 
@@ -25,10 +24,9 @@ interface IFapiClient
 {
 
 	/**
-	 * @return void
 	 * @throws AuthorizationException
 	 */
-	public function checkConnection();
+	public function checkConnection(): void;
 
 	public function getCurrentUsername(): string;
 

@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClientTests;
 
@@ -10,6 +9,7 @@ use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
 use Tester\Environment;
 use Tester\TestCase;
+use const LOCKS_DIR;
 
 require __DIR__ . '/../../bootstrap.php';
 
@@ -22,9 +22,9 @@ class FapiClientExchangeRatesTest extends TestCase
 	/** @var FapiClient */
 	private $fapiClient;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
-		Environment::lock('FapiClient', \LOCKS_DIR);
+		Environment::lock('FapiClient', LOCKS_DIR);
 
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
@@ -40,26 +40,28 @@ class FapiClientExchangeRatesTest extends TestCase
 		);
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		$this->httpClient->close();
 	}
 
-	public function testList()
+	public function testList(): void
 	{
-		Assert::exception(function () {
+		Assert::exception(function (): void {
 			$this->fapiClient->getExchangeRates()->list();
 		}, ValidationException::class, 'Missing key: source');
 
-		Assert::exception(function () {
+		Assert::exception(function (): void {
 			$this->fapiClient->getExchangeRates()->list(['source' => 'EUR']);
 		}, ValidationException::class, 'Missing key: target');
 
-		Assert::exception(function () {
+		Assert::exception(function (): void {
 			$this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK']);
 		}, ValidationException::class, 'Parameter date_from and date_to can not be null together with parameter date.');
 
-		$exchangeRates = $this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08']);
+		$exchangeRates = $this->fapiClient->getExchangeRates()->list(
+			['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08']
+		);
 
 		Assert::equal([
 			[
@@ -70,7 +72,9 @@ class FapiClientExchangeRatesTest extends TestCase
 			],
 		], $exchangeRates);
 
-		$exchangeRate = $this->fapiClient->getExchangeRates()->list(['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08', 'single' => true]);
+		$exchangeRate = $this->fapiClient->getExchangeRates()->list(
+			['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08', 'single' => true]
+		);
 
 		Assert::equal(
 			[
@@ -78,8 +82,9 @@ class FapiClientExchangeRatesTest extends TestCase
 				'source_currency' => 'EUR',
 				'target_currency' => 'CZK',
 				'exchange_rate' => 26.47,
-			]
-			, $exchangeRate);
+			],
+			$exchangeRate
+		);
 
 	}
 

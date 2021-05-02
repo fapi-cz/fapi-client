@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClientTests;
 
@@ -9,6 +8,7 @@ use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
 use Tester\Environment;
 use Tester\TestCase;
+use const LOCKS_DIR;
 
 require __DIR__ . '/../../bootstrap.php';
 
@@ -21,9 +21,9 @@ class FapiClientCountriesTest extends TestCase
 	/** @var FapiClient */
 	private $fapiClient;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
-		Environment::lock('FapiClient', \LOCKS_DIR);
+		Environment::lock('FapiClient', LOCKS_DIR);
 
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
@@ -39,12 +39,12 @@ class FapiClientCountriesTest extends TestCase
 		);
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		$this->httpClient->close();
 	}
 
-	public function testGetAndUpdateCountries()
+	public function testGetAndUpdateCountries(): void
 	{
 		$countries = $this->fapiClient->getCountries()->findAll();
 

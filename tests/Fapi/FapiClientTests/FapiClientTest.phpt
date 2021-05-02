@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClientTests;
 
@@ -10,6 +9,7 @@ use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
 use Tester\Environment;
 use Tester\TestCase;
+use const LOCKS_DIR;
 
 require __DIR__ . '/../../bootstrap.php';
 
@@ -22,9 +22,9 @@ class FapiClientTest extends TestCase
 	/** @var FapiClient */
 	private $fapiClient;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
-		Environment::lock('FapiClient', \LOCKS_DIR);
+		Environment::lock('FapiClient', LOCKS_DIR);
 
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
@@ -40,29 +40,29 @@ class FapiClientTest extends TestCase
 		);
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		$this->httpClient->close();
 	}
 
-	public function testGetCurrentUser()
+	public function testGetCurrentUser(): void
 	{
 		$this->fapiClient->checkConnection();
 
 		$this->setInvalidPassword();
 
-		Assert::exception(function () {
+		Assert::exception(function (): void {
 			$this->fapiClient->checkConnection();
 		}, AuthorizationException::class, 'Invalid password.');
 
 		$this->setInvalidUsername();
 
-		Assert::exception(function () {
+		Assert::exception(function (): void {
 			$this->fapiClient->checkConnection();
 		}, AuthorizationException::class, 'Invalid password.');
 	}
 
-	private function setInvalidPassword()
+	private function setInvalidPassword(): void
 	{
 		$this->fapiClient = new FapiClient(
 			'slischka@test-fapi.cz',
@@ -72,7 +72,7 @@ class FapiClientTest extends TestCase
 		);
 	}
 
-	private function setInvalidUsername()
+	private function setInvalidUsername(): void
 	{
 		$this->fapiClient = new FapiClient(
 			'-@-.cz',

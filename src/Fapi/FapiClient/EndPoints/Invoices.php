@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
@@ -10,6 +9,7 @@ use Fapi\FapiClient\EndPoints\Traits\FindAll;
 use Fapi\FapiClient\EndPoints\Traits\Update;
 use Fapi\FapiClient\Rest\FapiRestClient;
 use Fapi\FapiClient\ValidationException;
+use function is_int;
 
 final class Invoices
 {
@@ -28,18 +28,15 @@ final class Invoices
 	}
 
 	/**
-	 * @param int $id
-	 * @param mixed[] $parameters
-	 * @return string|null
+	 * @param array<mixed> $parameters
 	 */
-	public function getPdf(int $id, array $parameters = [])
+	public function getPdf(int $id, array $parameters = []): ?string
 	{
 		return $this->client->getInvoicePdf($id, $parameters);
 	}
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return int
+	 * @param array<mixed> $parameters
 	 */
 	public function getCount(array $parameters = []): int
 	{
@@ -49,16 +46,15 @@ final class Invoices
 	}
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return string|null
+	 * @param array<mixed> $parameters
 	 */
-	public function generateQrCode(array $parameters)
+	public function generateQrCode(array $parameters): ?string
 	{
 		if (!isset($parameters['invoice'])) {
 			throw new ValidationException('Missing key "invoice" with invoice id.');
 		}
 
-		if (!\is_int($parameters['invoice'])) {
+		if (!is_int($parameters['invoice'])) {
 			throw new ValidationException('Parameter "invoice" must be integer.');
 		}
 
@@ -69,15 +65,15 @@ final class Invoices
 	}
 
 	/**
-	 * @param mixed[] $parameters
+	 * @param array<mixed> $parameters
 	 */
-	public function sendEmailWithInvoice(array $parameters)
+	public function sendEmailWithInvoice(array $parameters): void
 	{
 		$this->client->sendEmailWithInvoice($parameters);
 	}
 
 	/**
-	 * @return mixed[]
+	 * @return array<mixed>
 	 */
 	public function getInvoicesSequence(int $invoiceId): array
 	{

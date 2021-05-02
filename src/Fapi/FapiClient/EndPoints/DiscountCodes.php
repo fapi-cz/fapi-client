@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
@@ -27,9 +26,7 @@ final class DiscountCodes
 	}
 
 	/**
-	 * @param string $code
-	 * @param string $path
-	 * @return mixed[]
+	 * @return array<mixed>
 	 */
 	public function isValid(string $code, string $path): array
 	{

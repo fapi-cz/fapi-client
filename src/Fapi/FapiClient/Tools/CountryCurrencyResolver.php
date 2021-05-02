@@ -1,16 +1,15 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\Tools;
 
 final class CountryCurrencyResolver
 {
 
-	/** @var string[] */
+	/** @var array<string> */
 	private $countryCurrencySetting;
 
 	/**
-	 * @param string[] $countryCurrencySetting
+	 * @param array<string> $countryCurrencySetting
 	 */
 	public function __construct(array $countryCurrencySetting)
 	{

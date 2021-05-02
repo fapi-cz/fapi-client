@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
@@ -22,8 +21,8 @@ final class Countries
 	}
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return string[]
+	 * @param array<mixed> $parameters
+	 * @return array<string>
 	 */
 	public function findAll(array $parameters = []): array
 	{

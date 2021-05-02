@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\ToolsTest;
 
@@ -14,48 +13,54 @@ final class SecurityCheckerTest extends TestCase
 
 	/**
 	 * @dataProvider getIsInvoiceSecurityValid
-	 * @param mixed[] $invoice
+	 * @param array<mixed> $invoice
 	 */
-	public function testIsInvoiceSecurityValid(array $invoice, int $time, string $expectedSecurity)
+	public function testIsInvoiceSecurityValid(array $invoice, int $time, string $expectedSecurity): void
 	{
 		Assert::true(SecurityChecker::isValid($invoice, $time, $expectedSecurity));
 	}
 
 	/**
 	 * @dataProvider getIsInvoiceSecurityInvalid
-	 * @param mixed[] $invoice
+	 * @param array<mixed> $invoice
 	 */
-	public function testIsInvoiceSecurityInvalid(array $invoice, int $time, string $expectedSecurity)
+	public function testIsInvoiceSecurityInvalid(array $invoice, int $time, string $expectedSecurity): void
 	{
 		Assert::false(SecurityChecker::isValid($invoice, $time, $expectedSecurity));
 	}
 
 	/**
 	 * @dataProvider getIsVoucherSecurityValid
-	 * @param mixed[] $voucher
-	 * @param mixed[] $itemTemplate
+	 * @param array<mixed> $voucher
+	 * @param array<mixed> $itemTemplate
 	 */
-	public function testIsVoucherSecurityValid(array $voucher, array $itemTemplate, int $time, string $expectedSecurity)
+	public function testIsVoucherSecurityValid(
+		array $voucher,
+		array $itemTemplate,
+		int $time,
+		string $expectedSecurity
+	): void
 	{
 		Assert::true(SecurityChecker::isVoucherSecurityValid($voucher, $itemTemplate, $time, $expectedSecurity));
 	}
 
 	/**
 	 * @dataProvider getIsVoucherSecurityInvalid
-	 * @param mixed[] $voucher
-	 * @param mixed[] $itemTemplate
+	 * @param array<mixed> $voucher
+	 * @param array<mixed> $itemTemplate
 	 */
 	public function testIsVoucherSecurityInvalid(
 		array $voucher,
 		array $itemTemplate,
 		int $time,
 		string $expectedSecurity
-	) {
+	): void
+	{
 		Assert::false(SecurityChecker::isVoucherSecurityValid($voucher, $itemTemplate, $time, $expectedSecurity));
 	}
 
 	/**
-	 * @return mixed[]
+	 * @return array<mixed>
 	 */
 	public function getIsInvoiceSecurityValid(): array
 	{
@@ -82,7 +87,7 @@ final class SecurityCheckerTest extends TestCase
 	}
 
 	/**
-	 * @return mixed[]
+	 * @return array<mixed>
 	 */
 	public function getIsInvoiceSecurityInvalid(): array
 	{
@@ -110,7 +115,7 @@ final class SecurityCheckerTest extends TestCase
 	}
 
 	/**
-	 * @return mixed[]
+	 * @return array<mixed>
 	 */
 	public function getIsVoucherSecurityValid(): array
 	{
@@ -131,7 +136,7 @@ final class SecurityCheckerTest extends TestCase
 	}
 
 	/**
-	 * @return mixed[]
+	 * @return array<mixed>
 	 */
 	public function getIsVoucherSecurityInvalid(): array
 	{
@@ -139,7 +144,7 @@ final class SecurityCheckerTest extends TestCase
 			[
 				'voucher' => [
 					'id' => 1,
-					'code' => "ABCD",
+					'code' => 'ABCD',
 				],
 				'itemTemplate' => [
 					'id' => 1,

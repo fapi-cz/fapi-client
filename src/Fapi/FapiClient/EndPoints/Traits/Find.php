@@ -1,22 +1,23 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints\Traits;
+
+use Fapi\FapiClient\Rest\FapiRestClient;
 
 trait Find
 {
 
-	/** @var \Fapi\FapiClient\Rest\FapiRestClient */
+	/** @var FapiRestClient */
 	private $client;
 
 	/** @var string */
 	private $path;
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return mixed[]|null
+	 * @param array<mixed> $parameters
+	 * @return array<mixed>|null
 	 */
-	public function find(int $id, array $parameters = [])
+	public function find(int $id, array $parameters = []): ?array
 	{
 		return $this->client->getResource($this->path, $id, $parameters);
 	}

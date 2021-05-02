@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
@@ -25,12 +24,12 @@ final class ExchangeRates
 	}
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return mixed[]
+	 * @param array<mixed> $parameters
+	 * @return array<mixed>
 	 */
-	public function list(array $parameters = [])
+	public function list(array $parameters = []): array
 	{
-		if (isset($parameters['single']) && $parameters['single']) {
+		if (isset($parameters['single']) && (bool) $parameters['single']) {
 			return $this->client->getSingularResource($this->path . '/list', $parameters);
 		}
 
