@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
@@ -22,8 +21,8 @@ final class Settings
 	}
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return mixed[]
+	 * @param array<mixed> $parameters
+	 * @return array<mixed>
 	 */
 	public function findAll(array $parameters = []): array
 	{
@@ -32,14 +31,17 @@ final class Settings
 		return $this->client->getResources($this->path, 'settings', $parameters, $options);
 	}
 
-	public function find(string $key)
+	/**
+	 * @return array<mixed>|null
+	 */
+	public function find(string $key): ?array
 	{
 		return $this->client->getResource($this->path, $key, [], FapiRestClientOptions::STRING_KEY);
 	}
 
 	/**
-	 * @param mixed[] $data
-	 * @return mixed[]
+	 * @param array<mixed> $data
+	 * @return array<mixed>
 	 */
 	public function create(array $data): array
 	{
@@ -47,15 +49,15 @@ final class Settings
 	}
 
 	/**
-	 * @param mixed[] $data
-	 * @return mixed[]
+	 * @param array<mixed> $data
+	 * @return array<mixed>
 	 */
 	public function update(string $key, array $data): array
 	{
 		return $this->client->updateResource($this->path, $key, $data, FapiRestClientOptions::STRING_KEY);
 	}
 
-	public function delete(string $key)
+	public function delete(string $key): void
 	{
 		$this->client->deleteResource($this->path, $key);
 

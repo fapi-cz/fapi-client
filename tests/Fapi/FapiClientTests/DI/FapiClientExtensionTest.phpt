@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClientTests\DI;
 
@@ -27,25 +26,25 @@ final class FapiClientExtensionTest extends TestCase
 	/** @var string */
 	private $tempDir;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 		$this->tempDir = __DIR__ . '/tmp/' . Random::generate(1);
 	}
 
-	public function testConfigSimple()
+	public function testConfigSimple(): void
 	{
 		$c = $this->createContainer('simple');
 
 		$fapiClientFactory = $c->getByType(IFapiClientFactory::class);
 		Assert::type(IFapiClientFactory::class, $fapiClientFactory);
 
-		Assert::exception(static function () use ($c) {
+		Assert::exception(static function () use ($c): void {
 			$c->getByType(IFapiClient::class);
 		}, MissingServiceException::class);
 	}
 
-	public function testConfigWithCurlService()
+	public function testConfigWithCurlService(): void
 	{
 		$c = $this->createContainer('withCurlService');
 
@@ -59,7 +58,7 @@ final class FapiClientExtensionTest extends TestCase
 		Assert::type(CurlHttpClient::class, $fapiClient);
 	}
 
-	public function testConfigCurlExtensionSetting()
+	public function testConfigCurlExtensionSetting(): void
 	{
 		$c = $this->createContainer('curlExtensionSetting');
 
@@ -73,7 +72,7 @@ final class FapiClientExtensionTest extends TestCase
 		Assert::type(CurlHttpClient::class, $fapiClient);
 	}
 
-	public function testConfigWithGuzzleService()
+	public function testConfigWithGuzzleService(): void
 	{
 		$c = $this->createContainer('withGuzzleService');
 
@@ -87,7 +86,7 @@ final class FapiClientExtensionTest extends TestCase
 		Assert::type(GuzzleHttpClient::class, $fapiClient);
 	}
 
-	public function testConfigGuzzleExtensionSetting()
+	public function testConfigGuzzleExtensionSetting(): void
 	{
 		$c = $this->createContainer('guzzleExtensionSetting');
 
@@ -101,7 +100,7 @@ final class FapiClientExtensionTest extends TestCase
 		Assert::type(GuzzleHttpClient::class, $fapiClient);
 	}
 
-	public function testConfigWithLoggingHttpClient()
+	public function testConfigWithLoggingHttpClient(): void
 	{
 		$c = $this->createContainer('withLoggingHttpClient');
 
@@ -115,7 +114,7 @@ final class FapiClientExtensionTest extends TestCase
 		Assert::type(BarHttpClient::class, $fapiClient);
 	}
 
-	public function testConfigWithHttpClientExtension()
+	public function testConfigWithHttpClientExtension(): void
 	{
 		$c = $this->createContainer('withHttpClientExtension');
 
@@ -134,7 +133,7 @@ final class FapiClientExtensionTest extends TestCase
 		$loader = new ContainerLoader($this->tempDir);
 		$key = __FILE__ . ':' . __LINE__ . ':' . $config;
 		$className = $loader->load(
-			static function (Compiler $compiler) use ($config) {
+			static function (Compiler $compiler) use ($config): void {
 				$compiler->addExtension('extensions', new ExtensionsExtension());
 				$compiler->addConfig([
 					'parameters' => [],
@@ -147,7 +146,7 @@ final class FapiClientExtensionTest extends TestCase
 		return new $className([]);
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		FileSystem::delete($this->tempDir);
 		parent::tearDown();

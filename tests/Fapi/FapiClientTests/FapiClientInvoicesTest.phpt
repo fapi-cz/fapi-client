@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClientTests;
 
@@ -13,6 +12,7 @@ use Nette\Utils\Strings;
 use Tester\Assert;
 use Tester\Environment;
 use Tester\TestCase;
+use const LOCKS_DIR;
 
 require __DIR__ . '/../../bootstrap.php';
 
@@ -25,9 +25,9 @@ class FapiClientInvoicesTest extends TestCase
 	/** @var FapiClient */
 	private $fapiClient;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
-		Environment::lock('FapiClient', \LOCKS_DIR);
+		Environment::lock('FapiClient', LOCKS_DIR);
 
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
@@ -43,12 +43,12 @@ class FapiClientInvoicesTest extends TestCase
 		);
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		$this->httpClient->close();
 	}
 
-	public function testCreateGetUpdateAndDeleteInvoices()
+	public function testCreateGetUpdateAndDeleteInvoices(): void
 	{
 		$createdInvoice = $this->fapiClient->getInvoices()->create([
 			'client' => 1808089,
@@ -91,7 +91,7 @@ class FapiClientInvoicesTest extends TestCase
 		Assert::same($invoice['id'], $updatedInvoice['id']);
 		Assert::same('Sample footer note', $updatedInvoice['notes']);
 
-		Assert::exception(function () {
+		Assert::exception(function (): void {
 			$this->fapiClient->getInvoices()->find(1);
 		}, AuthorizationException::class, 'You are not authorized for this action.');
 
@@ -108,13 +108,13 @@ class FapiClientInvoicesTest extends TestCase
 			'message_template' => 'E-mail pro vystavení objednávky',
 		]);
 
-		Assert::exception(function () {
+		Assert::exception(function (): void {
 			$this->fapiClient->getInvoices()->sendEmailWithInvoice([
 				'invoice' => -1,
 			]);
 		}, ValidationException::class);
 
-		Assert::exception(function () {
+		Assert::exception(function (): void {
 			$this->fapiClient->getInvoices()->sendEmailWithInvoice([
 				'invoice' => 1,
 			]);

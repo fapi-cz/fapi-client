@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
@@ -22,11 +21,16 @@ final class UserSettings
 	}
 
 	/**
-	 * @return string[]
+	 * @return array<string>
 	 */
 	public function countryCurrencySetting(): array
 	{
-		return $this->client->getResources($this->path . '/country-currency-setting', 'country_currency_setting', [], FapiRestClientOptions::STRING_RESOURCE);
+		return $this->client->getResources(
+			$this->path . '/country-currency-setting',
+			'country_currency_setting',
+			[],
+			FapiRestClientOptions::STRING_RESOURCE
+		);
 	}
 
 }

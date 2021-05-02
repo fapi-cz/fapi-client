@@ -1,18 +1,19 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints\Traits;
+
+use Fapi\FapiClient\Rest\FapiRestClient;
 
 trait Delete
 {
 
-	/** @var \Fapi\FapiClient\Rest\FapiRestClient */
+	/** @var FapiRestClient */
 	private $client;
 
 	/** @var string */
 	private $path;
 
-	public function delete(int $id)
+	public function delete(int $id): void
 	{
 		$this->client->deleteResource($this->path, $id);
 	}

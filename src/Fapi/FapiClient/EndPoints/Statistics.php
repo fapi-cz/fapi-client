@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
@@ -21,8 +20,8 @@ final class Statistics
 	}
 
 	/**
-	 * @param mixed[] $parameters
-	 * @return mixed[]
+	 * @param array<mixed> $parameters
+	 * @return array<mixed>
 	 */
 	public function getTotalStatistics(array $parameters): array
 	{

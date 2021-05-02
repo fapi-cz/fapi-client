@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClientTests;
 
@@ -10,6 +9,7 @@ use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
 use Tester\Environment;
 use Tester\TestCase;
+use const LOCKS_DIR;
 
 require __DIR__ . '/../../bootstrap.php';
 
@@ -22,9 +22,9 @@ class FapiClientItemsTest extends TestCase
 	/** @var FapiClient */
 	private $fapiClient;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
-		Environment::lock('FapiClient', \LOCKS_DIR);
+		Environment::lock('FapiClient', LOCKS_DIR);
 
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
@@ -40,12 +40,12 @@ class FapiClientItemsTest extends TestCase
 		);
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		$this->httpClient->close();
 	}
 
-	public function testCreateGetUpdateAndDeleteItemTemplates()
+	public function testCreateGetUpdateAndDeleteItemTemplates(): void
 	{
 		$item = $this->fapiClient->getItems()->create([
 			'invoice' => 185993795,
@@ -69,7 +69,7 @@ class FapiClientItemsTest extends TestCase
 		$this->fapiClient->getItems()->delete($item['id']);
 
 		$fapiClient = $this->fapiClient;
-		Assert::exception(static function () use ($fapiClient, $item) {
+		Assert::exception(static function () use ($fapiClient, $item): void {
 			$fapiClient->getItems()->update($item['id'], []);
 		}, NotFoundException::class, 'Specified resource does not exist.');
 	}

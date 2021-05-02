@@ -1,11 +1,12 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient;
 
 use Fapi\HttpClient\CurlHttpClient;
 use Fapi\HttpClient\GuzzleHttpClient;
 use Fapi\HttpClient\IHttpClient;
+use function class_exists;
+use function rtrim;
 
 class FapiClientFactory implements IFapiClientFactory
 {
@@ -16,16 +17,12 @@ class FapiClientFactory implements IFapiClientFactory
 	/** @var IHttpClient */
 	private $httpClient;
 
-	public function __construct(string $apiUrl = 'https://api.fapi.cz', IHttpClient $httpClient = null)
+	public function __construct(string $apiUrl = 'https://api.fapi.cz', ?IHttpClient $httpClient = null)
 	{
-		$this->apiUrl = \rtrim($apiUrl, '/');
+		$this->apiUrl = rtrim($apiUrl, '/');
 
 		if ($httpClient === null) {
-			if (\class_exists('\GuzzleHttp\Client')) {
-				$this->httpClient = new GuzzleHttpClient();
-			} else {
-				$this->httpClient = new CurlHttpClient();
-			}
+			$this->httpClient = class_exists('\GuzzleHttp\Client') ? new GuzzleHttpClient() : new CurlHttpClient();
 		} else {
 			$this->httpClient = $httpClient;
 		}

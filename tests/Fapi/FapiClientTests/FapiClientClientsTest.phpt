@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClientTests;
 
@@ -10,6 +9,7 @@ use Fapi\HttpClient\GuzzleHttpClient;
 use Tester\Assert;
 use Tester\Environment;
 use Tester\TestCase;
+use const LOCKS_DIR;
 
 require __DIR__ . '/../../bootstrap.php';
 
@@ -22,9 +22,9 @@ class FapiClientClientsTest extends TestCase
 	/** @var FapiClient */
 	private $fapiClient;
 
-	protected function setUp()
+	protected function setUp(): void
 	{
-		Environment::lock('FapiClient', \LOCKS_DIR);
+		Environment::lock('FapiClient', LOCKS_DIR);
 
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
@@ -40,12 +40,12 @@ class FapiClientClientsTest extends TestCase
 		);
 	}
 
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		$this->httpClient->close();
 	}
 
-	public function testCreateGetUpdateAndDeleteClients()
+	public function testCreateGetUpdateAndDeleteClients(): void
 	{
 		$client = $this->fapiClient->getClients()->create([
 			'email' => 'test-Fapi@fabik.org',
@@ -79,7 +79,7 @@ class FapiClientClientsTest extends TestCase
 		Assert::null($this->fapiClient->getClients()->find($client['id']));
 
 		$fapiClient = $this->fapiClient;
-		Assert::exception(static function () use ($fapiClient) {
+		Assert::exception(static function () use ($fapiClient): void {
 			$fapiClient->getClients()->find(1);
 		}, AuthorizationException::class, 'You are not authorized for this action.');
 	}

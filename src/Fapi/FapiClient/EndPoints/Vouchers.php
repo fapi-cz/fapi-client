@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient\EndPoints;
 
@@ -24,8 +23,8 @@ final class Vouchers
 	}
 
 	/**
-	 * @param mixed[] $data
-	 * @return mixed[]
+	 * @param array<mixed> $data
+	 * @return array<mixed>
 	 */
 	public function applyVoucher(string $code, array $data = []): array
 	{

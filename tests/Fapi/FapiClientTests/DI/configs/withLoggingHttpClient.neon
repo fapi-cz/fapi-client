@@ -10,11 +10,11 @@ services:
 
 	httpClient:
 		factory: Fapi\HttpClient\CurlHttpClient
-		autowired: off
+		autowired: false
 
 	loggingHttpClient:
 		factory: Fapi\HttpClient\LoggingHttpClient(@httpClient)
-		autowired: off
+		autowired: false
 
 	barHttpClient:
 		factory: Fapi\HttpClient\Bridges\Tracy\BarHttpClient(@loggingHttpClient)

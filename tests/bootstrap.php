@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 if (@!include __DIR__ . '/../vendor/autoload.php') {
 	echo 'Install Nette Tester using `composer install`';
@@ -8,5 +7,5 @@ if (@!include __DIR__ . '/../vendor/autoload.php') {
 
 Tester\Environment::setup();
 
-\define('LOCKS_DIR', __DIR__ . '/locks');
-@\mkdir(\LOCKS_DIR);
+define('LOCKS_DIR', __DIR__ . '/locks');
+@mkdir(LOCKS_DIR);

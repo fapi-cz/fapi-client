@@ -1,5 +1,4 @@
-<?php
-declare(strict_types = 1);
+<?php declare(strict_types = 1);
 
 namespace Fapi\FapiClient;
 
@@ -150,10 +149,7 @@ class FapiClient implements IFapiClient
 		$this->vouchers = new Vouchers($this->restClient);
 	}
 
-	/**
-	 * @inheritdoc
-	 */
-	public function checkConnection()
+	public function checkConnection(): void
 	{
 		$this->restClient->checkConnection();
 	}
