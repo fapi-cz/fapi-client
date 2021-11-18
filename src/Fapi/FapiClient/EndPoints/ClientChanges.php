@@ -25,9 +25,9 @@ final class ClientChanges
 
 	/**
 	 * @param array<mixed> $parameters
-	 * @return array<mixed>|null
+	 * @return array<mixed>
 	 */
-	public function findAll(int $clientId, array $parameters = []): ?array
+	public function findAll(int $clientId, array $parameters = []): array
 	{
 		return $this->client->getResources(
 			$this->path . '/search',

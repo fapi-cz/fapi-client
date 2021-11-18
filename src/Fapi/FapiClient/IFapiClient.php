@@ -3,6 +3,7 @@
 namespace Fapi\FapiClient;
 
 use Fapi\FapiClient\EndPoints\ApiTokens;
+use Fapi\FapiClient\EndPoints\ClientChanges;
 use Fapi\FapiClient\EndPoints\Clients;
 use Fapi\FapiClient\EndPoints\Countries;
 use Fapi\FapiClient\EndPoints\DiscountCodes;
@@ -63,5 +64,7 @@ interface IFapiClient
 	public function getDiscountCodes(): DiscountCodes;
 
 	public function getVouchers(): Vouchers;
+
+	public function getClientChanges(): ClientChanges;
 
 }
