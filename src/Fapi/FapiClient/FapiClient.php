@@ -3,6 +3,7 @@
 namespace Fapi\FapiClient;
 
 use Fapi\FapiClient\EndPoints\ApiTokens;
+use Fapi\FapiClient\EndPoints\ClientChanges;
 use Fapi\FapiClient\EndPoints\Clients;
 use Fapi\FapiClient\EndPoints\Countries;
 use Fapi\FapiClient\EndPoints\DiscountCodes;
@@ -127,6 +128,9 @@ class FapiClient implements IFapiClient
 	/** @var Vouchers  */
 	private $vouchers;
 
+	/** @var ClientChanges  */
+	private $clientChanges;
+
 	public function __construct(string $username, string $password, string $apiUrl, IHttpClient $httpClient)
 	{
 		$this->restClient = new FapiRestClient($username, $password, $apiUrl, $httpClient);
@@ -147,6 +151,7 @@ class FapiClient implements IFapiClient
 		$this->exchangeRates = new ExchangeRates($this->restClient);
 		$this->userSetting = new UserSettings($this->restClient);
 		$this->vouchers = new Vouchers($this->restClient);
+		$this->clientChanges = new ClientChanges($this->restClient);
 	}
 
 	public function checkConnection(): void
@@ -172,6 +177,11 @@ class FapiClient implements IFapiClient
 	public function getClients(): Clients
 	{
 		return $this->clients;
+	}
+
+	public function getClientChanges(): ClientChanges
+	{
+		return $this->clientChanges;
 	}
 
 	public function getCountries(): Countries
