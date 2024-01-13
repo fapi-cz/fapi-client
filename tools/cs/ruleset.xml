@@ -4,7 +4,7 @@
 	<arg name="basepath" value="./../../"/>
 
 	<!-- Configure cache -->
-    <arg name="cache" value="./codesniffer.dat"/>
+	<!--    <arg name="cache" value="./codesniffer.dat"/>-->
 
 	<!-- Import coding-standard -->
 	<rule ref="./../../vendor/orisai/coding-standard/src/ruleset-8.1.xml">
