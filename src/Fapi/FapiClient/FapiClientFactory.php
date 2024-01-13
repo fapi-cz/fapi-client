@@ -11,13 +11,11 @@ use function rtrim;
 class FapiClientFactory implements IFapiClientFactory
 {
 
-	/** @var string */
-	private $apiUrl;
+	private string $apiUrl;
 
-	/** @var IHttpClient */
-	private $httpClient;
+	private IHttpClient $httpClient;
 
-	public function __construct(string $apiUrl = 'https://api.fapi.cz', ?IHttpClient $httpClient = null)
+	public function __construct(string $apiUrl = 'https://api.fapi.cz', IHttpClient|null $httpClient = null)
 	{
 		$this->apiUrl = rtrim($apiUrl, '/');
 

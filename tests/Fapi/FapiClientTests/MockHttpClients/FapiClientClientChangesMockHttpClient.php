@@ -23,7 +23,7 @@ final class FapiClientClientChangesMockHttpClient extends MockHttpClient
 					'Authorization' => ['Basic c2xpc2Noa2FAdGVzdC1mYXBpLmN6OmpJQkFXbEt6ekI2clFWazVZM1QwVnhUZ24='],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -44,8 +44,8 @@ final class FapiClientClientChangesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 					'x-encoded-content-encoding' => ['gzip'],
 				],
-				'{"client_changes":[{"id":14404731,"client":1810411,"action":"created","date":"2020-09-10 10:14:58","changes":null,"user":{"id":5,"username":"admin@fapi.cz"}}]}'
-			)
+				'{"client_changes":[{"id":14404731,"client":1810411,"action":"created","date":"2020-09-10 10:14:58","changes":null,"user":{"id":5,"username":"admin@fapi.cz"}}]}',
+			),
 		);
 	}
 

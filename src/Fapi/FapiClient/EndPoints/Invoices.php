@@ -30,7 +30,7 @@ final class Invoices
 	/**
 	 * @param array<mixed> $parameters
 	 */
-	public function getPdf(int $id, array $parameters = []): ?string
+	public function getPdf(int $id, array $parameters = []): string|null
 	{
 		return $this->client->getInvoicePdf($id, $parameters);
 	}
@@ -48,7 +48,7 @@ final class Invoices
 	/**
 	 * @param array<mixed> $parameters
 	 */
-	public function generateQrCode(array $parameters): ?string
+	public function generateQrCode(array $parameters): string|null
 	{
 		if (!isset($parameters['invoice'])) {
 			throw new ValidationException('Missing key "invoice" with invoice id.');

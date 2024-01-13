@@ -8,15 +8,10 @@ use Fapi\FapiClient\Rest\FapiRestClientOptions;
 final class Settings
 {
 
-	/** @var FapiRestClient */
-	private $client;
+	private string $path;
 
-	/** @var string */
-	private $path;
-
-	public function __construct(FapiRestClient $client)
+	public function __construct(private FapiRestClient $client)
 	{
-		$this->client = $client;
 		$this->path = '/settings';
 	}
 
@@ -34,7 +29,7 @@ final class Settings
 	/**
 	 * @return array<mixed>|null
 	 */
-	public function find(string $key): ?array
+	public function find(string $key): array|null
 	{
 		return $this->client->getResource($this->path, $key, [], FapiRestClientOptions::STRING_KEY);
 	}
@@ -60,7 +55,6 @@ final class Settings
 	public function delete(string $key): void
 	{
 		$this->client->deleteResource($this->path, $key);
-
 	}
 
 }

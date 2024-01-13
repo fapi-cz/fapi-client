@@ -25,7 +25,7 @@ final class FapiClientMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -42,8 +42,8 @@ final class FapiClientMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{}'
-			)
+				'{}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -57,7 +57,7 @@ final class FapiClientMockHttpClient extends MockHttpClient
 					'Authorization' => ['Basic c2xpc2Noa2FAdGVzdC1mYXBpLmN6Onh4eA=='],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				401,
@@ -74,8 +74,8 @@ final class FapiClientMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Invalid password.","type":"AuthenticationException"}'
-			)
+				'{"message":"Invalid password.","type":"AuthenticationException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -89,7 +89,7 @@ final class FapiClientMockHttpClient extends MockHttpClient
 					'Authorization' => ['Basic LUAtLmN6Onh4eA=='],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				401,
@@ -106,8 +106,8 @@ final class FapiClientMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Invalid password.","type":"AuthenticationException"}'
-			)
+				'{"message":"Invalid password.","type":"AuthenticationException"}',
+			),
 		);
 	}
 

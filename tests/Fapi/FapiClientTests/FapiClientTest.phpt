@@ -16,11 +16,9 @@ require __DIR__ . '/../../bootstrap.php';
 class FapiClientTest extends TestCase
 {
 
-	/** @var CapturingHttpClient */
-	private $httpClient;
+	private CapturingHttpClient $httpClient;
 
-	/** @var FapiClient */
-	private $fapiClient;
+	private FapiClient $fapiClient;
 
 	protected function setUp(): void
 	{
@@ -29,14 +27,14 @@ class FapiClientTest extends TestCase
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
 			__DIR__ . '/MockHttpClients/FapiClientMockHttpClient.php',
-			'Fapi\FapiClientTests\MockHttpClients\FapiClientMockHttpClient'
+			'Fapi\FapiClientTests\MockHttpClients\FapiClientMockHttpClient',
 		);
 
 		$this->fapiClient = new FapiClient(
 			'slischka@test-fapi.cz',
 			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
-			$this->httpClient
+			$this->httpClient,
 		);
 	}
 
@@ -68,7 +66,7 @@ class FapiClientTest extends TestCase
 			'slischka@test-fapi.cz',
 			'xxx',
 			'https://api.fapi.cz/',
-			$this->httpClient
+			$this->httpClient,
 		);
 	}
 
@@ -78,7 +76,7 @@ class FapiClientTest extends TestCase
 			'-@-.cz',
 			'xxx',
 			'https://api.fapi.cz/',
-			$this->httpClient
+			$this->httpClient,
 		);
 	}
 

@@ -25,7 +25,7 @@ final class FapiClientStatisticsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -42,8 +42,8 @@ final class FapiClientStatisticsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"issued":[],"cancelled":[],"paid":[],"left_to_pay":[],"overdue":[],"invoiced":[],"dph":[]}'
-			)
+				'{"issued":[],"cancelled":[],"paid":[],"left_to_pay":[],"overdue":[],"invoiced":[],"dph":[]}',
+			),
 		);
 	}
 

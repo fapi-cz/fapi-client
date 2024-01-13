@@ -25,7 +25,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'[]',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				400,
@@ -42,8 +42,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Missing key: purpose","type":"ValidationException"}'
-			)
+				'{"message":"Missing key: purpose","type":"ValidationException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -59,7 +59,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"purpose":"Sample Token"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				201,
@@ -76,8 +76,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":15302,"user_id":13057,"purpose":"Sample Token","token":"y0oWM0dZxVQ0W8PnhAooMbyw4"}'
-			)
+				'{"id":15302,"user_id":13057,"purpose":"Sample Token","token":"y0oWM0dZxVQ0W8PnhAooMbyw4"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -93,7 +93,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -110,8 +110,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"api_tokens":[{"id":15302,"user_id":13057,"purpose":"Sample Token","token":"y0oWM0dZxVQ0W8PnhAooMbyw4"}]}'
-			)
+				'{"api_tokens":[{"id":15302,"user_id":13057,"purpose":"Sample Token","token":"y0oWM0dZxVQ0W8PnhAooMbyw4"}]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -127,7 +127,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -144,8 +144,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"api_tokens":[]}'
-			)
+				'{"api_tokens":[]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -161,7 +161,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -178,8 +178,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":15302,"user_id":13057,"purpose":"Sample Token","token":"y0oWM0dZxVQ0W8PnhAooMbyw4"}'
-			)
+				'{"id":15302,"user_id":13057,"purpose":"Sample Token","token":"y0oWM0dZxVQ0W8PnhAooMbyw4"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -195,7 +195,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"purpose":"Updated Token"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -212,8 +212,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":15302,"user_id":13057,"purpose":"Updated Token","token":"y0oWM0dZxVQ0W8PnhAooMbyw4"}'
-			)
+				'{"id":15302,"user_id":13057,"purpose":"Updated Token","token":"y0oWM0dZxVQ0W8PnhAooMbyw4"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -229,7 +229,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"purpose":"Updated Token"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				404,
@@ -246,8 +246,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Specified resource does not exist.","type":"RequestException"}'
-			)
+				'{"message":"Specified resource does not exist.","type":"RequestException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -263,7 +263,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -280,8 +280,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"status":"success"}'
-			)
+				'{"status":"success"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -297,7 +297,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				404,
@@ -314,8 +314,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Specified resource does not exist.","type":"RequestException"}'
-			)
+				'{"message":"Specified resource does not exist.","type":"RequestException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -331,7 +331,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				404,
@@ -348,8 +348,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Specified resource does not exist.","type":"RequestException"}'
-			)
+				'{"message":"Specified resource does not exist.","type":"RequestException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -365,7 +365,7 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				401,
@@ -382,8 +382,8 @@ final class FapiClientApiTokensMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"You are not authorized for this action.","type":"AuthorizationException"}'
-			)
+				'{"message":"You are not authorized for this action.","type":"AuthorizationException"}',
+			),
 		);
 	}
 

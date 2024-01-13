@@ -8,15 +8,10 @@ use Fapi\FapiClient\Rest\FapiRestClientOptions;
 final class UserSettings
 {
 
-	/** @var FapiRestClient */
-	private $client;
+	private string $path;
 
-	/** @var string */
-	private $path;
-
-	public function __construct(FapiRestClient $client)
+	public function __construct(private FapiRestClient $client)
 	{
-		$this->client = $client;
 		$this->path = '/user-settings';
 	}
 
@@ -29,7 +24,7 @@ final class UserSettings
 			$this->path . '/country-currency-setting',
 			'country_currency_setting',
 			[],
-			FapiRestClientOptions::STRING_RESOURCE
+			FapiRestClientOptions::STRING_RESOURCE,
 		);
 	}
 

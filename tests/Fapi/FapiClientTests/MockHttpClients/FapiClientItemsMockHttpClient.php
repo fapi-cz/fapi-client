@@ -25,7 +25,7 @@ final class FapiClientItemsMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"invoice":185993795,"name":"Sample Item Template","price":10,"count":1}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				201,
@@ -42,8 +42,8 @@ final class FapiClientItemsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":10182756,"invoice":185993795,"name":"Sample Item Template","code":null,"accounting_code":null,"price":10,"count":1,"round_item":false,"correction_item":false,"type":null,"electronically_supplied_service":false,"moss":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"licence_id":null}'
-			)
+				'{"id":10182756,"invoice":185993795,"name":"Sample Item Template","code":null,"accounting_code":null,"price":10,"count":1,"round_item":false,"correction_item":false,"type":null,"electronically_supplied_service":false,"moss":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"licence_id":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -59,7 +59,7 @@ final class FapiClientItemsMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"count":2}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -78,8 +78,8 @@ final class FapiClientItemsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 					'x-encoded-content-encoding' => ['gzip'],
 				],
-				'{"id":10182756,"invoice":185993795,"name":"Sample Item Template","code":null,"accounting_code":null,"price":10,"count":2,"round_item":false,"correction_item":false,"type":null,"electronically_supplied_service":false,"moss":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"licence_id":null}'
-			)
+				'{"id":10182756,"invoice":185993795,"name":"Sample Item Template","code":null,"accounting_code":null,"price":10,"count":2,"round_item":false,"correction_item":false,"type":null,"electronically_supplied_service":false,"moss":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"licence_id":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -95,7 +95,7 @@ final class FapiClientItemsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -112,8 +112,8 @@ final class FapiClientItemsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'null'
-			)
+				'null',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -129,7 +129,7 @@ final class FapiClientItemsMockHttpClient extends MockHttpClient
 					],
 				],
 				'[]',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				404,
@@ -146,8 +146,8 @@ final class FapiClientItemsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Specified resource does not exist.","type":"RequestException"}'
-			)
+				'{"message":"Specified resource does not exist.","type":"RequestException"}',
+			),
 		);
 	}
 

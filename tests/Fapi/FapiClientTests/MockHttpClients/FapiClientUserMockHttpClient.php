@@ -25,7 +25,7 @@ final class FapiClientUserMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -44,8 +44,8 @@ final class FapiClientUserMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 					'x-encoded-content-encoding' => ['gzip'],
 				],
-				'{"id":13057,"plan":"TRIAL","username":"slischka@test-fapi.cz","ic":"0101010","expiration_date":"2020-09-22","sender_email":null,"sender_name":null,"sender_reply_to":null,"emails":["slischkaj@gmail.com"],"billing_user_id":null,"name":"Test","dic":"","ic_dph":"","file_reference":"","registration_date":"2020-09-08","address":{"street":"xx 150","city":"Ostrava","zip":"54812","country":"CZ"},"default_bank_account_set":13670,"default_logo":null,"default_signature":null,"default_reminder_set":16508,"default_project":31862}'
-			)
+				'{"id":13057,"plan":"TRIAL","username":"slischka@test-fapi.cz","ic":"0101010","expiration_date":"2020-09-22","sender_email":null,"sender_name":null,"sender_reply_to":null,"emails":["slischkaj@gmail.com"],"billing_user_id":null,"name":"Test","dic":"","ic_dph":"","file_reference":"","registration_date":"2020-09-08","address":{"street":"xx 150","city":"Ostrava","zip":"54812","country":"CZ"},"default_bank_account_set":13670,"default_logo":null,"default_signature":null,"default_reminder_set":16508,"default_project":31862}',
+			),
 		);
 	}
 

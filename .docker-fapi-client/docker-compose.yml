@@ -1,0 +1,10 @@
+version: '3.6'
+
+services:
+  app:
+    build:
+      context: fapi-client
+    container_name: fapi-client
+    user: "1000:1000"
+    volumes:
+      - ../:/fapi-client

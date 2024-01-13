@@ -12,8 +12,9 @@ final class SecurityCheckerTest extends TestCase
 {
 
 	/**
-	 * @dataProvider getIsInvoiceSecurityValid
 	 * @param array<mixed> $invoice
+	 *
+	 * @dataProvider getIsInvoiceSecurityValid
 	 */
 	public function testIsInvoiceSecurityValid(array $invoice, int $time, string $expectedSecurity): void
 	{
@@ -21,8 +22,9 @@ final class SecurityCheckerTest extends TestCase
 	}
 
 	/**
-	 * @dataProvider getIsInvoiceSecurityInvalid
 	 * @param array<mixed> $invoice
+	 *
+	 * @dataProvider getIsInvoiceSecurityInvalid
 	 */
 	public function testIsInvoiceSecurityInvalid(array $invoice, int $time, string $expectedSecurity): void
 	{
@@ -30,30 +32,32 @@ final class SecurityCheckerTest extends TestCase
 	}
 
 	/**
-	 * @dataProvider getIsVoucherSecurityValid
 	 * @param array<mixed> $voucher
 	 * @param array<mixed> $itemTemplate
+	 *
+	 * @dataProvider getIsVoucherSecurityValid
 	 */
 	public function testIsVoucherSecurityValid(
 		array $voucher,
 		array $itemTemplate,
 		int $time,
-		string $expectedSecurity
+		string $expectedSecurity,
 	): void
 	{
 		Assert::true(SecurityChecker::isVoucherSecurityValid($voucher, $itemTemplate, $time, $expectedSecurity));
 	}
 
 	/**
-	 * @dataProvider getIsVoucherSecurityInvalid
 	 * @param array<mixed> $voucher
 	 * @param array<mixed> $itemTemplate
+	 *
+	 * @dataProvider getIsVoucherSecurityInvalid
 	 */
 	public function testIsVoucherSecurityInvalid(
 		array $voucher,
 		array $itemTemplate,
 		int $time,
-		string $expectedSecurity
+		string $expectedSecurity,
 	): void
 	{
 		Assert::false(SecurityChecker::isVoucherSecurityValid($voucher, $itemTemplate, $time, $expectedSecurity));

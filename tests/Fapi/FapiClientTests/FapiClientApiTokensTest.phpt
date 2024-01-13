@@ -18,11 +18,9 @@ require __DIR__ . '/../../bootstrap.php';
 class FapiClientApiTokensTest extends TestCase
 {
 
-	/** @var CapturingHttpClient */
-	private $httpClient;
+	private CapturingHttpClient $httpClient;
 
-	/** @var FapiClient */
-	private $fapiClient;
+	private FapiClient $fapiClient;
 
 	protected function setUp(): void
 	{
@@ -31,14 +29,14 @@ class FapiClientApiTokensTest extends TestCase
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
 			__DIR__ . '/MockHttpClients/FapiClientApiTokensMockHttpClient.php',
-			'Fapi\FapiClientTests\MockHttpClients\FapiClientApiTokensMockHttpClient'
+			'Fapi\FapiClientTests\MockHttpClients\FapiClientApiTokensMockHttpClient',
 		);
 
 		$this->fapiClient = new FapiClient(
 			'slischka@test-fapi.cz',
 			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
-			$this->httpClient
+			$this->httpClient,
 		);
 	}
 

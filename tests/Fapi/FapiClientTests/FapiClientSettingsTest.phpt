@@ -21,11 +21,9 @@ require __DIR__ . '/../../bootstrap.php';
 class FapiClientSettingsTest extends TestCase
 {
 
-	/** @var CapturingHttpClient */
-	private $httpClient;
+	private CapturingHttpClient $httpClient;
 
-	/** @var FapiClient */
-	private $fapiClient;
+	private FapiClient $fapiClient;
 
 	protected function setUp(): void
 	{
@@ -34,14 +32,14 @@ class FapiClientSettingsTest extends TestCase
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
 			__DIR__ . '/MockHttpClients/FapiClientSettingsMockHttpClient.php',
-			'Fapi\FapiClientTests\MockHttpClients\FapiClientSettingsMockHttpClient'
+			'Fapi\FapiClientTests\MockHttpClients\FapiClientSettingsMockHttpClient',
 		);
 
 		$this->fapiClient = new FapiClient(
 			'slischka@test-fapi.cz',
 			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
-			$this->httpClient
+			$this->httpClient,
 		);
 	}
 

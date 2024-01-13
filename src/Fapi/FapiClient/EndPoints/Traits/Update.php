@@ -7,11 +7,9 @@ use Fapi\FapiClient\Rest\FapiRestClient;
 trait Update
 {
 
-	/** @var FapiRestClient */
-	private $client;
+	private FapiRestClient $client;
 
-	/** @var string */
-	private $path;
+	private string $path;
 
 	/**
 	 * @param array<mixed> $data

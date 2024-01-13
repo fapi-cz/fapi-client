@@ -23,8 +23,7 @@ require_once __DIR__ . '/../../../bootstrap.php';
 final class FapiClientExtensionTest extends TestCase
 {
 
-	/** @var string */
-	private $tempDir;
+	private string $tempDir;
 
 	protected function setUp(): void
 	{
@@ -140,7 +139,7 @@ final class FapiClientExtensionTest extends TestCase
 				]);
 				$compiler->loadConfig(__DIR__ . "/configs/$config.neon");
 			},
-			$key
+			$key,
 		);
 
 		return new $className([]);

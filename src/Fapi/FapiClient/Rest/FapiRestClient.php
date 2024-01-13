@@ -22,24 +22,16 @@ use function rtrim;
 class FapiRestClient
 {
 
-	/** @var string */
-	private $username;
+	private string $apiUrl;
 
-	/** @var string */
-	private $password;
-
-	/** @var string */
-	private $apiUrl;
-
-	/** @var IHttpClient */
-	private $httpClient;
-
-	public function __construct(string $username, string $password, string $apiUrl, IHttpClient $httpClient)
+	public function __construct(
+		private string $username,
+		private string $password,
+		string $apiUrl,
+		private IHttpClient $httpClient,
+	)
 	{
-		$this->username = $username;
-		$this->password = $password;
 		$this->apiUrl = rtrim($apiUrl, '/');
-		$this->httpClient = $httpClient;
 	}
 
 	public function getCurrentUsername(): string
@@ -74,11 +66,10 @@ class FapiRestClient
 	}
 
 	/**
-	 * @param string|int $id
 	 * @param array<mixed> $parameters
 	 * @return array<mixed>|null
 	 */
-	public function getResource(string $path, $id, array $parameters = [], int $options = 0): ?array
+	public function getResource(string $path, string|int $id, array $parameters = [], int $options = 0): array|null
 	{
 		$path .= '/' . $id;
 
@@ -140,11 +131,10 @@ class FapiRestClient
 	}
 
 	/**
-	 * @param int|string $id
 	 * @param array<mixed> $data
 	 * @return array<mixed>
 	 */
-	public function updateResource(string $path, $id, array $data, int $options = 0): array
+	public function updateResource(string $path, int|string $id, array $data, int $options = 0): array
 	{
 		$httpResponse = $this->sendHttpRequest(HttpMethod::PUT, $path . '/' . $id, $data);
 
@@ -157,10 +147,7 @@ class FapiRestClient
 		throw new InvalidStatusCodeException('Api return invalid status code: ' . $httpResponse->getStatusCode());
 	}
 
-	/**
-	 * @param int|string $id
-	 */
-	public function deleteResource(string $path, $id): void
+	public function deleteResource(string $path, int|string $id): void
 	{
 		$httpResponse = $this->sendHttpRequest(HttpMethod::DELETE, $path . '/' . $id);
 
@@ -213,7 +200,7 @@ class FapiRestClient
 	/**
 	 * @param array<mixed> $parameters
 	 */
-	public function getInvoicePdf(int $id, array $parameters = []): ?string
+	public function getInvoicePdf(int $id, array $parameters = []): string|null
 	{
 		$path = '/invoices/' . $id . '.pdf';
 
@@ -243,8 +230,8 @@ class FapiRestClient
 	private function sendHttpRequest(
 		string $method,
 		string $path,
-		?array $data = null,
-		array $headers = []
+		array|null $data = null,
+		array $headers = [],
 	): ResponseInterface
 	{
 		$url = $this->apiUrl . $path;
@@ -290,7 +277,7 @@ class FapiRestClient
 	private function getResourcesResponseData(
 		ResponseInterface $httpResponse,
 		string $resourcesKey,
-		int $options
+		int $options,
 	): array
 	{
 		$responseData = $this->getResponseData($httpResponse);
@@ -331,7 +318,7 @@ class FapiRestClient
 	/**
 	 * @param array<mixed>|string $resource
 	 */
-	private function validateResource($resource, int $options): void
+	private function validateResource(array|string $resource, int $options): void
 	{
 		if ((bool) ($options & FapiRestClientOptions::STRING_RESOURCE)) {
 			if (!is_string($resource)) {
@@ -353,10 +340,7 @@ class FapiRestClient
 		return $responseData['message'] ?? '';
 	}
 
-	/**
-	 * @return mixed
-	 */
-	private function getResponseData(ResponseInterface $httpResponse)
+	private function getResponseData(ResponseInterface $httpResponse): mixed
 	{
 		try {
 			return Json::decode((string) $httpResponse->getBody(), Json::FORCE_ARRAY);

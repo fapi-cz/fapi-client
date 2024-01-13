@@ -16,11 +16,9 @@ require __DIR__ . '/../../bootstrap.php';
 class FapiClientExchangeRatesTest extends TestCase
 {
 
-	/** @var CapturingHttpClient */
-	private $httpClient;
+	private CapturingHttpClient $httpClient;
 
-	/** @var FapiClient */
-	private $fapiClient;
+	private FapiClient $fapiClient;
 
 	protected function setUp(): void
 	{
@@ -29,14 +27,14 @@ class FapiClientExchangeRatesTest extends TestCase
 		$this->httpClient = new CapturingHttpClient(
 			new GuzzleHttpClient(),
 			__DIR__ . '/MockHttpClients/FapiClientExchangeRatesMockHttpClient.php',
-			'Fapi\FapiClientTests\MockHttpClients\FapiClientExchangeRatesMockHttpClient'
+			'Fapi\FapiClientTests\MockHttpClients\FapiClientExchangeRatesMockHttpClient',
 		);
 
 		$this->fapiClient = new FapiClient(
 			'slischka@test-fapi.cz',
 			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
 			'https://api.fapi.cz/',
-			$this->httpClient
+			$this->httpClient,
 		);
 	}
 
@@ -60,7 +58,7 @@ class FapiClientExchangeRatesTest extends TestCase
 		}, ValidationException::class, 'Parameter date_from and date_to can not be null together with parameter date.');
 
 		$exchangeRates = $this->fapiClient->getExchangeRates()->list(
-			['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08']
+			['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08'],
 		);
 
 		Assert::equal([
@@ -73,7 +71,7 @@ class FapiClientExchangeRatesTest extends TestCase
 		], $exchangeRates);
 
 		$exchangeRate = $this->fapiClient->getExchangeRates()->list(
-			['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08', 'single' => true]
+			['source' => 'EUR', 'target' => 'CZK', 'date' => '2020-09-08', 'single' => true],
 		);
 
 		Assert::equal(
@@ -83,9 +81,8 @@ class FapiClientExchangeRatesTest extends TestCase
 				'target_currency' => 'CZK',
 				'exchange_rate' => 26.47,
 			],
-			$exchangeRate
+			$exchangeRate,
 		);
-
 	}
 
 }

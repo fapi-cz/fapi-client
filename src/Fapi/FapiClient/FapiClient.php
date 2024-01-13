@@ -26,110 +26,59 @@ use Fapi\HttpClient\IHttpClient;
 class FapiClient implements IFapiClient
 {
 
-	/** @var FapiRestClient */
-	private $restClient;
+	private FapiRestClient $restClient;
 
-	/**
-	 * @var Invoices
-	 * @deprecated use getInvoices() instead
-	 */
-	public $invoices;
+	/** @deprecated use getInvoices() instead */
+	public Invoices $invoices;
 
-	/**
-	 * @var ApiTokens
-	 * @deprecated use getApiTokens() instead
-	 */
-	public $apiTokens;
+	/** @deprecated use getApiTokens() instead */
+	public ApiTokens $apiTokens;
 
-	/**
-	 * @var Clients
-	 * @deprecated use getClients() instead
-	 */
-	public $clients;
+	/** @deprecated use getClients() instead */
+	public Clients $clients;
 
-	/**
-	 * @var Countries
-	 * @deprecated use getCountries() instead
-	 */
-	public $countries;
+	/** @deprecated use getCountries() instead */
+	public Countries $countries;
 
-	/**
-	 * @var Forms
-	 * @deprecated use getForms() instead
-	 */
-	public $forms;
+	/** @deprecated use getForms() instead */
+	public Forms $forms;
 
-	/**
-	 * @var Items
-	 * @deprecated use getItems() instead
-	 */
-	public $items;
+	/** @deprecated use getItems() instead */
+	public Items $items;
 
-	/**
-	 * @var ItemTemplates
-	 * @deprecated use getItemTemplates() instead
-	 */
-	public $itemTemplates;
+	/** @deprecated use getItemTemplates() instead */
+	public ItemTemplates $itemTemplates;
 
-	/**
-	 * @var Orders
-	 * @deprecated use getOrders() instead
-	 */
-	public $orders;
+	/** @deprecated use getOrders() instead */
+	public Orders $orders;
 
-	/**
-	 * @var Settings
-	 * @deprecated use getSettings() instead
-	 */
-	public $settings;
+	/** @deprecated use getSettings() instead */
+	public Settings $settings;
 
-	/**
-	 * @var User
-	 * @deprecated use getUser() instead
-	 */
-	public $user;
+	/** @deprecated use getUser() instead */
+	public User $user;
 
-	/**
-	 * @var MessageTemplates
-	 * @deprecated use getMessageTemplates() instead
-	 */
-	public $messageTemplates;
+	/** @deprecated use getMessageTemplates() instead */
+	public MessageTemplates $messageTemplates;
 
-	/**
-	 * @var DiscountCodes
-	 * @deprecated use getDiscountCodes() instead
-	 */
-	public $discountCodes;
+	/** @deprecated use getDiscountCodes() instead */
+	public DiscountCodes $discountCodes;
 
-	/**
-	 * @var Statistics
-	 * @deprecated use getStatistics() instead
-	 */
-	public $statistics;
+	/** @deprecated use getStatistics() instead */
+	public Statistics $statistics;
 
-	/**
-	 * @var PeriodicInvoices
-	 * @deprecated use getPeriodicInvoices() instead
-	 */
-	public $periodicInvoices;
+	/** @deprecated use getPeriodicInvoices() instead */
+	public PeriodicInvoices $periodicInvoices;
 
-	/**
-	 * @var ExchangeRates
-	 * @deprecated use getExchangeRates() instead
-	 */
-	public $exchangeRates;
+	/** @deprecated use getExchangeRates() instead */
+	public ExchangeRates $exchangeRates;
 
-	/**
-	 * @var UserSettings
-	 * @deprecated use getUserSetting() instead
-	 */
-	public $userSetting;
+	/** @deprecated use getUserSetting() instead */
+	public UserSettings $userSetting;
 
-	/** @var Vouchers  */
-	private $vouchers;
+	private Vouchers $vouchers;
 
-	/** @var ClientChanges  */
-	private $clientChanges;
+	private ClientChanges $clientChanges;
 
 	public function __construct(string $username, string $password, string $apiUrl, IHttpClient $httpClient)
 	{

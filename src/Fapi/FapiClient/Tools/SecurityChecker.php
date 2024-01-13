@@ -10,6 +10,7 @@ final class SecurityChecker
 
 	/**
 	 * @param array<mixed> $invoice
+	 *
 	 * @deprecated use isInvoiceSecurityValid instead
 	 */
 	public static function isValid(array $invoice, int $time, string $expectedSecurity): bool
@@ -47,7 +48,7 @@ final class SecurityChecker
 		array $voucher,
 		array $itemTemplate,
 		int $time,
-		string $expectedSecurity
+		string $expectedSecurity,
 	): bool
 	{
 		$voucherId = $voucher['id'] ?? '';

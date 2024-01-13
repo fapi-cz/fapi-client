@@ -25,7 +25,7 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"name":"Sample Item Template","count":1,"prices":[{"type":"one_time","currency_code":"CZK","price":150}]}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				201,
@@ -42,8 +42,8 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":183490,"hidden":false,"name":"Sample Item Template","code":"183490","accounting_code":null,"description":null,"price_czk":150,"price_eur":null,"price_usd":null,"repayment_amount_czk":null,"repayment_amount_eur":null,"repayment_amount_usd":null,"vat":0,"including_vat":false,"count":1,"sold_out":false,"allow_change_count":false,"enable_stock":false,"stock":0,"show_stock_information":false,"reverse_charge":null,"type":null,"electronically_supplied_service":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"mioweb_eshop":false,"mioweb_eshop_url":null,"disable_discount":false,"prices":[{"type":"one_time","price":150,"currency_code":"CZK"}],"periodic":false,"period":null}'
-			)
+				'{"id":183490,"hidden":false,"name":"Sample Item Template","code":"183490","accounting_code":null,"description":null,"price_czk":150,"price_eur":null,"price_usd":null,"repayment_amount_czk":null,"repayment_amount_eur":null,"repayment_amount_usd":null,"vat":0,"including_vat":false,"count":1,"sold_out":false,"allow_change_count":false,"enable_stock":false,"stock":0,"show_stock_information":false,"reverse_charge":null,"type":null,"electronically_supplied_service":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"mioweb_eshop":false,"mioweb_eshop_url":null,"disable_discount":false,"prices":[{"type":"one_time","price":150,"currency_code":"CZK"}],"periodic":false,"period":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -59,7 +59,7 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -78,8 +78,8 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 					'x-encoded-content-encoding' => ['gzip'],
 				],
-				'{"item_templates":[{"id":183490,"hidden":false,"name":"Sample Item Template","code":"183490","accounting_code":null,"description":null,"price_czk":150,"price_eur":null,"price_usd":null,"repayment_amount_czk":null,"repayment_amount_eur":null,"repayment_amount_usd":null,"vat":0,"including_vat":false,"count":1,"sold_out":false,"allow_change_count":false,"enable_stock":false,"stock":0,"show_stock_information":false,"reverse_charge":null,"type":null,"electronically_supplied_service":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"mioweb_eshop":false,"mioweb_eshop_url":null,"disable_discount":false,"prices":[{"type":"one_time","price":150,"currency_code":"CZK"}],"periodic":false,"period":null}]}'
-			)
+				'{"item_templates":[{"id":183490,"hidden":false,"name":"Sample Item Template","code":"183490","accounting_code":null,"description":null,"price_czk":150,"price_eur":null,"price_usd":null,"repayment_amount_czk":null,"repayment_amount_eur":null,"repayment_amount_usd":null,"vat":0,"including_vat":false,"count":1,"sold_out":false,"allow_change_count":false,"enable_stock":false,"stock":0,"show_stock_information":false,"reverse_charge":null,"type":null,"electronically_supplied_service":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"mioweb_eshop":false,"mioweb_eshop_url":null,"disable_discount":false,"prices":[{"type":"one_time","price":150,"currency_code":"CZK"}],"periodic":false,"period":null}]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -95,7 +95,7 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -114,8 +114,8 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 					'x-encoded-content-encoding' => ['gzip'],
 				],
-				'{"id":183490,"hidden":false,"name":"Sample Item Template","code":"183490","accounting_code":null,"description":null,"price_czk":150,"price_eur":null,"price_usd":null,"repayment_amount_czk":null,"repayment_amount_eur":null,"repayment_amount_usd":null,"vat":0,"including_vat":false,"count":1,"sold_out":false,"allow_change_count":false,"enable_stock":false,"stock":0,"show_stock_information":false,"reverse_charge":null,"type":null,"electronically_supplied_service":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"mioweb_eshop":false,"mioweb_eshop_url":null,"disable_discount":false,"prices":[{"type":"one_time","price":150,"currency_code":"CZK"}],"periodic":false,"period":null}'
-			)
+				'{"id":183490,"hidden":false,"name":"Sample Item Template","code":"183490","accounting_code":null,"description":null,"price_czk":150,"price_eur":null,"price_usd":null,"repayment_amount_czk":null,"repayment_amount_eur":null,"repayment_amount_usd":null,"vat":0,"including_vat":false,"count":1,"sold_out":false,"allow_change_count":false,"enable_stock":false,"stock":0,"show_stock_information":false,"reverse_charge":null,"type":null,"electronically_supplied_service":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"mioweb_eshop":false,"mioweb_eshop_url":null,"disable_discount":false,"prices":[{"type":"one_time","price":150,"currency_code":"CZK"}],"periodic":false,"period":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -131,7 +131,7 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"name":"Updated Item Template"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -150,8 +150,8 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 					'x-encoded-content-encoding' => ['gzip'],
 				],
-				'{"id":183490,"hidden":false,"name":"Updated Item Template","code":"183490","accounting_code":null,"description":null,"price_czk":150,"price_eur":null,"price_usd":null,"repayment_amount_czk":null,"repayment_amount_eur":null,"repayment_amount_usd":null,"vat":0,"including_vat":false,"count":1,"sold_out":false,"allow_change_count":false,"enable_stock":false,"stock":0,"show_stock_information":false,"reverse_charge":null,"type":null,"electronically_supplied_service":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"mioweb_eshop":false,"mioweb_eshop_url":null,"disable_discount":false,"prices":[{"type":"one_time","price":150,"currency_code":"CZK"}],"periodic":false,"period":null}'
-			)
+				'{"id":183490,"hidden":false,"name":"Updated Item Template","code":"183490","accounting_code":null,"description":null,"price_czk":150,"price_eur":null,"price_usd":null,"repayment_amount_czk":null,"repayment_amount_eur":null,"repayment_amount_usd":null,"vat":0,"including_vat":false,"count":1,"sold_out":false,"allow_change_count":false,"enable_stock":false,"stock":0,"show_stock_information":false,"reverse_charge":null,"type":null,"electronically_supplied_service":false,"pohoda_accounting":null,"pohoda_centre":null,"pohoda_store":null,"pohoda_stock_item":null,"mioweb_eshop":false,"mioweb_eshop_url":null,"disable_discount":false,"prices":[{"type":"one_time","price":150,"currency_code":"CZK"}],"periodic":false,"period":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -167,7 +167,7 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -184,8 +184,8 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'null'
-			)
+				'null',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -201,7 +201,7 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				404,
@@ -218,8 +218,8 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Specified resource does not exist.","type":"RequestException"}'
-			)
+				'{"message":"Specified resource does not exist.","type":"RequestException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -235,7 +235,7 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				404,
@@ -252,8 +252,8 @@ final class FapiClientItemTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Specified resource does not exist.","type":"RequestException"}'
-			)
+				'{"message":"Specified resource does not exist.","type":"RequestException"}',
+			),
 		);
 	}
 

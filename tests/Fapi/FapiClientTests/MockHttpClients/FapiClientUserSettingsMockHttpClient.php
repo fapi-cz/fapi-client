@@ -25,7 +25,7 @@ final class FapiClientUserSettingsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -53,8 +53,8 @@ final class FapiClientUserSettingsMockHttpClient extends MockHttpClient
 						'Origin, X-Requested-With, Content-Type, Accept',
 					],
 				],
-				'{"country_currency_setting":{"*":"EUR","CZ":"CZK"}}'
-			)
+				'{"country_currency_setting":{"*":"EUR","CZ":"CZK"}}',
+			),
 		);
 	}
 

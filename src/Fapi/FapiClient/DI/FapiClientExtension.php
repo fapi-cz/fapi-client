@@ -15,7 +15,7 @@ final class FapiClientExtension extends CompilerExtension
 {
 
 	/** @var array<mixed> */
-	public $defaults = [
+	public array $defaults = [
 		'username' => '',
 		'password' => '',
 		'apiUrl' => 'https://api.fapi.cz/',

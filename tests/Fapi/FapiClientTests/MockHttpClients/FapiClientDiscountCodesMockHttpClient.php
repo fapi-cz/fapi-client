@@ -25,7 +25,7 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"name":"test","code":"unique","type":"percent","validity_type":"always","percent_discount":5}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				201,
@@ -53,8 +53,8 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 						'Origin, X-Requested-With, Content-Type, Accept',
 					],
 				],
-				'{"id":9761,"user_id":13057,"name":"test","code":"unique","type":"percent","validity_type":"always","begin_date":null,"end_date":null,"percent_discount":5,"maximum_use":null,"discount_amounts":null}'
-			)
+				'{"id":9761,"user_id":13057,"name":"test","code":"unique","type":"percent","validity_type":"always","begin_date":null,"end_date":null,"percent_discount":5,"maximum_use":null,"discount_amounts":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -70,7 +70,7 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"name":"new name","code":"newUniqCode","percent_discount":10,"validity_type":"range","begin_date":"2017-01-01"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -98,8 +98,8 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 						'Origin, X-Requested-With, Content-Type, Accept',
 					],
 				],
-				'{"id":9761,"user_id":13057,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}'
-			)
+				'{"id":9761,"user_id":13057,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -115,7 +115,7 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -143,8 +143,8 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 						'Origin, X-Requested-With, Content-Type, Accept',
 					],
 				],
-				'{"id":9761,"user_id":13057,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}'
-			)
+				'{"id":9761,"user_id":13057,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -160,7 +160,7 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -188,8 +188,8 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 						'Origin, X-Requested-With, Content-Type, Accept',
 					],
 				],
-				'{"applicable":false}'
-			)
+				'{"applicable":false}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -205,7 +205,7 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -233,8 +233,8 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 						'Origin, X-Requested-With, Content-Type, Accept',
 					],
 				],
-				'{"discount_codes":[{"id":9761,"user_id":13057,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}]}'
-			)
+				'{"discount_codes":[{"id":9761,"user_id":13057,"name":"new name","code":"newUniqCode","type":"percent","validity_type":"range","begin_date":"2017-01-01","end_date":null,"percent_discount":10,"maximum_use":null,"discount_amounts":null}]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -250,7 +250,7 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -278,8 +278,8 @@ final class FapiClientDiscountCodesMockHttpClient extends MockHttpClient
 						'Origin, X-Requested-With, Content-Type, Accept',
 					],
 				],
-				'{"status":"success"}'
-			)
+				'{"status":"success"}',
+			),
 		);
 	}
 

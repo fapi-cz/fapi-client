@@ -7,18 +7,12 @@ use Fapi\FapiClient\Rest\FapiRestClient;
 final class ClientChanges
 {
 
-	/** @var FapiRestClient */
-	private $client;
+	private string $path;
 
-	/** @var string */
-	private $path;
+	private string $resources;
 
-	/** @var string */
-	private $resources;
-
-	public function __construct(FapiRestClient $client)
+	public function __construct(private FapiRestClient $client)
 	{
-		$this->client = $client;
 		$this->path = '/client-changes';
 		$this->resources = 'client_changes';
 	}
@@ -32,7 +26,7 @@ final class ClientChanges
 		return $this->client->getResources(
 			$this->path . '/search',
 			$this->resources,
-			['client' => $clientId] + $parameters
+			['client' => $clientId] + $parameters,
 		);
 	}
 

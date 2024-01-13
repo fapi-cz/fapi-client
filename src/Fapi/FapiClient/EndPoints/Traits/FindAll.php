@@ -7,14 +7,11 @@ use Fapi\FapiClient\Rest\FapiRestClient;
 trait FindAll
 {
 
-	/** @var FapiRestClient */
-	private $client;
+	private FapiRestClient $client;
 
-	/** @var string */
-	private $path;
+	private string $path;
 
-	/** @var string */
-	private $resources;
+	private string $resources;
 
 	/**
 	 * @param array<mixed> $parameters

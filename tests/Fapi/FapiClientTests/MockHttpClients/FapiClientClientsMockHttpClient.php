@@ -25,7 +25,7 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"email":"test-Fapi@fabik.org"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				201,
@@ -42,8 +42,8 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":1808080,"email":"test-Fapi@fabik.org","tax_payer":false}'
-			)
+				'{"id":1808080,"email":"test-Fapi@fabik.org","tax_payer":false}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -59,7 +59,7 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -76,8 +76,8 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"clients":[{"id":1808080,"email":"test-Fapi@fabik.org","tax_payer":false}]}'
-			)
+				'{"clients":[{"id":1808080,"email":"test-Fapi@fabik.org","tax_payer":false}]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -93,7 +93,7 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -110,8 +110,8 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":1808080,"email":"test-Fapi@fabik.org","tax_payer":false}'
-			)
+				'{"id":1808080,"email":"test-Fapi@fabik.org","tax_payer":false}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -127,7 +127,7 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"email":"test-Fapi-2@fabik.org"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -144,8 +144,8 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":1808080,"email":"test-Fapi-2@fabik.org","tax_payer":false}'
-			)
+				'{"id":1808080,"email":"test-Fapi-2@fabik.org","tax_payer":false}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -161,7 +161,7 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -178,8 +178,8 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'null'
-			)
+				'null',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -195,7 +195,7 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				404,
@@ -212,8 +212,8 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Specified resource does not exist.","type":"RequestException"}'
-			)
+				'{"message":"Specified resource does not exist.","type":"RequestException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -229,7 +229,7 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				401,
@@ -246,8 +246,8 @@ final class FapiClientClientsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"You are not authorized for this action.","type":"AuthorizationException"}'
-			)
+				'{"message":"You are not authorized for this action.","type":"AuthorizationException"}',
+			),
 		);
 	}
 

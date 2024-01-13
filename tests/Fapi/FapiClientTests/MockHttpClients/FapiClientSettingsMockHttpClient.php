@@ -25,7 +25,7 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"key":"sample_setting","value":"foo"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				201,
@@ -42,8 +42,8 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"value":"foo"}'
-			)
+				'{"value":"foo"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -59,7 +59,7 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -78,8 +78,8 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 					'x-encoded-content-encoding' => ['gzip'],
 				],
-				'{"settings":{"accounting_codes":"0","campaign_codes":"0","currency":"CZK","date_format":"j. n. Y","display_intro":"0","gosms_client_id":"","gosms_client_secret":"","gosms_connected":"0","gosms_channel_id":"","checklist_basic_settings":"0","checklist_form":"3","checklist_form_tested":"0","checklist_importer":"0","checklist_payment_gateway":"0","checklist_product":"1","language":"cs","load_dic_from_ares":"0","payday":"2 weeks","payment_confirmation":"0","payment_type":"credit card","period_partial":"1 months","period_periodic":"1 months","print_qr_code_on_invoice":"1","proforma":"1","round_function":"","same_variable_symbol_on_proforma_and_invoice":"1","sample_setting":"foo","send_invoice_email_to_client":"1","send_invoice_email_to_user":"1","smsconnect_connected":"0","smsconnect_password":"","smsconnect_username":"","use_moss_for_non_vat_payer_eu_companies":"1","vat":"0","vat_mode":"non-vat-payer","vat_recapitulation_algorithm":"default"}}'
-			)
+				'{"settings":{"accounting_codes":"0","campaign_codes":"0","currency":"CZK","date_format":"j. n. Y","display_intro":"0","gosms_client_id":"","gosms_client_secret":"","gosms_connected":"0","gosms_channel_id":"","checklist_basic_settings":"0","checklist_form":"3","checklist_form_tested":"0","checklist_importer":"0","checklist_payment_gateway":"0","checklist_product":"1","language":"cs","load_dic_from_ares":"0","payday":"2 weeks","payment_confirmation":"0","payment_type":"credit card","period_partial":"1 months","period_periodic":"1 months","print_qr_code_on_invoice":"1","proforma":"1","round_function":"","same_variable_symbol_on_proforma_and_invoice":"1","sample_setting":"foo","send_invoice_email_to_client":"1","send_invoice_email_to_user":"1","smsconnect_connected":"0","smsconnect_password":"","smsconnect_username":"","use_moss_for_non_vat_payer_eu_companies":"1","vat":"0","vat_mode":"non-vat-payer","vat_recapitulation_algorithm":"default"}}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -95,7 +95,7 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -112,8 +112,8 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"value":"foo"}'
-			)
+				'{"value":"foo"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -129,7 +129,7 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"value":"bar"}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -146,8 +146,8 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"value":"bar"}'
-			)
+				'{"value":"bar"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -163,7 +163,7 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -180,8 +180,8 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'null'
-			)
+				'null',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -197,7 +197,7 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				404,
@@ -214,8 +214,8 @@ final class FapiClientSettingsMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Key \\"sample_setting\\" does not exist.","type":"RequestException"}'
-			)
+				'{"message":"Key \\"sample_setting\\" does not exist.","type":"RequestException"}',
+			),
 		);
 	}
 

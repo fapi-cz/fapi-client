@@ -25,7 +25,7 @@ final class FapiClientVouchersMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -56,8 +56,8 @@ final class FapiClientVouchersMockHttpClient extends MockHttpClient
 						'Origin, X-Requested-With, Content-Type, Accept',
 					],
 				],
-				'{"id":1656,"user_id":13057,"code":"ABUCRQ","status":"valid","created_on":"2021-03-11 17:36:23","expiration_date":"2021-03-31","applied_on":null,"invoice_id":null,"product_name":"test","item_template_code":null,"applicant":null}'
-			)
+				'{"id":1656,"user_id":13057,"code":"ABUCRQ","status":"valid","created_on":"2021-03-11 17:36:23","expiration_date":"2021-03-31","applied_on":null,"invoice_id":null,"product_name":"test","item_template_code":null,"applicant":null}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -73,7 +73,7 @@ final class FapiClientVouchersMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"applicant":{"email":"test@fapi.cz","form_url":"https://xx.fapi.cz"}}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -106,8 +106,8 @@ final class FapiClientVouchersMockHttpClient extends MockHttpClient
 					],
 					'x-encoded-content-encoding' => ['gzip'],
 				],
-				'{"applied":true,"message":"voucherUpdater.apply.success","voucher":{"id":1656,"user_id":13057,"code":"ABUCRQ","status":"applied","created_on":"2021-03-11 17:36:23","expiration_date":"2021-03-31","applied_on":"2021-03-11 17:44:35","invoice_id":null,"product_name":"test","item_template_code":null,"applicant":{"email":"test@fapi.cz","form_url":"https:\\/\\/xx.fapi.cz"}}}'
-			)
+				'{"applied":true,"message":"voucherUpdater.apply.success","voucher":{"id":1656,"user_id":13057,"code":"ABUCRQ","status":"applied","created_on":"2021-03-11 17:36:23","expiration_date":"2021-03-31","applied_on":"2021-03-11 17:44:35","invoice_id":null,"product_name":"test","item_template_code":null,"applicant":{"email":"test@fapi.cz","form_url":"https:\\/\\/xx.fapi.cz"}}}',
+			),
 		);
 	}
 

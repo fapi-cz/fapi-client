@@ -25,7 +25,7 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"name":"test","subject":"MySubject","body":"<p>Mu Body</p>","event":"custom","type":"invoice","automatic_charge_event":null,"message_template_set":null}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				201,
@@ -42,8 +42,8 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":264996,"name":"test","subject":"MySubject","body":"<p>Mu Body<\\/p>","type":null,"event":"custom","automatic_charge_event":null,"message_template_set":null,"files":[]}'
-			)
+				'{"id":264996,"name":"test","subject":"MySubject","body":"<p>Mu Body<\\/p>","type":null,"event":"custom","automatic_charge_event":null,"message_template_set":null,"files":[]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -59,7 +59,7 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'{"name":"test","subject":"Opraveny subject","body":"<p>My Body</p>","event":"issued_invoice","type":"invoice","automatic_charge_event":null,"message_template_set":null}',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -76,8 +76,8 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":264996,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}'
-			)
+				'{"id":264996,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -93,7 +93,7 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -110,8 +110,8 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"id":264996,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}'
-			)
+				'{"id":264996,"name":"test","subject":"Opraveny subject","body":"<p>My Body<\\/p>","type":"invoice","event":"issued_invoice","automatic_charge_event":null,"message_template_set":null,"files":[]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -127,7 +127,7 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -144,8 +144,8 @@ final class FapiClientMessageTemplatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"status":"success"}'
-			)
+				'{"status":"success"}',
+			),
 		);
 	}
 

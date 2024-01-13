@@ -8,15 +8,10 @@ use Fapi\FapiClient\Rest\FapiRestClientOptions;
 final class Countries
 {
 
-	/** @var FapiRestClient */
-	private $client;
+	private string $path;
 
-	/** @var string */
-	private $path;
-
-	public function __construct(FapiRestClient $client)
+	public function __construct(private FapiRestClient $client)
 	{
-		$this->client = $client;
 		$this->path = '/countries';
 	}
 

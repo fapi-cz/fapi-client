@@ -7,11 +7,9 @@ use Fapi\FapiClient\Rest\FapiRestClient;
 trait Delete
 {
 
-	/** @var FapiRestClient */
-	private $client;
+	private FapiRestClient $client;
 
-	/** @var string */
-	private $path;
+	private string $path;
 
 	public function delete(int $id): void
 	{

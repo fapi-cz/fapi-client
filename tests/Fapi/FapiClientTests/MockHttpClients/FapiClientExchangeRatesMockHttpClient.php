@@ -25,7 +25,7 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				400,
@@ -42,8 +42,8 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Missing key: source","type":"ValidationException"}'
-			)
+				'{"message":"Missing key: source","type":"ValidationException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -59,7 +59,7 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				400,
@@ -76,8 +76,8 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Missing key: target","type":"ValidationException"}'
-			)
+				'{"message":"Missing key: target","type":"ValidationException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -93,7 +93,7 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				400,
@@ -110,8 +110,8 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"message":"Parameter date_from and date_to can not be null together with parameter date.","type":"ValidationException"}'
-			)
+				'{"message":"Parameter date_from and date_to can not be null together with parameter date.","type":"ValidationException"}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -127,7 +127,7 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -144,8 +144,8 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"exchange_rates":[{"date":"2020-09-08","source_currency":"EUR","target_currency":"CZK","exchange_rate":26.47}]}'
-			)
+				'{"exchange_rates":[{"date":"2020-09-08","source_currency":"EUR","target_currency":"CZK","exchange_rate":26.47}]}',
+			),
 		);
 		$this->add(
 			new HttpRequest(
@@ -161,7 +161,7 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					],
 				],
 				'',
-				'1.1'
+				'1.1',
 			),
 			new HttpResponse(
 				200,
@@ -178,8 +178,8 @@ final class FapiClientExchangeRatesMockHttpClient extends MockHttpClient
 					'Access-Control-Allow-Origin' => ['*'],
 					'Access-Control-Allow-Headers' => ['Origin, X-Requested-With, Content-Type, Accept'],
 				],
-				'{"date":"2020-09-08","source_currency":"EUR","target_currency":"CZK","exchange_rate":26.47}'
-			)
+				'{"date":"2020-09-08","source_currency":"EUR","target_currency":"CZK","exchange_rate":26.47}',
+			),
 		);
 	}
 

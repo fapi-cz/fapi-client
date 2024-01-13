@@ -5,15 +5,11 @@ namespace Fapi\FapiClient\Tools;
 final class CountryCurrencyResolver
 {
 
-	/** @var array<string> */
-	private $countryCurrencySetting;
-
 	/**
 	 * @param array<string> $countryCurrencySetting
 	 */
-	public function __construct(array $countryCurrencySetting)
+	public function __construct(private array $countryCurrencySetting)
 	{
-		$this->countryCurrencySetting = $countryCurrencySetting;
 	}
 
 	public function getCurrencyCode(string $countryCode): string
