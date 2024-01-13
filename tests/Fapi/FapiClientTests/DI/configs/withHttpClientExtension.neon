@@ -1,6 +1,6 @@
 extensions:
 	fapiClient: Fapi\FapiClient\DI\FapiClientExtension
-	httpClient: Fapi\HttpClient\Bidges\NetteDI\HttpClientExtension
+	httpClient: Fapi\HttpClient\Bridges\Tracy\BarHttpClient
 
 fapiClient:
 	username: fapi

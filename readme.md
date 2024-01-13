@@ -27,7 +27,7 @@ You can also use `\Fapi\HttpClient\GuzzleHttpClient` instead of `\Fapi\HttpClien
 ## Nette DI
 ```yaml
 extensions:
-	httpClient: Fapi\HttpClient\Bidges\NetteDI\HttpClientExtension
+	httpClient: Fapi\HttpClient\Bridges\NetteDI\HttpClientExtension
 	fapiClient: Fapi\FapiClient\DI\FapiClientExtension
 	
 httpClient:
