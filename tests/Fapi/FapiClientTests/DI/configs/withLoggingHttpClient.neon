@@ -6,6 +6,8 @@ fapiClient:
 	password: fapi
 
 services:
+	- Fapi\HttpClient\LoggingFormatters\JsonLoggingFormatter
+
 	logger: Psr\Log\NullLogger
 
 	httpClient:
