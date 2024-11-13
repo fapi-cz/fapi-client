@@ -20,4 +20,13 @@ final class Orders
 		$this->path = '/orders';
 	}
 
+	/**
+	 * @param array<mixed> $parameters
+	 * @return array<mixed>
+	 */
+	public function search(array $parameters = []): array
+	{
+		return $this->client->getSingularResource($this->path . '/search', $parameters);
+	}
+
 }
