@@ -31,7 +31,7 @@ class FapiClientOrdersTest extends TestCase
 
 		$this->fapiClient = new FapiClient(
 			'slischka@test-fapi.cz',
-			'jIBAWlKzzB6rQVk5Y3T0VxTgn',
+			'W3Uxi35P2pUjMJrJdxtALStvC',
 			'https://api.fapi.cz/',
 			$this->httpClient,
 		);
@@ -114,6 +114,14 @@ class FapiClientOrdersTest extends TestCase
 		Assert::type('array', $updatedOrder);
 		Assert::same($createdOrder['id'], $updatedOrder['id']);
 		Assert::false($updatedOrder['pending']);
+
+		$foundOrder = $this->fapiClient->getOrders()->findAll([
+			'invoice' => $createdOrder['invoice'],
+			'limit' => 1,
+			'sources' => ['form', 'api'],
+		])[0];
+
+		Assert::same($foundOrder['id'], $order['id']);
 	}
 
 }
